@@ -1,0 +1,1233 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Apparel Group KSA - Modular Dashboard</title>
+    <style>
+        :root {
+            --primary-color: #0050a5; /* Royal Blue */
+            --secondary-color: #f5f5f7;
+            --text-color: #1d1d1f;
+            --light-gray: #86868b;
+            --border-radius: 12px;
+            --box-shadow: 0 4px 20px rgba(0,0,0,0.1);
+            --transition: all 0.3s ease;
+            --success-color: #34c759;
+            --warning-color: #ff9500;
+            --error-color: #ff3b30;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+        }
+
+        body {
+            background-color: #f5f5f7;
+            color: var(--text-color);
+            line-height: 1.6;
+            min-height: 100vh;
+        }
+
+        /* Login Page */
+        .login-container {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            padding: 20px;
+            background: linear-gradient(135deg, #0050a5 0%, #002d5a 100%);
+        }
+
+        .login-box {
+            background: white;
+            padding: 40px;
+            border-radius: var(--border-radius);
+            box-shadow: var(--box-shadow);
+            width: 100%;
+            max-width: 400px;
+            text-align: center;
+        }
+
+        .company-logo {
+            color: #fff;
+            font-size: 24px;
+            font-weight: 600;
+            margin-bottom: 30px;
+            text-align: center;
+            position: absolute;
+            top: 30px;
+            left: 0;
+            right: 0;
+        }
+
+        .logo {
+            font-size: 32px;
+            font-weight: 600;
+            margin-bottom: 30px;
+            color: var(--primary-color);
+        }
+
+        .input-group {
+            margin-bottom: 20px;
+            text-align: left;
+        }
+
+        .input-group label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: 500;
+        }
+
+        .input-group input {
+            width: 100%;
+            padding: 12px;
+            border: 1px solid #d2d2d7;
+            border-radius: 8px;
+            font-size: 16px;
+            transition: var(--transition);
+        }
+
+        .input-group input:focus {
+            outline: none;
+            border-color: var(--primary-color);
+            box-shadow: 0 0 0 2px rgba(0,80,165,0.2);
+        }
+
+        .login-btn {
+            background-color: var(--primary-color);
+            color: white;
+            border: none;
+            padding: 12px;
+            width: 100%;
+            border-radius: 8px;
+            font-size: 16px;
+            font-weight: 500;
+            cursor: pointer;
+            transition: var(--transition);
+        }
+
+        .login-btn:hover {
+            background-color: #003d82;
+        }
+
+        /* Dashboard */
+        .dashboard {
+            display: none;
+            padding: 20px;
+            min-height: 100vh;
+        }
+
+        .header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 20px 0;
+            margin-bottom: 30px;
+            border-bottom: 1px solid #eee;
+        }
+
+        .company-name {
+            font-size: 24px;
+            font-weight: 600;
+            color: var(--primary-color);
+        }
+
+        .user-info {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .user-avatar {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            background-color: var(--primary-color);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-weight: bold;
+        }
+
+        .tiles-container {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 20px;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .tile {
+            background: white;
+            border-radius: var(--border-radius);
+            padding: 25px;
+            width: 250px;
+            text-align: center;
+            box-shadow: var(--box-shadow);
+            cursor: pointer;
+            transition: var(--transition);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .tile.locked {
+            opacity: 0.7;
+            background-color: #f9f9f9;
+        }
+
+        .tile.locked .tile-icon {
+            color: var(--light-gray);
+        }
+
+        .tile:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 25px rgba(0,0,0,0.15);
+        }
+
+        .access-badge {
+            position: absolute;
+            top: 10px;
+            right: 10px;
+            background-color: var(--success-color);
+            color: white;
+            padding: 2px 8px;
+            border-radius: 10px;
+            font-size: 12px;
+            font-weight: 500;
+        }
+
+        .temporary-badge {
+            background-color: var(--warning-color);
+        }
+
+        .tile-icon {
+            font-size: 40px;
+            margin-bottom: 15px;
+            color: var(--primary-color);
+        }
+
+        .tile h3 {
+            margin-bottom: 10px;
+            font-size: 18px;
+        }
+
+        .tile p {
+            color: var(--light-gray);
+            font-size: 14px;
+            margin-bottom: 15px;
+            min-height: 40px;
+        }
+
+        .request-access-btn {
+            background-color: var(--primary-color);
+            color: white;
+            border: none;
+            padding: 8px 15px;
+            border-radius: 20px;
+            font-size: 14px;
+            cursor: pointer;
+            transition: var(--transition);
+        }
+
+        .request-access-btn:hover {
+            background-color: #003d82;
+        }
+
+        /* Modal Styles */
+        .modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0,0,0,0.5);
+            z-index: 1000;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .modal-content {
+            background-color: white;
+            border-radius: var(--border-radius);
+            padding: 30px;
+            width: 90%;
+            max-width: 500px;
+            box-shadow: var(--box-shadow);
+            position: relative;
+        }
+
+        .close-modal {
+            position: absolute;
+            top: 15px;
+            right: 15px;
+            font-size: 24px;
+            cursor: pointer;
+            color: var(--light-gray);
+        }
+
+        .access-options {
+            margin: 20px 0;
+        }
+
+        .access-option {
+            display: flex;
+            align-items: center;
+            padding: 12px;
+            margin-bottom: 10px;
+            border: 1px solid #eee;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: var(--transition);
+        }
+
+        .access-option:hover {
+            background-color: #f9f9f9;
+            border-color: var(--primary-color);
+        }
+
+        .access-option input[type="radio"] {
+            margin-right: 10px;
+        }
+
+        .days-input {
+            display: none;
+            margin-top: 10px;
+        }
+
+        .days-input input {
+            width: 80px;
+            padding: 8px;
+            border: 1px solid #d2d2d7;
+            border-radius: 4px;
+            margin-left: 10px;
+        }
+
+        .submit-request-btn {
+            background-color: var(--primary-color);
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 8px;
+            font-size: 16px;
+            cursor: pointer;
+            width: 100%;
+            margin-top: 20px;
+        }
+
+        .submit-request-btn:disabled {
+            background-color: #ccc;
+            cursor: not-allowed;
+        }
+
+        /* Admin Panel */
+        .admin-panel {
+            display: none;
+            padding: 20px;
+            min-height: 100vh;
+        }
+
+        .admin-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 30px;
+            padding-bottom: 20px;
+            border-bottom: 1px solid #eee;
+        }
+
+        .admin-section {
+            background: white;
+            border-radius: var(--border-radius);
+            padding: 20px;
+            margin-bottom: 30px;
+            box-shadow: var(--box-shadow);
+        }
+
+        .admin-section h2 {
+            margin-bottom: 20px;
+            color: var(--primary-color);
+        }
+
+        .user-table {
+            width: 100%;
+            border-collapse: collapse;
+            background: white;
+            border-radius: var(--border-radius);
+            overflow: hidden;
+            box-shadow: var(--box-shadow);
+        }
+
+        .user-table th,
+        .user-table td {
+            padding: 15px;
+            text-align: left;
+            border-bottom: 1px solid #eee;
+        }
+
+        .user-table th {
+            background-color: #f5f5f7;
+            font-weight: 500;
+        }
+
+        .user-table tr:last-child td {
+            border-bottom: none;
+        }
+
+        .module-checkbox {
+            margin-right: 10px;
+        }
+
+        .back-btn {
+            background: none;
+            border: none;
+            color: var(--primary-color);
+            font-size: 16px;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            gap: 5px;
+        }
+
+        .access-request {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 15px;
+            border: 1px solid #eee;
+            border-radius: 8px;
+            margin-bottom: 10px;
+        }
+
+        .request-info {
+            flex: 1;
+        }
+
+        .request-actions {
+            display: flex;
+            gap: 10px;
+        }
+
+        .approve-btn {
+            background-color: var(--success-color);
+            color: white;
+            border: none;
+            padding: 5px 15px;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+
+        .deny-btn {
+            background-color: var(--error-color);
+            color: white;
+            border: none;
+            padding: 5px 15px;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+
+        /* Session Timeout Warning */
+        .session-warning {
+            position: fixed;
+            bottom: 20px;
+            left: 50%;
+            transform: translateX(-50%);
+            background-color: #ff9500;
+            color: white;
+            padding: 15px 30px;
+            border-radius: 8px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+            z-index: 1000;
+            display: none;
+        }
+
+        .session-warning button {
+            background: rgba(255,255,255,0.2);
+            border: none;
+            color: white;
+            padding: 5px 15px;
+            border-radius: 4px;
+            margin-left: 15px;
+            cursor: pointer;
+        }
+
+        /* Loading Spinner */
+        .spinner {
+            border: 4px solid rgba(0,0,0,0.1);
+            width: 36px;
+            height: 36px;
+            border-radius: 50%;
+            border-left-color: var(--primary-color);
+            animation: spin 1s linear infinite;
+            margin: 20px auto;
+            display: none;
+        }
+
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+
+        /* Notification System */
+        .notification {
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            padding: 15px 25px;
+            border-radius: 8px;
+            color: white;
+            box-shadow: var(--box-shadow);
+            z-index: 1000;
+            transform: translateX(120%);
+            transition: transform 0.3s ease;
+        }
+
+        .notification.show {
+            transform: translateX(0);
+        }
+
+        .notification.success {
+            background-color: var(--success-color);
+        }
+
+        .notification.error {
+            background-color: var(--error-color);
+        }
+
+        .notification.warning {
+            background-color: var(--warning-color);
+        }
+
+        /* Logout Button */
+        .logout-btn {
+            background: none;
+            border: 1px solid var(--light-gray);
+            color: var(--light-gray);
+            padding: 5px 15px;
+            border-radius: 20px;
+            cursor: pointer;
+            transition: var(--transition);
+            margin-left: 15px;
+        }
+
+        .logout-btn:hover {
+            background-color: #f5f5f7;
+            border-color: var(--primary-color);
+            color: var(--primary-color);
+        }
+
+        /* Utility Classes */
+        .hidden {
+            display: none;
+        }
+
+        .text-center {
+            text-align: center;
+        }
+    </style>
+</head>
+<body>
+    <!-- Session Timeout Warning -->
+    <div class="session-warning" id="sessionWarning">
+        Your session will expire in <span id="sessionTimer">5:00</span>.
+        <button id="extendSession">Stay Signed In</button>
+    </div>
+
+    <!-- Notification Container -->
+    <div id="notificationContainer"></div>
+
+    <!-- Loading Spinner -->
+    <div class="spinner" id="loadingSpinner"></div>
+
+    <!-- Login Page -->
+    <div class="login-container" id="loginPage">
+        <div class="company-logo">Apparel Group KSA</div>
+        <div class="login-box">
+            <div class="logo">Modular<span style="color: #86868b;">Dashboard</span></div>
+            <form id="loginForm">
+                <div class="input-group">
+                    <label for="username">Username</label>
+                    <input type="text" id="username" required autocomplete="username">
+                </div>
+                <div class="input-group">
+                    <label for="password">Password</label>
+                    <input type="password" id="password" required autocomplete="current-password">
+                </div>
+                <button type="submit" class="login-btn" id="loginButton">Sign In</button>
+            </form>
+        </div>
+    </div>
+
+    <!-- Dashboard -->
+    <div class="dashboard" id="dashboard">
+        <div class="header">
+            <div class="company-name">Apparel Group KSA</div>
+            <div class="user-info">
+                <div class="user-avatar" id="userInitial">U</div>
+                <span id="currentUser">User</span>
+                <button class="logout-btn" id="logoutButton">Sign Out</button>
+            </div>
+        </div>
+        <div class="tiles-container" id="tilesContainer">
+            <!-- Tiles will be populated by JavaScript -->
+        </div>
+    </div>
+
+    <!-- Access Request Modal -->
+    <div class="modal" id="accessRequestModal">
+        <div class="modal-content">
+            <span class="close-modal" id="closeModal">&times;</span>
+            <h2>Request Access</h2>
+            <p>Request access to <strong id="moduleName"></strong></p>
+            
+            <div class="access-options" id="accessOptions">
+                <label class="access-option">
+                    <input type="radio" name="accessType" value="1-day"> 1-Day Temporary Access
+                </label>
+                <label class="access-option">
+                    <input type="radio" name="accessType" value="2-day"> 2-Days Temporary Access
+                </label>
+                <label class="access-option">
+                    <input type="radio" name="accessType" value="custom"> Custom Temporary Access
+                    <div class="days-input" id="customDaysInput">
+                        <span>for</span>
+                        <input type="number" id="customDays" min="1" max="30" value="1">
+                        <span>days</span>
+                    </div>
+                </label>
+                <label class="access-option">
+                    <input type="radio" name="accessType" value="permanent"> Permanent Access
+                </label>
+            </div>
+            
+            <button class="submit-request-btn" id="submitRequest" disabled>Submit Request</button>
+        </div>
+    </div>
+
+    <!-- Admin Panel -->
+    <div class="admin-panel" id="adminPanel">
+        <div class="admin-header">
+            <h1>Admin Dashboard - Apparel Group KSA</h1>
+            <button class="back-btn" id="backToDashboard">
+                ← Back to Dashboard
+            </button>
+        </div>
+
+        <div class="admin-section">
+            <h2>Access Requests</h2>
+            <div id="accessRequestsList">
+                <!-- Access requests will be populated here -->
+            </div>
+        </div>
+
+        <div class="admin-section">
+            <h2>User Management</h2>
+            <table class="user-table">
+                <thead>
+                    <tr>
+                        <th>Username</th>
+                        <th>Modules</th>
+                        <th>Access</th>
+                        <th>Actions</th>
+                    </tr>
+                </thead>
+                <tbody id="userTableBody">
+                    <!-- User data will be populated by JavaScript -->
+                </tbody>
+            </table>
+        </div>
+    </div>
+
+    <script>
+        // ====================
+        // APPLICATION CONFIG
+        // ====================
+        const SESSION_DURATION = 30 * 60 * 1000; // 30 minutes
+        const SESSION_WARNING_TIME = 5 * 60 * 1000; // 5 minutes before expiration
+        
+        // ====================
+        // DATA STORE
+        // ====================
+        const users = [
+            { 
+                id: 1, 
+                username: "admin", 
+                password: "admin123",
+                name: "Admin User",
+                initial: "A",
+                isAdmin: true,
+                modules: {
+                    'collections': { type: 'permanent', expires: null, grantedAt: new Date().toISOString() },
+                    'store': { type: 'permanent', expires: null, grantedAt: new Date().toISOString() },
+                    'procurement': { type: 'permanent', expires: null, grantedAt: new Date().toISOString() },
+                    'reports': { type: 'permanent', expires: null, grantedAt: new Date().toISOString() },
+                    'analytics': { type: 'permanent', expires: null, grantedAt: new Date().toISOString() }
+                },
+                accessRequests: [],
+                lastLogin: null
+            },
+            { 
+                id: 2, 
+                username: "user1", 
+                password: "user123",
+                name: "Regular User",
+                initial: "U",
+                isAdmin: false,
+                modules: {
+                    'collections': { type: 'permanent', expires: null, grantedAt: new Date().toISOString() }
+                },
+                accessRequests: [],
+                lastLogin: null
+            }
+        ];
+
+        const modules = [
+            { id: 'collections', name: 'Collections', icon: '📂', description: 'Manage your collections' },
+            { id: 'store', name: 'Store', icon: '🛍️', description: 'Access the store' },
+            { id: 'procurement', name: 'Procurement', icon: '📦', description: 'Handle procurement' },
+            { id: 'reports', name: 'Reports', icon: '📊', description: 'View reports' },
+            { id: 'analytics', name: 'Analytics', icon: '📈', description: 'View analytics dashboard' }
+        ];
+
+        let accessRequests = [];
+        let currentUser = null;
+        let currentModuleRequest = null;
+        let sessionTimeout;
+        let sessionWarningTimeout;
+
+        // ====================
+        // DOM ELEMENTS
+        // ====================
+        const elements = {
+            loginPage: document.getElementById('loginPage'),
+            dashboard: document.getElementById('dashboard'),
+            adminPanel: document.getElementById('adminPanel'),
+            loginForm: document.getElementById('loginForm'),
+            loginButton: document.getElementById('loginButton'),
+            logoutButton: document.getElementById('logoutButton'),
+            tilesContainer: document.getElementById('tilesContainer'),
+            userTableBody: document.getElementById('userTableBody'),
+            backToDashboard: document.getElementById('backToDashboard'),
+            currentUser: document.getElementById('currentUser'),
+            userInitial: document.getElementById('userInitial'),
+            accessRequestModal: document.getElementById('accessRequestModal'),
+            closeModal: document.getElementById('closeModal'),
+            moduleNameElement: document.getElementById('moduleName'),
+            accessOptions: document.getElementById('accessOptions'),
+            customDaysInput: document.getElementById('customDaysInput'),
+            submitRequestBtn: document.getElementById('submitRequest'),
+            accessRequestsList: document.getElementById('accessRequestsList'),
+            sessionWarning: document.getElementById('sessionWarning'),
+            sessionTimer: document.getElementById('sessionTimer'),
+            extendSessionBtn: document.getElementById('extendSession'),
+            loadingSpinner: document.getElementById('loadingSpinner'),
+            notificationContainer: document.getElementById('notificationContainer')
+        };
+
+        // ====================
+        // UTILITY FUNCTIONS
+        // ====================
+        function showNotification(message, type = 'success') {
+            const notification = document.createElement('div');
+            notification.className = `notification ${type}`;
+            notification.textContent = message;
+            elements.notificationContainer.appendChild(notification);
+            
+            setTimeout(() => notification.classList.add('show'), 10);
+            
+            setTimeout(() => {
+                notification.classList.remove('show');
+                setTimeout(() => notification.remove(), 300);
+            }, 5000);
+        }
+
+        function showLoading(show) {
+            elements.loadingSpinner.style.display = show ? 'block' : 'none';
+        }
+
+        // ====================
+        // SESSION MANAGEMENT
+        // ====================
+        function startSession(user) {
+            const session = {
+                userId: user.id,
+                token: 'session-' + Math.random().toString(36).substr(2, 16),
+                expires: Date.now() + SESSION_DURATION
+            };
+            
+            localStorage.setItem('apparelGroupSession', JSON.stringify(session));
+            user.lastLogin = new Date().toISOString();
+            resetSessionTimeout();
+            showNotification(`Welcome back, ${user.name}!`, 'success');
+        }
+
+        function resetSessionTimeout() {
+            clearTimeout(sessionTimeout);
+            clearTimeout(sessionWarningTimeout);
+            
+            sessionTimeout = setTimeout(logout, SESSION_DURATION);
+            
+            sessionWarningTimeout = setTimeout(() => {
+                let timeLeft = SESSION_WARNING_TIME;
+                updateSessionTimer(timeLeft);
+                
+                const timerInterval = setInterval(() => {
+                    timeLeft -= 1000;
+                    if (timeLeft <= 0) {
+                        clearInterval(timerInterval);
+                        return;
+                    }
+                    updateSessionTimer(timeLeft);
+                }, 1000);
+                
+                elements.sessionWarning.style.display = 'block';
+            }, SESSION_DURATION - SESSION_WARNING_TIME);
+        }
+
+        function updateSessionTimer(timeLeft) {
+            const minutes = Math.floor(timeLeft / 60000);
+            const seconds = Math.floor((timeLeft % 60000) / 1000);
+            elements.sessionTimer.textContent = `${minutes}:${seconds.toString().padStart(2, '0')}`;
+        }
+
+        function extendSession() {
+            const session = JSON.parse(localStorage.getItem('apparelGroupSession'));
+            if (session) {
+                session.expires = Date.now() + SESSION_DURATION;
+                localStorage.setItem('apparelGroupSession', JSON.stringify(session));
+                resetSessionTimeout();
+                elements.sessionWarning.style.display = 'none';
+                showNotification('Session extended', 'success');
+            }
+        }
+
+        function logout() {
+            localStorage.removeItem('apparelGroupSession');
+            clearTimeout(sessionTimeout);
+            clearTimeout(sessionWarningTimeout);
+            elements.sessionWarning.style.display = 'none';
+            
+            elements.loginPage.style.display = 'flex';
+            elements.dashboard.style.display = 'none';
+            elements.adminPanel.style.display = 'none';
+            elements.accessRequestModal.style.display = 'none';
+            
+            document.getElementById('username').value = '';
+            document.getElementById('password').value = '';
+            
+            if (currentUser) {
+                showNotification(`Goodbye, ${currentUser.name}!`, 'success');
+                currentUser = null;
+            }
+        }
+
+        function checkAuth() {
+            const session = localStorage.getItem('apparelGroupSession');
+            if (session) {
+                const sessionData = JSON.parse(session);
+                
+                if (sessionData.expires > Date.now()) {
+                    const user = users.find(u => u.id === sessionData.userId);
+                    if (user) {
+                        currentUser = user;
+                        elements.currentUser.textContent = user.name;
+                        elements.userInitial.textContent = user.initial;
+                        showDashboard();
+                        resetSessionTimeout();
+                        return true;
+                    }
+                } else {
+                    logout();
+                    showNotification('Your session has expired. Please sign in again.', 'warning');
+                }
+            }
+            return false;
+        }
+
+        // ====================
+        // DASHBOARD FUNCTIONS
+        // ====================
+        function showDashboard() {
+            if (!currentUser) {
+                logout();
+                return;
+            }
+
+            elements.loginPage.style.display = 'none';
+            elements.dashboard.style.display = 'block';
+            elements.adminPanel.style.display = 'none';
+            elements.accessRequestModal.style.display = 'none';
+
+            elements.tilesContainer.innerHTML = '';
+
+            modules.forEach(module => {
+                createTile(module);
+            });
+
+            if (currentUser.isAdmin) {
+                createAdminTile();
+            }
+        }
+
+        function createTile(module) {
+            const hasAccess = currentUser.modules.hasOwnProperty(module.id);
+            const isLocked = !hasAccess && !currentUser.isAdmin;
+            const isTemporary = hasAccess && currentUser.modules[module.id].type === 'temporary';
+            const expiresSoon = isTemporary && 
+                new Date(currentUser.modules[module.id].expires) - Date.now() < 86400000;
+
+            const tile = document.createElement('div');
+            tile.className = `tile ${isLocked ? 'locked' : ''}`;
+            tile.innerHTML = `
+                <div class="tile-icon">${module.icon}</div>
+                <h3>${module.name}</h3>
+                <p>${module.description}</p>
+                ${hasAccess && isTemporary ? 
+                    `<div class="access-badge temporary-badge">
+                        Expires: ${new Date(currentUser.modules[module.id].expires).toLocaleDateString()}
+                    </div>` : ''}
+                ${hasAccess && !isTemporary ? '<div class="access-badge">Permanent</div>' : ''}
+                ${isLocked ? 
+                    '<button class="request-access-btn">Request Access</button>' : 
+                    `<button class="request-access-btn" style="background-color: #34c759;">
+                        Access Module
+                    </button>`}
+            `;
+
+            if (isLocked) {
+                tile.querySelector('button').addEventListener('click', (e) => {
+                    e.stopPropagation();
+                    if (!currentUser) {
+                        showNotification('Please sign in to request access', 'warning');
+                        return;
+                    }
+                    showAccessRequestModal(module);
+                });
+            } else {
+                tile.querySelector('button').addEventListener('click', (e) => {
+                    e.stopPropagation();
+                    showNotification(`Accessing ${module.name} module`, 'success');
+                    // In a real app, navigate to the module here
+                });
+            }
+
+            elements.tilesContainer.appendChild(tile);
+        }
+
+        function createAdminTile() {
+            const tile = document.createElement('div');
+            tile.className = 'tile';
+            tile.innerHTML = `
+                <div class="tile-icon">👤</div>
+                <h3>Admin Panel</h3>
+                <p>Manage users and permissions</p>
+                <button class="request-access-btn" style="background-color: #0071e3; margin-top: 10px;">
+                    Open Admin Panel
+                </button>
+            `;
+            tile.querySelector('button').addEventListener('click', showAdminPanel);
+            elements.tilesContainer.appendChild(tile);
+        }
+
+        // ====================
+        // ACCESS REQUEST FUNCTIONS
+        // ====================
+        function showAccessRequestModal(module) {
+            currentModuleRequest = module;
+            elements.moduleNameElement.textContent = module.name;
+            document.querySelector('input[name="accessType"]:checked')?.removeAttribute('checked');
+            elements.customDaysInput.style.display = 'none';
+            elements.submitRequestBtn.disabled = true;
+            elements.accessRequestModal.style.display = 'flex';
+        }
+
+        function submitAccessRequest() {
+            const accessType = document.querySelector('input[name="accessType"]:checked').value;
+            let days = 0;
+
+            switch(accessType) {
+                case '1-day': days = 1; break;
+                case '2-day': days = 2; break;
+                case 'custom': days = parseInt(document.getElementById('customDays').value) || 1; break;
+                case 'permanent': days = null; break;
+            }
+
+            const request = {
+                id: Date.now(),
+                userId: currentUser.id,
+                moduleId: currentModuleRequest.id,
+                moduleName: currentModuleRequest.name,
+                requestType: accessType === 'permanent' ? 'permanent' : 'temporary',
+                daysRequested: days,
+                status: 'pending',
+                requestedAt: new Date().toISOString(),
+                requestedBy: currentUser.name
+            };
+
+            accessRequests.push(request);
+            currentUser.accessRequests.push(request.id);
+
+            elements.accessRequestModal.style.display = 'none';
+            showNotification('Your access request has been submitted for approval.', 'success');
+        }
+
+        // ====================
+        // ADMIN PANEL FUNCTIONS
+        // ====================
+        function showAdminPanel() {
+            if (!currentUser || !currentUser.isAdmin) {
+                showNotification('Unauthorized access', 'error');
+                return;
+            }
+
+            elements.dashboard.style.display = 'none';
+            elements.adminPanel.style.display = 'block';
+            
+            renderAccessRequests();
+            renderUserManagement();
+        }
+
+        function renderAccessRequests() {
+            elements.accessRequestsList.innerHTML = '';
+
+            accessRequests
+                .filter(req => req.status === 'pending')
+                .forEach(request => {
+                    const requestElement = document.createElement('div');
+                    requestElement.className = 'access-request';
+                    requestElement.innerHTML = `
+                        <div class="request-info">
+                            <strong>${request.requestedBy}</strong> requested 
+                            ${request.requestType === 'permanent' ? 'permanent' : `${request.daysRequested}-day`} 
+                            access to <strong>${request.moduleName}</strong>
+                            <div style="font-size: 0.9em; color: #666; margin-top: 5px;">
+                                Requested: ${new Date(request.requestedAt).toLocaleString()}
+                            </div>
+                        </div>
+                        <div class="request-actions">
+                            <button class="approve-btn" data-request="${request.id}">Approve</button>
+                            <button class="deny-btn" data-request="${request.id}">Deny</button>
+                        </div>
+                    `;
+                    elements.accessRequestsList.appendChild(requestElement);
+                });
+
+            // Add event listeners
+            document.querySelectorAll('.approve-btn').forEach(btn => {
+                btn.addEventListener('click', (e) => {
+                    const requestId = parseInt(e.target.dataset.request);
+                    processAccessRequest(requestId, 'approved');
+                });
+            });
+
+            document.querySelectorAll('.deny-btn').forEach(btn => {
+                btn.addEventListener('click', (e) => {
+                    const requestId = parseInt(e.target.dataset.request);
+                    processAccessRequest(requestId, 'denied');
+                });
+            });
+        }
+
+        function renderUserManagement() {
+            elements.userTableBody.innerHTML = '';
+
+            users.forEach(user => {
+                if (!user.isAdmin) {
+                    let moduleAccess = modules.map(module => {
+                        const hasAccess = user.modules.hasOwnProperty(module.id);
+                        const accessType = hasAccess ? user.modules[module.id].type : 'none';
+                        const expires = hasAccess && user.modules[module.id].expires ? 
+                            new Date(user.modules[module.id].expires).toLocaleDateString() : '';
+                        
+                        return `
+                            <div style="margin-bottom: 5px;">
+                                <input type="checkbox" 
+                                       class="module-checkbox" 
+                                       data-module="${module.id}" 
+                                       data-user="${user.id}"
+                                       ${hasAccess ? 'checked' : ''}>
+                                <label>${module.name}</label>
+                                ${hasAccess && accessType === 'temporary' ? 
+                                    `<span style="font-size: 0.8em; color: #ff9500;">(Expires: ${expires})</span>` : ''}
+                            </div>
+                        `;
+                    }).join('');
+
+                    const row = document.createElement('tr');
+                    row.innerHTML = `
+                        <td>${user.username}</td>
+                        <td>${moduleAccess}</td>
+                        <td>${Object.keys(user.modules).length} / ${modules.length} modules</td>
+                        <td>
+                            <button class="save-btn" data-user="${user.id}">Save Changes</button>
+                        </td>
+                    `;
+                    elements.userTableBody.appendChild(row);
+                }
+            });
+
+            // Add save button listeners
+            document.querySelectorAll('.save-btn').forEach(btn => {
+                btn.addEventListener('click', (e) => {
+                    const userId = parseInt(e.target.dataset.user);
+                    saveUserPermissions(userId);
+                });
+            });
+        }
+
+        function processAccessRequest(requestId, action) {
+            const request = accessRequests.find(req => req.id === requestId);
+            if (!request) return;
+
+            request.status = action;
+            request[`${action}At`] = new Date().toISOString();
+            request[`${action}By`] = currentUser.name;
+
+            if (action === 'approved') {
+                const user = users.find(u => u.id === request.userId);
+                if (user) {
+                    let expires = null;
+                    if (request.requestType === 'temporary') {
+                        expires = new Date();
+                        expires.setDate(expires.getDate() + request.daysRequested);
+                    }
+
+                    user.modules[request.moduleId] = {
+                        type: request.requestType,
+                        expires: expires,
+                        grantedAt: new Date().toISOString(),
+                        grantedBy: currentUser.name
+                    };
+                }
+            }
+
+            showNotification(`Request ${action}`, 'success');
+            renderAccessRequests();
+        }
+
+        function saveUserPermissions(userId) {
+            const user = users.find(u => u.id === userId);
+            if (!user) return;
+
+            const newModules = {};
+            document.querySelectorAll(`.module-checkbox[data-user="${userId}"]:checked`).forEach(checkbox => {
+                const moduleId = checkbox.dataset.module;
+                // Preserve existing access if already set
+                if (user.modules[moduleId]) {
+                    newModules[moduleId] = user.modules[moduleId];
+                } else {
+                    newModules[moduleId] = { 
+                        type: 'permanent', 
+                        expires: null,
+                        grantedAt: new Date().toISOString(),
+                        grantedBy: currentUser.name
+                    };
+                }
+            });
+
+            user.modules = newModules;
+            showNotification('User permissions updated', 'success');
+        }
+
+        // ====================
+        // EVENT LISTENERS
+        // ====================
+        function setupEventListeners() {
+            // Login form
+            elements.loginForm.addEventListener('submit', async (e) => {
+                e.preventDefault();
+                
+                const username = document.getElementById('username').value;
+                const password = document.getElementById('password').value;
+
+                showLoading(true);
+                elements.loginButton.disabled = true;
+
+                // Simulate API call
+                await new Promise(resolve => setTimeout(resolve, 1000));
+
+                const user = users.find(u => u.username === username && u.password === password);
+
+                if (user) {
+                    currentUser = user;
+                    elements.currentUser.textContent = user.name;
+                    elements.userInitial.textContent = user.initial;
+                    startSession(user);
+                    showDashboard();
+                } else {
+                    showNotification('Invalid username or password', 'error');
+                }
+
+                showLoading(false);
+                elements.loginButton.disabled = false;
+            });
+
+            // Logout button
+            elements.logoutButton.addEventListener('click', logout);
+
+            // Extend session button
+            elements.extendSessionBtn.addEventListener('click', extendSession);
+
+            // Close modal button
+            elements.closeModal.addEventListener('click', () => {
+                elements.accessRequestModal.style.display = 'none';
+            });
+
+            // Access type selection
+            document.querySelectorAll('input[name="accessType"]').forEach(radio => {
+                radio.addEventListener('change', (e) => {
+                    elements.customDaysInput.style.display = 
+                        e.target.value === 'custom' ? 'block' : 'none';
+                    elements.submitRequestBtn.disabled = false;
+                });
+            });
+
+            // Submit request button
+            elements.submitRequestBtn.addEventListener('click', submitAccessRequest);
+
+            // Back to dashboard
+            elements.backToDashboard.addEventListener('click', showDashboard);
+
+            // Activity detection for session extension
+            ['mousemove', 'keypress', 'click', 'scroll'].forEach(event => {
+                document.addEventListener(event, () => {
+                    const session = localStorage.getItem('apparelGroupSession');
+                    if (session) {
+                        const sessionData = JSON.parse(session);
+                        if (sessionData.expires - Date.now() < SESSION_DURATION - 60000) {
+                            extendSession();
+                        }
+                    }
+                });
+            });
+        }
+
+        // ====================
+        // INITIALIZATION
+        // ====================
+        function init() {
+            setupEventListeners();
+            
+            // Check for existing session
+            if (checkAuth()) {
+                return;
+            }
+
+            // Set initial state
+            elements.loginPage.style.display = 'flex';
+            elements.dashboard.style.display = 'none';
+            elements.adminPanel.style.display = 'none';
+            elements.accessRequestModal.style.display = 'none';
+        }
+
+        // Start the application
+        init();
+    </script>
+</body>
+</html>

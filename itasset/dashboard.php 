@@ -1,0 +1,340 @@
+<?php
+require_once __DIR__ . '/includes/auth_check.php';
+require_once __DIR__ . '/includes/functions.php';
+?>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard - Apparel ERP</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link rel="stylesheet" href="assets/css/style.css">
+    <script src="https://cdn.jsdelivr.net/npm/xlsx@0.18.5/dist/xlsx.full.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+<body>
+
+<div class="app-wrapper">
+    <!-- Top Bar -->
+    <div class="ns-top-bar">
+        <div class="ns-logo"><i class="fas fa-cubes"></i> APPAREL SUITE ERP</div>
+        <div class="ns-user-menu">
+            <span><i class="fas fa-user-circle"></i> <?php echo $fullname; ?></span>
+            <button onclick="handleLogout()" class="btn-logout"><i class="fas fa-sign-out-alt"></i></button>
+        </div>
+    </div>
+
+    <!-- Navigation -->
+    <nav class="ns-main-nav">
+        <div class="nav-item active" data-tab="dashboard"><i class="fas fa-home"></i> Dashboard</div>
+        <div class="nav-item" data-tab="inventory"><i class="fas fa-boxes"></i> Inventory</div>
+        <div class="nav-item" data-tab="directory"><i class="fas fa-users"></i> Directory</div>
+        <div class="nav-item" data-tab="store-requests"><i class="fas fa-hand-paper"></i> Store Requests</div>
+        <div class="nav-item" data-tab="it-assets"><i class="fas fa-desktop"></i> IT Assets</div>
+    </nav>
+
+    <div class="ns-workspace">
+        <!-- DASHBOARD TAB -->
+        <div id="dashboardTab" class="card-panel active-panel">
+            <div class="dash-grid-top">
+                <div class="portlet">
+                    <div class="card-header"><h2><i class="fas fa-bell"></i> Reminders</h2></div>
+                    <div style="padding:25px;">
+                        <div style="display:flex; align-items:center; gap:15px; padding-bottom:15px; border-bottom:1px solid var(--erp-border);">
+                            <div style="font-size:32px; color:var(--erp-text-blue); font-weight:600;" id="metric-pending">0</div>
+                            <div style="font-size:13px; font-weight:500;">Pending Requests</div>
+                        </div>
+                        <div style="display:flex; align-items:center; gap:15px; padding-top:15px;">
+                            <div style="font-size:32px; color:var(--danger); font-weight:600;" id="inv-low-stock-dash">0</div>
+                            <div style="font-size:13px; font-weight:500;">Low Stock Alerts</div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="portlet">
+                    <div class="card-header"><h2><i class="fas fa-chart-line"></i> Overview</h2></div>
+                    <div class="suite-access-grid">
+                        <div class="sa-block sa-yellow">
+                            <i class="fas fa-store" style="font-size:24px; color:#f59e0b;"></i>
+                            <span class="val" id="metric-stores">0</span>
+                            <span style="font-size:11px;">Stores</span>
+                        </div>
+                        <div class="sa-block sa-pink">
+                            <i class="fas fa-users" style="font-size:24px; color:#ef4444;"></i>
+                            <span class="val" id="metric-persons">0</span>
+                            <span style="font-size:11px;">Personnel</span>
+                        </div>
+                        <div class="sa-block sa-blue">
+                            <i class="fas fa-desktop" style="font-size:24px; color:#3b82f6;"></i>
+                            <span class="val" id="metric-desktops">0</span>
+                            <span style="font-size:11px;">Assets</span>
+                        </div>
+                        <div class="sa-block sa-grey">
+                            <i class="fas fa-truck-loading" style="font-size:24px; color:#8b5cf6;"></i>
+                            <span class="val" id="disp-total-dash">0</span>
+                            <span style="font-size:11px;">Dispatches</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="portlet">
+                <div class="card-header"><h2><i class="fas fa-server"></i> Fleet Breakdown</h2></div>
+                <div class="kpi-grid">
+                    <div class="kpi-card"><div class="title">Printers</div><div class="value" id="metric-printers">0</div></div>
+                    <div class="kpi-card"><div class="title">Network</div><div class="value" id="metric-network">0</div></div>
+                    <div class="kpi-card"><div class="title">Scanners</div><div class="value" id="metric-scanners">0</div></div>
+                    <div class="kpi-card"><div class="title">CCTV</div><div class="value" id="metric-cctv">0</div></div>
+                </div>
+            </div>
+        </div>
+
+        <!-- INVENTORY TAB -->
+        <div id="inventoryTab" class="card-panel card-header-wrapper">
+            <div class="card-header">
+                <h2><i class="fas fa-boxes"></i> Master Inventory</h2>
+                <button onclick="openExportModal('tbl-inv', -1, 'Master_Inventory')" class="btn-export">
+                    <i class="fas fa-file-export"></i> Export
+                </button>
+            </div>
+            <div style="padding:24px; background:#f8fafc; display:flex; gap:24px;">
+                <div style="flex:1; background:#fff; padding:20px; text-align:center; border:1px solid var(--erp-border); border-radius:6px;">
+                    <div style="font-size:11px; color:var(--erp-text-muted);">Total SKUs</div>
+                    <div style="font-size:32px; font-weight:700;" id="inv-total-skus">0</div>
+                </div>
+                <div style="flex:1; background:#fff; padding:20px; text-align:center; border:1px solid var(--erp-border); border-radius:6px;">
+                    <div style="font-size:11px; color:var(--erp-text-muted);">Total Units</div>
+                    <div style="font-size:32px; font-weight:700;" id="inv-total-units">0</div>
+                </div>
+            </div>
+            <div class="table-scroll-wrapper">
+                <table class="po-table" id="tbl-inv">
+                    <thead><tr>
+                        <th>SKU</th><th>Category</th><th>Hardware Type</th>
+                        <th>Item Details</th><th>Qty</th><th>Condition</th>
+                    </tr></thead>
+                    <tbody id="inventoryTableBody"></tbody>
+                </table>
+            </div>
+            <div id="page-tbl-inv" class="pagination-container"></div>
+        </div>
+
+        <!-- DIRECTORY TAB -->
+        <div id="directoryTab" class="card-panel card-header-wrapper">
+            <div class="card-header">
+                <h2><i class="fas fa-users"></i> Directory</h2>
+                <div style="display:flex; gap:10px;">
+                    <button onclick="openStoreModal()" class="btn-create"><i class="fas fa-store"></i> Add Store</button>
+                    <button onclick="openVendorModal()" class="btn-create"><i class="fas fa-building"></i> Add Vendor</button>
+                    <button onclick="openUserModal()" class="btn-create"><i class="fas fa-user-plus"></i> Add User</button>
+                </div>
+            </div>
+            
+            <!-- Stores -->
+            <div style="padding:15px 24px; background:#f8fafc; border-bottom:1px solid var(--erp-border);">
+                <h3 style="font-size:12px; font-weight:700; text-transform:uppercase; color:var(--erp-text-muted);">Retail Stores</h3>
+            </div>
+            <div class="table-scroll-wrapper">
+                <table class="po-table" id="tbl-stores">
+                    <thead><tr>
+                        <th>ID</th><th>Store Name</th><th>Brand</th><th>Mall</th><th>City</th>
+                    </tr></thead>
+                    <tbody id="storeTableBody"></tbody>
+                </table>
+            </div>
+            <div id="page-tbl-stores" class="pagination-container"></div>
+
+            <!-- Vendors -->
+            <div style="padding:15px 24px; background:#f8fafc; border-top:1px solid var(--erp-border); border-bottom:1px solid var(--erp-border);">
+                <h3 style="font-size:12px; font-weight:700; text-transform:uppercase; color:var(--erp-text-muted);">Approved Vendors</h3>
+            </div>
+            <div class="table-scroll-wrapper">
+                <table class="po-table" id="tbl-vendors">
+                    <thead><tr>
+                        <th>Company</th><th>Tax ID</th><th>Terms</th><th>Lead Time</th><th>Actions</th>
+                    </tr></thead>
+                    <tbody id="vendorTableBody"></tbody>
+                </table>
+            </div>
+            <div id="page-tbl-vendors" class="pagination-container"></div>
+
+            <!-- Personnel -->
+            <div style="padding:15px 24px; background:#f8fafc; border-top:1px solid var(--erp-border); border-bottom:1px solid var(--erp-border);">
+                <h3 style="font-size:12px; font-weight:700; text-transform:uppercase; color:var(--erp-text-muted);">Personnel</h3>
+            </div>
+            <div class="table-scroll-wrapper">
+                <table class="po-table" id="tbl-users">
+                    <thead><tr>
+                        <th>Emp ID</th><th>Employee Name</th><th>Department</th><th>Actions</th>
+                    </tr></thead>
+                    <tbody id="userTableBody"></tbody>
+                </table>
+            </div>
+            <div id="page-tbl-users" class="pagination-container"></div>
+        </div>
+
+        <!-- STORE REQUESTS TAB -->
+        <div id="store-requestsTab" class="card-panel card-header-wrapper">
+            <div class="card-header">
+                <h2><i class="fas fa-hand-paper"></i> Pending Store Requests</h2>
+                <button onclick="openExportModal('tbl-req-pending', 0, 'Pending_Requests')" class="btn-export">
+                    <i class="fas fa-file-export"></i> Export
+                </button>
+            </div>
+            <div class="table-scroll-wrapper">
+                <table class="po-table" id="tbl-req-pending">
+                    <thead><tr>
+                        <th>Date</th><th>Store</th><th>Requested Items</th><th>Actions</th>
+                    </tr></thead>
+                    <tbody id="adminStoreRequestsTableBody"></tbody>
+                </table>
+            </div>
+            <div id="page-tbl-req-pending" class="pagination-container"></div>
+
+            <div class="card-header" style="border-top:1px solid var(--erp-border);">
+                <h2><i class="fas fa-check"></i> Processed History</h2>
+            </div>
+            <div class="table-scroll-wrapper">
+                <table class="po-table" id="tbl-req-history">
+                    <thead><tr>
+                        <th>Date</th><th>Store</th><th>Details</th><th>Status</th>
+                    </tr></thead>
+                    <tbody id="adminProcessedRequestsTableBody"></tbody>
+                </table>
+            </div>
+            <div id="page-tbl-req-history" class="pagination-container"></div>
+        </div>
+
+        <!-- IT ASSETS TAB -->
+        <div id="it-assetsTab" class="card-panel card-header-wrapper">
+            <div class="card-header">
+                <h2><i class="fas fa-desktop"></i> IT Assets Fleet</h2>
+                <div style="display:flex; gap:10px;">
+                    <button onclick="openExportModal('tbl-it-assets', -1, 'IT_Assets')" class="btn-export">
+                        <i class="fas fa-file-export"></i> Export
+                    </button>
+                    <input type="file" id="itAssetsUpload" accept=".csv,.xlsx" style="display:none;" onchange="handleITAssetsImport(event)">
+                    <button onclick="document.getElementById('itAssetsUpload').click()" class="btn-create">
+                        <i class="fas fa-file-import"></i> Import
+                    </button>
+                </div>
+            </div>
+            <div class="table-scroll-wrapper">
+                <table class="po-table" id="tbl-it-assets">
+                    <thead><tr>
+                        <th>Hostname</th><th>Brand/Store</th><th>Location</th>
+                        <th>Hardware Type</th><th>Serial Number</th><th>Specs</th>
+                    </tr></thead>
+                    <tbody id="itAssetsTableBody"></tbody>
+                </table>
+            </div>
+            <div id="page-tbl-it-assets" class="pagination-container"></div>
+        </div>
+    </div>
+</div>
+
+<!-- Export Modal -->
+<div id="exportModal" class="modal-overlay">
+    <div class="modal-container" style="max-width:500px;">
+        <h2><i class="fas fa-file-export"></i> EXPORT DATA</h2>
+        <form id="exportForm" onsubmit="executeExport(event)">
+            <input type="hidden" id="exportTableId">
+            <input type="hidden" id="exportFileName">
+            <div class="form-grid">
+                <div class="form-group"><label>Start Date</label><input type="date" id="exportStartDate"></div>
+                <div class="form-group"><label>End Date</label><input type="date" id="exportEndDate"></div>
+            </div>
+            <div class="form-actions">
+                <button type="button" class="btn-cancel" onclick="closeModal('exportModal')">CANCEL</button>
+                <button type="submit" class="btn-export">DOWNLOAD</button>
+            </div>
+        </form>
+    </div>
+</div>
+
+<!-- Store Modal -->
+<div id="storeModal" class="modal-overlay">
+    <div class="modal-container" style="max-width:600px;">
+        <h2><i class="fas fa-store"></i> REGISTER STORE</h2>
+        <form id="storeForm" onsubmit="saveStore(event)">
+            <div class="form-group" style="margin-bottom:15px;">
+                <label>Store Name *</label>
+                <input type="text" id="sName" required>
+            </div>
+            <div class="form-grid">
+                <div class="form-group"><label>Brand</label><input type="text" id="sBrand" required></div>
+                <div class="form-group"><label>Brand Code</label><input type="text" id="sBrandCode"></div>
+                <div class="form-group"><label>Mall</label><input type="text" id="sMall"></div>
+                <div class="form-group"><label>Entity</label><input type="text" id="sEntity"></div>
+                <div class="form-group"><label>City</label><input type="text" id="sCity"></div>
+                <div class="form-group"><label>Route</label><input type="text" id="sRoute"></div>
+            </div>
+            <div class="form-actions">
+                <button type="button" class="btn-cancel" onclick="closeModal('storeModal')">CANCEL</button>
+                <button type="submit" class="btn-create">SAVE</button>
+            </div>
+        </form>
+    </div>
+</div>
+
+<!-- Vendor Modal -->
+<div id="vendorModal" class="modal-overlay">
+    <div class="modal-container" style="max-width:500px;">
+        <h2><i class="fas fa-building"></i> ADD VENDOR</h2>
+        <form id="vendorForm" onsubmit="saveVendor(event)">
+            <div class="form-group" style="margin-bottom:15px;">
+                <label>Company Name *</label>
+                <input type="text" id="vCompany" required>
+            </div>
+            <div class="form-group" style="margin-bottom:15px;">
+                <label>Tax ID</label>
+                <input type="text" id="vTax">
+            </div>
+            <div class="form-group" style="margin-bottom:15px;">
+                <label>Payment Terms</label>
+                <input type="text" id="vTerms" placeholder="Net 30">
+            </div>
+            <div class="form-group" style="margin-bottom:25px;">
+                <label>Lead Time</label>
+                <input type="text" id="vLead" placeholder="5 Days">
+            </div>
+            <div class="form-actions">
+                <button type="button" class="btn-cancel" onclick="closeModal('vendorModal')">CANCEL</button>
+                <button type="submit" class="btn-create">SAVE</button>
+            </div>
+        </form>
+    </div>
+</div>
+
+<!-- User Modal -->
+<div id="userModal" class="modal-overlay">
+    <div class="modal-container" style="max-width:500px;">
+        <h2><i class="fas fa-user-plus"></i> ADD PERSONNEL</h2>
+        <form id="userForm" onsubmit="saveUser(event)">
+            <div class="form-group" style="margin-bottom:15px;">
+                <label>Employee ID *</label>
+                <input type="text" id="uId" required>
+            </div>
+            <div class="form-group" style="margin-bottom:15px;">
+                <label>Employee Name *</label>
+                <input type="text" id="uName" required>
+            </div>
+            <div class="form-group" style="margin-bottom:25px;">
+                <label>Department</label>
+                <input type="text" id="uDept">
+            </div>
+            <div class="form-actions">
+                <button type="button" class="btn-cancel" onclick="closeModal('userModal')">CANCEL</button>
+                <button type="submit" class="btn-create">SAVE</button>
+            </div>
+        </form>
+    </div>
+</div>
+
+<div id="toastMessage" class="toast-msg"></div>
+
+<script src="assets/js/dashboard.js"></script>
+</body>
+</html>

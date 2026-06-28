@@ -1,0 +1,56 @@
+[09-Jun-2026 18:26:03 UTC] PHP Deprecated:  htmlspecialchars(): Passing null to parameter #1 ($string) of type string is deprecated in /home/anomakio/apparelgroup.anomak.co.in/store/dashboard.php on line 124
+[09-Jun-2026 18:50:00 UTC] PHP Warning:  require_once(mydb.php): Failed to open stream: No such file or directory in /home/anomakio/apparelgroup.anomak.co.in/store/dashboard.php on line 3
+[09-Jun-2026 18:50:00 UTC] PHP Fatal error:  Uncaught Error: Failed opening required 'mydb.php' (include_path='.:/opt/cpanel/ea-php82/root/usr/share/pear') in /home/anomakio/apparelgroup.anomak.co.in/store/dashboard.php:3
+Stack trace:
+#0 {main}
+  thrown in /home/anomakio/apparelgroup.anomak.co.in/store/dashboard.php on line 3
+[09-Jun-2026 18:50:01 UTC] PHP Warning:  require_once(mydb.php): Failed to open stream: No such file or directory in /home/anomakio/apparelgroup.anomak.co.in/store/dashboard.php on line 3
+[09-Jun-2026 18:50:01 UTC] PHP Fatal error:  Uncaught Error: Failed opening required 'mydb.php' (include_path='.:/opt/cpanel/ea-php82/root/usr/share/pear') in /home/anomakio/apparelgroup.anomak.co.in/store/dashboard.php:3
+Stack trace:
+#0 {main}
+  thrown in /home/anomakio/apparelgroup.anomak.co.in/store/dashboard.php on line 3
+[09-Jun-2026 18:50:10 UTC] PHP Warning:  require_once(mydb.php): Failed to open stream: No such file or directory in /home/anomakio/apparelgroup.anomak.co.in/store/dashboard.php on line 3
+[09-Jun-2026 18:50:10 UTC] PHP Fatal error:  Uncaught Error: Failed opening required 'mydb.php' (include_path='.:/opt/cpanel/ea-php82/root/usr/share/pear') in /home/anomakio/apparelgroup.anomak.co.in/store/dashboard.php:3
+Stack trace:
+#0 {main}
+  thrown in /home/anomakio/apparelgroup.anomak.co.in/store/dashboard.php on line 3
+[09-Jun-2026 18:50:12 UTC] PHP Warning:  require_once(mydb.php): Failed to open stream: No such file or directory in /home/anomakio/apparelgroup.anomak.co.in/store/dashboard.php on line 3
+[09-Jun-2026 18:50:12 UTC] PHP Fatal error:  Uncaught Error: Failed opening required 'mydb.php' (include_path='.:/opt/cpanel/ea-php82/root/usr/share/pear') in /home/anomakio/apparelgroup.anomak.co.in/store/dashboard.php:3
+Stack trace:
+#0 {main}
+  thrown in /home/anomakio/apparelgroup.anomak.co.in/store/dashboard.php on line 3
+[09-Jun-2026 18:50:13 UTC] PHP Warning:  require_once(mydb.php): Failed to open stream: No such file or directory in /home/anomakio/apparelgroup.anomak.co.in/store/dashboard.php on line 3
+[09-Jun-2026 18:50:13 UTC] PHP Fatal error:  Uncaught Error: Failed opening required 'mydb.php' (include_path='.:/opt/cpanel/ea-php82/root/usr/share/pear') in /home/anomakio/apparelgroup.anomak.co.in/store/dashboard.php:3
+Stack trace:
+#0 {main}
+  thrown in /home/anomakio/apparelgroup.anomak.co.in/store/dashboard.php on line 3
+[09-Jun-2026 18:50:15 UTC] PHP Warning:  require_once(mydb.php): Failed to open stream: No such file or directory in /home/anomakio/apparelgroup.anomak.co.in/store/dashboard.php on line 3
+[09-Jun-2026 18:50:15 UTC] PHP Fatal error:  Uncaught Error: Failed opening required 'mydb.php' (include_path='.:/opt/cpanel/ea-php82/root/usr/share/pear') in /home/anomakio/apparelgroup.anomak.co.in/store/dashboard.php:3
+Stack trace:
+#0 {main}
+  thrown in /home/anomakio/apparelgroup.anomak.co.in/store/dashboard.php on line 3
+[09-Jun-2026 18:50:22 UTC] PHP Warning:  require_once(mydb.php): Failed to open stream: No such file or directory in /home/anomakio/apparelgroup.anomak.co.in/store/dashboard.php on line 3
+[09-Jun-2026 18:50:22 UTC] PHP Fatal error:  Uncaught Error: Failed opening required 'mydb.php' (include_path='.:/opt/cpanel/ea-php82/root/usr/share/pear') in /home/anomakio/apparelgroup.anomak.co.in/store/dashboard.php:3
+Stack trace:
+#0 {main}
+  thrown in /home/anomakio/apparelgroup.anomak.co.in/store/dashboard.php on line 3
+[09-Jun-2026 18:50:23 UTC] PHP Warning:  require_once(mydb.php): Failed to open stream: No such file or directory in /home/anomakio/apparelgroup.anomak.co.in/store/dashboard.php on line 3
+[09-Jun-2026 18:50:23 UTC] PHP Fatal error:  Uncaught Error: Failed opening required 'mydb.php' (include_path='.:/opt/cpanel/ea-php82/root/usr/share/pear') in /home/anomakio/apparelgroup.anomak.co.in/store/dashboard.php:3
+Stack trace:
+#0 {main}
+  thrown in /home/anomakio/apparelgroup.anomak.co.in/store/dashboard.php on line 3
+[09-Jun-2026 18:50:24 UTC] PHP Warning:  require_once(mydb.php): Failed to open stream: No such file or directory in /home/anomakio/apparelgroup.anomak.co.in/store/dashboard.php on line 3
+[09-Jun-2026 18:50:24 UTC] PHP Fatal error:  Uncaught Error: Failed opening required 'mydb.php' (include_path='.:/opt/cpanel/ea-php82/root/usr/share/pear') in /home/anomakio/apparelgroup.anomak.co.in/store/dashboard.php:3
+Stack trace:
+#0 {main}
+  thrown in /home/anomakio/apparelgroup.anomak.co.in/store/dashboard.php on line 3
+[09-Jun-2026 18:50:30 UTC] PHP Warning:  require_once(mydb.php): Failed to open stream: No such file or directory in /home/anomakio/apparelgroup.anomak.co.in/store/dashboard.php on line 3
+[09-Jun-2026 18:50:30 UTC] PHP Fatal error:  Uncaught Error: Failed opening required 'mydb.php' (include_path='.:/opt/cpanel/ea-php82/root/usr/share/pear') in /home/anomakio/apparelgroup.anomak.co.in/store/dashboard.php:3
+Stack trace:
+#0 {main}
+  thrown in /home/anomakio/apparelgroup.anomak.co.in/store/dashboard.php on line 3
+[09-Jun-2026 18:50:56 UTC] PHP Warning:  require_once(mydb.php): Failed to open stream: No such file or directory in /home/anomakio/apparelgroup.anomak.co.in/store/dashboard.php on line 3
+[09-Jun-2026 18:50:56 UTC] PHP Fatal error:  Uncaught Error: Failed opening required 'mydb.php' (include_path='.:/opt/cpanel/ea-php82/root/usr/share/pear') in /home/anomakio/apparelgroup.anomak.co.in/store/dashboard.php:3
+Stack trace:
+#0 {main}
+  thrown in /home/anomakio/apparelgroup.anomak.co.in/store/dashboard.php on line 3

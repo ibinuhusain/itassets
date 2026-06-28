@@ -1,0 +1,206 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Retail Master Dashboard</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        body { background-color: #f4f6f9; display: flex; height: 100vh; overflow: hidden; font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; }
+        .sidebar { width: 260px; background-color: #343a40; color: #fff; display: flex; flex-direction: column; transition: 0.3s; }
+        .sidebar .nav-link { color: #c2c7d0; padding: 12px 20px; border-radius: 0; border-left: 4px solid transparent; cursor: pointer; }
+        .sidebar .nav-link:hover, .sidebar .nav-link.active { background-color: #494e53; color: #fff; border-left-color: #0d6efd; }
+        .main-content { flex-grow: 1; padding: 30px; overflow-y: auto; }
+        .card-header { background-color: #fff; border-bottom: 2px solid #f4f6f9; font-weight: bold; }
+        .hidden { display: none !important; }
+    </style>
+</head>
+<body>
+
+    <!-- SIDEBAR -->
+    <div class="sidebar" id="sidebar">
+        <div class="p-3 mb-3 border-bottom border-secondary text-center">
+            <h5 class="mb-0">Retail Admin</h5>
+            <small id="currentUserRole" class="text-warning">Role: Admin</small>
+        </div>
+        <ul class="nav flex-column mb-auto" id="navMenu">
+            <!-- Injected via JS based on Role -->
+        </ul>
+        <div class="p-3 border-top border-secondary">
+            <button class="btn btn-outline-light w-100 btn-sm" onclick="switchRoleMock()">Switch Role (Dev)</button>
+        </div>
+    </div>
+
+    <!-- MAIN CONTENT -->
+    <div class="main-content">
+        <h3 id="pageTitle" class="mb-4">Dashboard</h3>
+        <div id="appContainer"></div>
+    </div>
+
+    <!-- MOCK DATA & LOGIC -->
+    <script>
+        // --- 1. MOCK STATE ---
+        let currentRole = 'admin'; // Can be 'admin' or 'merchant'
+        
+        // --- 2. MENU DEFINITIONS ---
+        const menus = {
+            admin: [
+                { id: 'admin-users', title: 'Manage Users & Roles', icon: '👤' },
+                { id: 'admin-mapping', title: 'Brand & Shop Mapping', icon: '🔗' },
+                { id: 'admin-logs', title: 'Merchant Upload Logs', icon: '📁' },
+                { id: 'admin-settings', title: 'System Settings', icon: '⚙️' }
+            ],
+            merchant: [
+                { id: 'merch-upload', title: 'Master Sheet Upload', icon: '📤' },
+                { id: 'merch-assign', title: 'Assign App Users', icon: '📱' }
+            ]
+        };
+
+        // --- 3. CORE ROUTER ---
+        function renderMenu() {
+            const nav = document.getElementById('navMenu');
+            nav.innerHTML = '';
+            menus[currentRole].forEach((item, index) => {
+                const li = document.createElement('li');
+                li.className = 'nav-item';
+                li.innerHTML = `<a class="nav-link ${index === 0 ? 'active' : ''}" onclick="navigate('${item.id}', this)">${item.icon} ${item.title}</a>`;
+                nav.appendChild(li);
+            });
+            document.getElementById('currentUserRole').innerText = `Role: ${currentRole.toUpperCase()}`;
+            navigate(menus[currentRole][0].id, nav.querySelector('.nav-link'));
+        }
+
+        function navigate(viewId, element) {
+            document.querySelectorAll('.nav-link').forEach(el => el.classList.remove('active'));
+            if(element) element.classList.add('active');
+            
+            const container = document.getElementById('appContainer');
+            const title = document.getElementById('pageTitle');
+
+            if (viewId === 'admin-users') {
+                title.innerText = "User Management";
+                container.innerHTML = `
+                    <div class="card shadow-sm mb-4">
+                        <div class="card-header">Create New User</div>
+                        <div class="card-body">
+                            <form class="row g-3">
+                                <div class="col-md-3"><input type="text" class="form-control" placeholder="Username" required></div>
+                                <div class="col-md-3"><input type="password" class="form-control" placeholder="Password" required></div>
+                                <div class="col-md-3">
+                                    <select class="form-select">
+                                        <option value="admin">Admin</option>
+                                        <option value="merchant">Merchant</option>
+                                        <option value="app_user">App User (Field/Brand)</option>
+                                    </select>
+                                </div>
+                                <div class="col-md-3"><button type="button" class="btn btn-primary w-100">Create User</button></div>
+                            </form>
+                        </div>
+                    </div>
+                    <div class="card shadow-sm">
+                        <div class="card-header">Existing Users</div>
+                        <table class="table table-hover mb-0">
+                            <thead class="table-light"><tr><th>Username</th><th>Role</th><th>Status</th><th>Actions</th></tr></thead>
+                            <tbody>
+                                <tr><td>nestle_rep</td><td>App User (Brand)</td><td><span class="badge bg-success">Active</span></td>
+                                <td>
+                                    <button class="btn btn-sm btn-outline-warning">Change Role</button>
+                                    <button class="btn btn-sm btn-outline-danger">Reset Password</button>
+                                </td></tr>
+                            </tbody>
+                        </table>
+                    </div>`;
+            } 
+            else if (viewId === 'admin-logs') {
+                title.innerText = "Merchant Upload Logs & Brands";
+                container.innerHTML = `
+                    <div class="card shadow-sm mb-4">
+                        <div class="card-header">Global Brands in System</div>
+                        <div class="card-body">
+                            <span class="badge bg-primary fs-6 me-2">Nestle</span>
+                            <span class="badge bg-primary fs-6 me-2">Pampers</span>
+                            <span class="badge bg-primary fs-6 me-2">Coca-Cola</span>
+                        </div>
+                    </div>
+                    <div class="card shadow-sm">
+                        <div class="card-header">Upload History</div>
+                        <table class="table table-hover mb-0">
+                            <thead class="table-light"><tr><th>Date</th><th>Merchant</th><th>Items Processed</th><th>File</th></tr></thead>
+                            <tbody>
+                                <tr><td>2024-05-15 10:30 AM</td><td>Carrefour_Main</td><td>4,521</td><td><button class="btn btn-sm btn-success">⬇️ Download CSV</button></td></tr>
+                                <tr><td>2024-05-14 09:15 AM</td><td>Lulu_Hyper</td><td>3,100</td><td><button class="btn btn-sm btn-success">⬇️ Download CSV</button></td></tr>
+                            </tbody>
+                        </table>
+                    </div>`;
+            }
+            else if (viewId === 'admin-settings') {
+                title.innerText = "System Global Settings";
+                container.innerHTML = `
+                    <div class="card shadow-sm" style="max-width: 500px;">
+                        <div class="card-header">Master Data Retention Policy</div>
+                        <div class="card-body">
+                            <label class="form-label">Days to keep Master Sheet before Auto-Deletion:</label>
+                            <input type="number" class="form-control mb-3" value="30">
+                            <button class="btn btn-success">Save Settings</button>
+                            <p class="text-muted mt-2"><small>Note: This affects all merchants. After this period, their old data is wiped to ensure app users only see fresh pricing.</small></p>
+                        </div>
+                    </div>`;
+            }
+            else if (viewId === 'merch-upload') {
+                title.innerText = "Master Sheet Management";
+                // Re-used your previous upload UI here
+                container.innerHTML = `
+                    <div class="card shadow-sm mb-4">
+                        <div class="card-body">
+                            <h5>Upload New Master Sheet</h5>
+                            <div class="d-flex gap-2 mb-3">
+                                <input type="file" class="form-control" accept=".csv">
+                                <button class="btn btn-primary">Upload</button>
+                            </div>
+                            <hr>
+                            <h5>Current Active Data</h5>
+                            <table class="table table-bordered table-sm mt-3">
+                                <thead class="table-dark"><tr><th>Barcode</th><th>Description</th><th>Location</th><th>Price</th></tr></thead>
+                                <tbody><tr><td>89010309</td><td>Nestle Cerelac 400g</td><td>LOC_12</td><td>SAR 24.50</td></tr></tbody>
+                            </table>
+                        </div>
+                    </div>`;
+            }
+            else if (viewId === 'merch-assign') {
+                title.innerText = "App User Field Assignments";
+                container.innerHTML = `
+                    <div class="card shadow-sm">
+                        <div class="card-body">
+                            <p>Assign your field agents (App Users) to specific Shops or Brands so they know what to audit.</p>
+                            <form class="row g-3 align-items-end mb-4">
+                                <div class="col-md-4">
+                                    <label>Select App User</label>
+                                    <select class="form-select"><option>agent_john</option></select>
+                                </div>
+                                <div class="col-md-4">
+                                    <label>Assign To</label>
+                                    <select class="form-select">
+                                        <option>Shop: LOC_12 (Riyadh Branch)</option>
+                                        <option>Brand: Nestle</option>
+                                    </select>
+                                </div>
+                                <div class="col-md-4"><button type="button" class="btn btn-success w-100">Create Assignment</button></div>
+                            </form>
+                        </div>
+                    </div>`;
+            }
+            else {
+                container.innerHTML = `<div class="alert alert-info">View Construction: ${viewId}</div>`;
+            }
+        }
+
+        // Dev tool to switch roles
+        function switchRoleMock() {
+            currentRole = currentRole === 'admin' ? 'merchant' : 'admin';
+            renderMenu();
+        }
+
+        // Initialize App
+        window.onload = renderMenu;
+    </script>
+</body>
+</html>

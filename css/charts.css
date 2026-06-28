@@ -1,0 +1,184 @@
+/* charts.css - For dashboard visualizations */
+.chart-container {
+    background: var(--surface-color);
+    border-radius: var(--border-radius);
+    box-shadow: var(--shadow-elevation);
+    padding: 20px;
+    margin-bottom: 24px;
+}
+
+.chart-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
+}
+
+.chart-title {
+    font-size: 18px;
+    font-weight: 500;
+    color: var(--on-surface);
+}
+
+.chart-toolbar {
+    display: flex;
+    gap: 10px;
+}
+
+.chart-period {
+    padding: 6px 12px;
+    border: 1px solid var(--divider);
+    border-radius: 4px;
+    background: transparent;
+    cursor: pointer;
+    font-size: 14px;
+}
+
+.chart-period.active {
+    background: var(--primary-color);
+    color: white;
+    border-color: var(--primary-color);
+}
+
+.chart-canvas {
+    width: 100%;
+    height: 300px;
+    position: relative;
+}
+
+/* Mini chart cards */
+.mini-chart-card {
+    background: var(--surface-color);
+    border-radius: var(--border-radius);
+    padding: 20px;
+    box-shadow: var(--shadow-elevation);
+    display: flex;
+    align-items: center;
+    gap: 15px;
+}
+
+.mini-chart-icon {
+    width: 48px;
+    height: 48px;
+    border-radius: 12px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 24px;
+}
+
+.mini-chart-icon.blue { background: #e3f2fd; color: #2196f3; }
+.mini-chart-icon.green { background: #e8f5e9; color: #4caf50; }
+.mini-chart-icon.orange { background: #fff3e0; color: #ff9800; }
+.mini-chart-icon.purple { background: #f3e5f5; color: #9c27b0; }
+
+.mini-chart-content {
+    flex: 1;
+}
+
+.mini-chart-value {
+    font-size: 24px;
+    font-weight: 600;
+    color: var(--on-surface);
+    line-height: 1;
+}
+
+.mini-chart-label {
+    font-size: 14px;
+    color: var(--on-surface-variant);
+    margin-top: 4px;
+}
+
+.mini-chart-trend {
+    font-size: 12px;
+    padding: 2px 8px;
+    border-radius: 10px;
+    display: inline-block;
+    margin-top: 4px;
+}
+
+.trend-up { background: #e8f5e9; color: #2e7d32; }
+.trend-down { background: #ffebee; color: #c62828; }
+
+/* Progress bars */
+.progress-container {
+    margin: 20px 0;
+}
+
+.progress-label {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 8px;
+    font-size: 14px;
+}
+
+.progress-bar {
+    height: 8px;
+    background: #e0e0e0;
+    border-radius: 4px;
+    overflow: hidden;
+}
+
+.progress-fill {
+    height: 100%;
+    border-radius: 4px;
+    background: var(--primary-color);
+    transition: width 0.3s ease;
+}
+
+/* Grid improvements */
+.dashboard-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 24px;
+    margin: 24px 0;
+}
+
+.stat-card {
+    background: var(--surface-color);
+    border-radius: var(--border-radius);
+    padding: 24px;
+    box-shadow: var(--shadow-elevation);
+    position: relative;
+    overflow: hidden;
+    border-left: 4px solid var(--primary-color);
+}
+
+.stat-card h3 {
+    font-size: 32px;
+    font-weight: 700;
+    color: var(--primary-color);
+    margin: 10px 0;
+}
+
+.stat-card p {
+    color: var(--on-surface-variant);
+    font-size: 14px;
+    margin: 0;
+}
+
+.stat-card-icon {
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    width: 48px;
+    height: 48px;
+    border-radius: 12px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: var(--primary-light);
+    color: var(--primary-color);
+    font-size: 24px;
+}
+
+/* Responsive charts */
+@media (max-width: 768px) {
+    .dashboard-grid {
+        grid-template-columns: 1fr;
+    }
+    
+    .chart-canvas {
+        height: 200px;
+    }
+}

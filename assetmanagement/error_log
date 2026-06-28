@@ -1,0 +1,15 @@
+[25-Jun-2026 17:16:36 UTC] PHP Fatal error:  Uncaught ArgumentCountError: The number of elements in the type definition string must match the number of bind variables in /home/anomakio/apparelgroup.anomak.co.in/assetmanagement/procurement_api.php:196
+Stack trace:
+#0 /home/anomakio/apparelgroup.anomak.co.in/assetmanagement/procurement_api.php(196): mysqli_stmt->bind_param('sssiss', 'DSP-0002', '13', '13', 1, '36710', 'N/A', 'admin')
+#1 {main}
+  thrown in /home/anomakio/apparelgroup.anomak.co.in/assetmanagement/procurement_api.php on line 196
+[25-Jun-2026 17:16:39 UTC] PHP Fatal error:  Uncaught ArgumentCountError: The number of elements in the type definition string must match the number of bind variables in /home/anomakio/apparelgroup.anomak.co.in/assetmanagement/procurement_api.php:196
+Stack trace:
+#0 /home/anomakio/apparelgroup.anomak.co.in/assetmanagement/procurement_api.php(196): mysqli_stmt->bind_param('sssiss', 'DSP-0002', '13', '13', 1, '36710', 'N/A', 'admin')
+#1 {main}
+  thrown in /home/anomakio/apparelgroup.anomak.co.in/assetmanagement/procurement_api.php on line 196
+[25-Jun-2026 17:16:41 UTC] PHP Fatal error:  Uncaught ArgumentCountError: The number of elements in the type definition string must match the number of bind variables in /home/anomakio/apparelgroup.anomak.co.in/assetmanagement/procurement_api.php:196
+Stack trace:
+#0 /home/anomakio/apparelgroup.anomak.co.in/assetmanagement/procurement_api.php(196): mysqli_stmt->bind_param('sssiss', 'DSP-0002', '13', '13', 1, '36710', 'N/A', 'admin')
+#1 {main}
+  thrown in /home/anomakio/apparelgroup.anomak.co.in/assetmanagement/procurement_api.php on line 196

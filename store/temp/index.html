@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Store Management Dashboard</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+<body class="bg-gray-50 flex">
+
+    <aside class="w-64 bg-white h-screen border-r pt-6 px-4">
+        <h2 class="text-2xl font-bold mb-8">Store Portal</h2>
+        <nav class="space-y-4">
+            <a href="#" class="block px-4 py-2 rounded-md bg-gray-100 font-semibold">Dashboard</a>
+            <a href="#" class="block px-4 py-2 rounded-md hover:bg-gray-50 text-gray-600">Inventory Requests</a>
+        </nav>
+    </aside>
+
+    <main class="flex-1 p-8 overflow-y-auto h-screen">
+        
+        <h1 class="text-3xl font-bold mb-6">Store Dashboard</h1>
+        <div class="grid grid-cols-3 gap-6 mb-8">
+            <div class="bg-white p-6 rounded-lg shadow-sm border border-gray-100">
+                <h3 class="text-gray-500 font-medium">Total Cash Collected</h3>
+                <p class="text-3xl font-bold mt-2">$89,210.00</p>
+            </div>
+            <div class="bg-white p-6 rounded-lg shadow-sm border border-gray-100">
+                <h3 class="text-gray-500 font-medium">IT Assets Deployed</h3>
+                <p class="text-3xl font-bold mt-2">124</p>
+            </div>
+            <div class="bg-white p-6 rounded-lg shadow-sm border border-gray-100">
+                <h3 class="text-gray-500 font-medium">Standard Inventory</h3>
+                <p class="text-3xl font-bold mt-2">630</p>
+            </div>
+        </div>
+
+        <div class="bg-white p-6 rounded-lg shadow-sm border border-gray-100 mb-8">
+            <h3 class="text-lg font-bold mb-4">Cash Collection Trend</h3>
+            <canvas id="cashTrendChart" height="80"></canvas>
+        </div>
+
+        <div class="grid grid-cols-2 gap-6">
+            <div class="bg-white p-6 rounded-lg shadow-sm border border-gray-100">
+                <h3 class="text-lg font-bold mb-4">Assigned IT Assets</h3>
+                <table class="w-full text-left">
+                    <thead class="border-b text-sm text-gray-500">
+                        <tr>
+                            <th class="pb-2">SKU</th>
+                            <th class="pb-2">Item Name</th>
+                            <th class="pb-2">Qty</th>
+                        </tr>
+                    </thead>
+                    <tbody class="text-sm">
+                        <tr class="border-b">
+                            <td class="py-3">VMware-56</td>
+                            <td class="py-3">Desktop - VMware, Inc.</td>
+                            <td class="py-3">1</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+
+            <div class="bg-white p-6 rounded-lg shadow-sm border border-gray-100">
+                <h3 class="text-lg font-bold mb-4">Assigned Standard Inventory</h3>
+                <table class="w-full text-left">
+                    <thead class="border-b text-sm text-gray-500">
+                        <tr>
+                            <th class="pb-2">SKU</th>
+                            <th class="pb-2">Qty</th>
+                            <th class="pb-2">Date Dispatched</th>
+                        </tr>
+                    </thead>
+                    <tbody class="text-sm">
+                        <tr class="border-b">
+                            <td class="py-3">SKU-6200</td>
+                            <td class="py-3">5</td>
+                            <td class="py-3">2026-05-20</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+
+    </main>
+
+    <script>
+        const ctx = document.getElementById('cashTrendChart').getContext('2d');
+        new Chart(ctx, {
+            type: 'line',
+            data: {
+                labels: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun'], // Will be dynamic dates
+                datasets: [{
+                    label: 'Cash Collected ($)',
+                    data: [12000, 19000, 15000, 22000, 18000, 32250], // Will be dynamic amounts
+                    borderColor: 'rgb(99, 102, 241)', // Indigo color
+                    tension: 0.3
+                }]
+            }
+        });
+    </script>
+</body>
+</html>

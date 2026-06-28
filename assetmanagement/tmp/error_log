@@ -1,0 +1,144 @@
+[06-Jun-2026 10:23:00 UTC] PHP Fatal error:  Uncaught Error: Call to undefined method mysqli_result::fetchAll() in /home/anomakio/apparelgroup.anomak.co.in/assetmanagement/procurement_api.php:388
+Stack trace:
+#0 {main}
+  thrown in /home/anomakio/apparelgroup.anomak.co.in/assetmanagement/procurement_api.php on line 388
+[06-Jun-2026 10:23:02 UTC] PHP Fatal error:  Uncaught Error: Call to undefined method mysqli_result::fetchAll() in /home/anomakio/apparelgroup.anomak.co.in/assetmanagement/procurement_api.php:388
+Stack trace:
+#0 {main}
+  thrown in /home/anomakio/apparelgroup.anomak.co.in/assetmanagement/procurement_api.php on line 388
+[06-Jun-2026 10:23:20 UTC] PHP Fatal error:  Uncaught Error: Call to undefined method mysqli_result::fetchAll() in /home/anomakio/apparelgroup.anomak.co.in/assetmanagement/procurement_api.php:388
+Stack trace:
+#0 {main}
+  thrown in /home/anomakio/apparelgroup.anomak.co.in/assetmanagement/procurement_api.php on line 388
+[06-Jun-2026 10:51:16 UTC] PHP Fatal error:  Uncaught Error: Call to undefined method mysqli_result::fetchAll() in /home/anomakio/apparelgroup.anomak.co.in/assetmanagement/procurement_api.php:405
+Stack trace:
+#0 {main}
+  thrown in /home/anomakio/apparelgroup.anomak.co.in/assetmanagement/procurement_api.php on line 405
+[06-Jun-2026 10:51:41 UTC] PHP Fatal error:  Uncaught Error: Call to undefined method mysqli_result::fetchAll() in /home/anomakio/apparelgroup.anomak.co.in/assetmanagement/procurement_api.php:405
+Stack trace:
+#0 {main}
+  thrown in /home/anomakio/apparelgroup.anomak.co.in/assetmanagement/procurement_api.php on line 405
+[06-Jun-2026 10:56:15 UTC] PHP Fatal error:  Cannot redeclare logItAction() (previously declared in /home/anomakio/apparelgroup.anomak.co.in/assetmanagement/procurement_api.php:16) in /home/anomakio/apparelgroup.anomak.co.in/assetmanagement/procurement_api.php on line 22
+[06-Jun-2026 10:56:15 UTC] PHP Fatal error:  Cannot redeclare logItAction() (previously declared in /home/anomakio/apparelgroup.anomak.co.in/assetmanagement/procurement_api.php:16) in /home/anomakio/apparelgroup.anomak.co.in/assetmanagement/procurement_api.php on line 22
+[06-Jun-2026 10:56:15 UTC] PHP Fatal error:  Cannot redeclare logItAction() (previously declared in /home/anomakio/apparelgroup.anomak.co.in/assetmanagement/procurement_api.php:16) in /home/anomakio/apparelgroup.anomak.co.in/assetmanagement/procurement_api.php on line 22
+[06-Jun-2026 10:56:15 UTC] PHP Fatal error:  Cannot redeclare logItAction() (previously declared in /home/anomakio/apparelgroup.anomak.co.in/assetmanagement/procurement_api.php:16) in /home/anomakio/apparelgroup.anomak.co.in/assetmanagement/procurement_api.php on line 22
+[06-Jun-2026 10:56:15 UTC] PHP Fatal error:  Cannot redeclare logItAction() (previously declared in /home/anomakio/apparelgroup.anomak.co.in/assetmanagement/procurement_api.php:16) in /home/anomakio/apparelgroup.anomak.co.in/assetmanagement/procurement_api.php on line 22
+[06-Jun-2026 10:56:15 UTC] PHP Fatal error:  Cannot redeclare logItAction() (previously declared in /home/anomakio/apparelgroup.anomak.co.in/assetmanagement/procurement_api.php:16) in /home/anomakio/apparelgroup.anomak.co.in/assetmanagement/procurement_api.php on line 22
+[06-Jun-2026 10:56:15 UTC] PHP Fatal error:  Cannot redeclare logItAction() (previously declared in /home/anomakio/apparelgroup.anomak.co.in/assetmanagement/procurement_api.php:16) in /home/anomakio/apparelgroup.anomak.co.in/assetmanagement/procurement_api.php on line 22
+[06-Jun-2026 10:56:15 UTC] PHP Fatal error:  Cannot redeclare logItAction() (previously declared in /home/anomakio/apparelgroup.anomak.co.in/assetmanagement/procurement_api.php:16) in /home/anomakio/apparelgroup.anomak.co.in/assetmanagement/procurement_api.php on line 22
+[06-Jun-2026 10:56:15 UTC] PHP Fatal error:  Cannot redeclare logItAction() (previously declared in /home/anomakio/apparelgroup.anomak.co.in/assetmanagement/procurement_api.php:16) in /home/anomakio/apparelgroup.anomak.co.in/assetmanagement/procurement_api.php on line 22
+[06-Jun-2026 10:56:15 UTC] PHP Fatal error:  Cannot redeclare logItAction() (previously declared in /home/anomakio/apparelgroup.anomak.co.in/assetmanagement/procurement_api.php:16) in /home/anomakio/apparelgroup.anomak.co.in/assetmanagement/procurement_api.php on line 22
+[06-Jun-2026 10:56:15 UTC] PHP Fatal error:  Cannot redeclare logItAction() (previously declared in /home/anomakio/apparelgroup.anomak.co.in/assetmanagement/procurement_api.php:16) in /home/anomakio/apparelgroup.anomak.co.in/assetmanagement/procurement_api.php on line 22
+[06-Jun-2026 10:56:15 UTC] PHP Fatal error:  Cannot redeclare logItAction() (previously declared in /home/anomakio/apparelgroup.anomak.co.in/assetmanagement/procurement_api.php:16) in /home/anomakio/apparelgroup.anomak.co.in/assetmanagement/procurement_api.php on line 22
+[06-Jun-2026 11:11:57 UTC] PHP Fatal error:  Cannot redeclare logItAction() (previously declared in /home/anomakio/apparelgroup.anomak.co.in/assetmanagement/procurement_api.php:16) in /home/anomakio/apparelgroup.anomak.co.in/assetmanagement/procurement_api.php on line 22
+[06-Jun-2026 11:12:01 UTC] PHP Fatal error:  Cannot redeclare logItAction() (previously declared in /home/anomakio/apparelgroup.anomak.co.in/assetmanagement/procurement_api.php:16) in /home/anomakio/apparelgroup.anomak.co.in/assetmanagement/procurement_api.php on line 22
+[06-Jun-2026 11:12:01 UTC] PHP Fatal error:  Cannot redeclare logItAction() (previously declared in /home/anomakio/apparelgroup.anomak.co.in/assetmanagement/procurement_api.php:16) in /home/anomakio/apparelgroup.anomak.co.in/assetmanagement/procurement_api.php on line 22
+[06-Jun-2026 11:12:01 UTC] PHP Fatal error:  Cannot redeclare logItAction() (previously declared in /home/anomakio/apparelgroup.anomak.co.in/assetmanagement/procurement_api.php:16) in /home/anomakio/apparelgroup.anomak.co.in/assetmanagement/procurement_api.php on line 22
+[06-Jun-2026 11:12:01 UTC] PHP Fatal error:  Cannot redeclare logItAction() (previously declared in /home/anomakio/apparelgroup.anomak.co.in/assetmanagement/procurement_api.php:16) in /home/anomakio/apparelgroup.anomak.co.in/assetmanagement/procurement_api.php on line 22
+[06-Jun-2026 11:12:01 UTC] PHP Fatal error:  Cannot redeclare logItAction() (previously declared in /home/anomakio/apparelgroup.anomak.co.in/assetmanagement/procurement_api.php:16) in /home/anomakio/apparelgroup.anomak.co.in/assetmanagement/procurement_api.php on line 22
+[06-Jun-2026 11:12:01 UTC] PHP Fatal error:  Cannot redeclare logItAction() (previously declared in /home/anomakio/apparelgroup.anomak.co.in/assetmanagement/procurement_api.php:16) in /home/anomakio/apparelgroup.anomak.co.in/assetmanagement/procurement_api.php on line 22
+[06-Jun-2026 11:12:01 UTC] PHP Fatal error:  Cannot redeclare logItAction() (previously declared in /home/anomakio/apparelgroup.anomak.co.in/assetmanagement/procurement_api.php:16) in /home/anomakio/apparelgroup.anomak.co.in/assetmanagement/procurement_api.php on line 22
+[06-Jun-2026 11:12:01 UTC] PHP Fatal error:  Cannot redeclare logItAction() (previously declared in /home/anomakio/apparelgroup.anomak.co.in/assetmanagement/procurement_api.php:16) in /home/anomakio/apparelgroup.anomak.co.in/assetmanagement/procurement_api.php on line 22
+[06-Jun-2026 11:12:01 UTC] PHP Fatal error:  Cannot redeclare logItAction() (previously declared in /home/anomakio/apparelgroup.anomak.co.in/assetmanagement/procurement_api.php:16) in /home/anomakio/apparelgroup.anomak.co.in/assetmanagement/procurement_api.php on line 22
+[06-Jun-2026 11:12:01 UTC] PHP Fatal error:  Cannot redeclare logItAction() (previously declared in /home/anomakio/apparelgroup.anomak.co.in/assetmanagement/procurement_api.php:16) in /home/anomakio/apparelgroup.anomak.co.in/assetmanagement/procurement_api.php on line 22
+[06-Jun-2026 11:12:01 UTC] PHP Fatal error:  Cannot redeclare logItAction() (previously declared in /home/anomakio/apparelgroup.anomak.co.in/assetmanagement/procurement_api.php:16) in /home/anomakio/apparelgroup.anomak.co.in/assetmanagement/procurement_api.php on line 22
+[06-Jun-2026 11:12:01 UTC] PHP Fatal error:  Cannot redeclare logItAction() (previously declared in /home/anomakio/apparelgroup.anomak.co.in/assetmanagement/procurement_api.php:16) in /home/anomakio/apparelgroup.anomak.co.in/assetmanagement/procurement_api.php on line 22
+[06-Jun-2026 11:12:39 UTC] PHP Fatal error:  Cannot redeclare logItAction() (previously declared in /home/anomakio/apparelgroup.anomak.co.in/assetmanagement/procurement_api.php:16) in /home/anomakio/apparelgroup.anomak.co.in/assetmanagement/procurement_api.php on line 22
+[06-Jun-2026 11:12:39 UTC] PHP Fatal error:  Cannot redeclare logItAction() (previously declared in /home/anomakio/apparelgroup.anomak.co.in/assetmanagement/procurement_api.php:16) in /home/anomakio/apparelgroup.anomak.co.in/assetmanagement/procurement_api.php on line 22
+[06-Jun-2026 11:12:39 UTC] PHP Fatal error:  Cannot redeclare logItAction() (previously declared in /home/anomakio/apparelgroup.anomak.co.in/assetmanagement/procurement_api.php:16) in /home/anomakio/apparelgroup.anomak.co.in/assetmanagement/procurement_api.php on line 22
+[06-Jun-2026 11:12:39 UTC] PHP Fatal error:  Cannot redeclare logItAction() (previously declared in /home/anomakio/apparelgroup.anomak.co.in/assetmanagement/procurement_api.php:16) in /home/anomakio/apparelgroup.anomak.co.in/assetmanagement/procurement_api.php on line 22
+[06-Jun-2026 11:12:39 UTC] PHP Fatal error:  Cannot redeclare logItAction() (previously declared in /home/anomakio/apparelgroup.anomak.co.in/assetmanagement/procurement_api.php:16) in /home/anomakio/apparelgroup.anomak.co.in/assetmanagement/procurement_api.php on line 22
+[06-Jun-2026 11:12:39 UTC] PHP Fatal error:  Cannot redeclare logItAction() (previously declared in /home/anomakio/apparelgroup.anomak.co.in/assetmanagement/procurement_api.php:16) in /home/anomakio/apparelgroup.anomak.co.in/assetmanagement/procurement_api.php on line 22
+[06-Jun-2026 11:12:39 UTC] PHP Fatal error:  Cannot redeclare logItAction() (previously declared in /home/anomakio/apparelgroup.anomak.co.in/assetmanagement/procurement_api.php:16) in /home/anomakio/apparelgroup.anomak.co.in/assetmanagement/procurement_api.php on line 22
+[06-Jun-2026 11:12:39 UTC] PHP Fatal error:  Cannot redeclare logItAction() (previously declared in /home/anomakio/apparelgroup.anomak.co.in/assetmanagement/procurement_api.php:16) in /home/anomakio/apparelgroup.anomak.co.in/assetmanagement/procurement_api.php on line 22
+[06-Jun-2026 11:12:39 UTC] PHP Fatal error:  Cannot redeclare logItAction() (previously declared in /home/anomakio/apparelgroup.anomak.co.in/assetmanagement/procurement_api.php:16) in /home/anomakio/apparelgroup.anomak.co.in/assetmanagement/procurement_api.php on line 22
+[06-Jun-2026 11:12:39 UTC] PHP Fatal error:  Cannot redeclare logItAction() (previously declared in /home/anomakio/apparelgroup.anomak.co.in/assetmanagement/procurement_api.php:16) in /home/anomakio/apparelgroup.anomak.co.in/assetmanagement/procurement_api.php on line 22
+[06-Jun-2026 11:12:39 UTC] PHP Fatal error:  Cannot redeclare logItAction() (previously declared in /home/anomakio/apparelgroup.anomak.co.in/assetmanagement/procurement_api.php:16) in /home/anomakio/apparelgroup.anomak.co.in/assetmanagement/procurement_api.php on line 22
+[06-Jun-2026 11:12:39 UTC] PHP Fatal error:  Cannot redeclare logItAction() (previously declared in /home/anomakio/apparelgroup.anomak.co.in/assetmanagement/procurement_api.php:16) in /home/anomakio/apparelgroup.anomak.co.in/assetmanagement/procurement_api.php on line 22
+[06-Jun-2026 11:13:00 UTC] PHP Fatal error:  Uncaught Error: Call to undefined method mysqli_result::fetchAll() in /home/anomakio/apparelgroup.anomak.co.in/assetmanagement/procurement_api.php:394
+Stack trace:
+#0 {main}
+  thrown in /home/anomakio/apparelgroup.anomak.co.in/assetmanagement/procurement_api.php on line 394
+[06-Jun-2026 13:37:35 UTC] PHP Fatal error:  Uncaught Error: Call to undefined method mysqli_result::fetchAll() in /home/anomakio/apparelgroup.anomak.co.in/assetmanagement/procurement_api.php:400
+Stack trace:
+#0 {main}
+  thrown in /home/anomakio/apparelgroup.anomak.co.in/assetmanagement/procurement_api.php on line 400
+[06-Jun-2026 13:37:58 UTC] PHP Fatal error:  Uncaught Error: Call to undefined method mysqli_result::fetchAll() in /home/anomakio/apparelgroup.anomak.co.in/assetmanagement/procurement_api.php:400
+Stack trace:
+#0 {main}
+  thrown in /home/anomakio/apparelgroup.anomak.co.in/assetmanagement/procurement_api.php on line 400
+[06-Jun-2026 13:50:46 UTC] PHP Fatal error:  Uncaught Error: Call to undefined method mysqli_result::fetchAll() in /home/anomakio/apparelgroup.anomak.co.in/assetmanagement/procurement_api.php:400
+Stack trace:
+#0 {main}
+  thrown in /home/anomakio/apparelgroup.anomak.co.in/assetmanagement/procurement_api.php on line 400
+[06-Jun-2026 13:51:32 UTC] PHP Fatal error:  Uncaught Error: Call to undefined method mysqli_result::fetchAll() in /home/anomakio/apparelgroup.anomak.co.in/assetmanagement/procurement_api.php:400
+Stack trace:
+#0 {main}
+  thrown in /home/anomakio/apparelgroup.anomak.co.in/assetmanagement/procurement_api.php on line 400
+[06-Jun-2026 13:52:25 UTC] PHP Fatal error:  Uncaught Error: Call to undefined method mysqli_result::fetchAll() in /home/anomakio/apparelgroup.anomak.co.in/assetmanagement/procurement_api.php:400
+Stack trace:
+#0 {main}
+  thrown in /home/anomakio/apparelgroup.anomak.co.in/assetmanagement/procurement_api.php on line 400
+[06-Jun-2026 13:56:23 UTC] PHP Fatal error:  Uncaught Error: Call to undefined method mysqli_result::fetchAll() in /home/anomakio/apparelgroup.anomak.co.in/assetmanagement/procurement_api.php:400
+Stack trace:
+#0 {main}
+  thrown in /home/anomakio/apparelgroup.anomak.co.in/assetmanagement/procurement_api.php on line 400
+[06-Jun-2026 13:56:29 UTC] PHP Fatal error:  Uncaught Error: Call to undefined method mysqli_result::fetchAll() in /home/anomakio/apparelgroup.anomak.co.in/assetmanagement/procurement_api.php:400
+Stack trace:
+#0 {main}
+  thrown in /home/anomakio/apparelgroup.anomak.co.in/assetmanagement/procurement_api.php on line 400
+[09-Jun-2026 13:31:07 UTC] PHP Warning:  Undefined variable $pdo in /home/anomakio/apparelgroup.anomak.co.in/assetmanagement/migration.php on line 15
+[09-Jun-2026 13:31:07 UTC] PHP Fatal error:  Uncaught Error: Call to a member function beginTransaction() on null in /home/anomakio/apparelgroup.anomak.co.in/assetmanagement/migration.php:15
+Stack trace:
+#0 {main}
+  thrown in /home/anomakio/apparelgroup.anomak.co.in/assetmanagement/migration.php on line 15
+[09-Jun-2026 13:31:09 UTC] PHP Warning:  Undefined variable $pdo in /home/anomakio/apparelgroup.anomak.co.in/assetmanagement/migration.php on line 15
+[09-Jun-2026 13:31:09 UTC] PHP Fatal error:  Uncaught Error: Call to a member function beginTransaction() on null in /home/anomakio/apparelgroup.anomak.co.in/assetmanagement/migration.php:15
+Stack trace:
+#0 {main}
+  thrown in /home/anomakio/apparelgroup.anomak.co.in/assetmanagement/migration.php on line 15
+[09-Jun-2026 13:32:37 UTC] PHP Warning:  Undefined variable $pdo in /home/anomakio/apparelgroup.anomak.co.in/assetmanagement/migration.php on line 16
+[09-Jun-2026 13:32:37 UTC] PHP Fatal error:  Uncaught Error: Call to a member function beginTransaction() on null in /home/anomakio/apparelgroup.anomak.co.in/assetmanagement/migration.php:16
+Stack trace:
+#0 {main}
+  thrown in /home/anomakio/apparelgroup.anomak.co.in/assetmanagement/migration.php on line 16
+[11-Jun-2026 09:43:43 UTC] PHP Fatal error:  Uncaught mysqli_sql_exception: Duplicate entry '12001205503-Pending Trace' for key 'po_number' in /home/anomakio/apparelgroup.anomak.co.in/assetmanagement/procurement_api.php:127
+Stack trace:
+#0 /home/anomakio/apparelgroup.anomak.co.in/assetmanagement/procurement_api.php(127): mysqli_stmt->execute()
+#1 {main}
+  thrown in /home/anomakio/apparelgroup.anomak.co.in/assetmanagement/procurement_api.php on line 127
+[11-Jun-2026 09:44:07 UTC] PHP Fatal error:  Uncaught mysqli_sql_exception: Duplicate entry '12001205503-Pending Trace' for key 'po_number' in /home/anomakio/apparelgroup.anomak.co.in/assetmanagement/procurement_api.php:127
+Stack trace:
+#0 /home/anomakio/apparelgroup.anomak.co.in/assetmanagement/procurement_api.php(127): mysqli_stmt->execute()
+#1 {main}
+  thrown in /home/anomakio/apparelgroup.anomak.co.in/assetmanagement/procurement_api.php on line 127
+[11-Jun-2026 09:44:08 UTC] PHP Fatal error:  Uncaught mysqli_sql_exception: Duplicate entry '12001205503-Pending Trace' for key 'po_number' in /home/anomakio/apparelgroup.anomak.co.in/assetmanagement/procurement_api.php:127
+Stack trace:
+#0 /home/anomakio/apparelgroup.anomak.co.in/assetmanagement/procurement_api.php(127): mysqli_stmt->execute()
+#1 {main}
+  thrown in /home/anomakio/apparelgroup.anomak.co.in/assetmanagement/procurement_api.php on line 127
+[11-Jun-2026 09:44:08 UTC] PHP Fatal error:  Uncaught mysqli_sql_exception: Duplicate entry '12001205503-Pending Trace' for key 'po_number' in /home/anomakio/apparelgroup.anomak.co.in/assetmanagement/procurement_api.php:127
+Stack trace:
+#0 /home/anomakio/apparelgroup.anomak.co.in/assetmanagement/procurement_api.php(127): mysqli_stmt->execute()
+#1 {main}
+  thrown in /home/anomakio/apparelgroup.anomak.co.in/assetmanagement/procurement_api.php on line 127
+[11-Jun-2026 09:44:08 UTC] PHP Fatal error:  Uncaught mysqli_sql_exception: Duplicate entry '12001205503-Pending Trace' for key 'po_number' in /home/anomakio/apparelgroup.anomak.co.in/assetmanagement/procurement_api.php:127
+Stack trace:
+#0 /home/anomakio/apparelgroup.anomak.co.in/assetmanagement/procurement_api.php(127): mysqli_stmt->execute()
+#1 {main}
+  thrown in /home/anomakio/apparelgroup.anomak.co.in/assetmanagement/procurement_api.php on line 127
+[11-Jun-2026 12:44:13 UTC] PHP Fatal error:  Uncaught mysqli_sql_exception: Duplicate entry 'Test' for key 'company_name' in /home/anomakio/apparelgroup.anomak.co.in/assetmanagement/procurement_api.php:323
+Stack trace:
+#0 /home/anomakio/apparelgroup.anomak.co.in/assetmanagement/procurement_api.php(323): mysqli_stmt->execute()
+#1 {main}
+  thrown in /home/anomakio/apparelgroup.anomak.co.in/assetmanagement/procurement_api.php on line 323
+[11-Jun-2026 12:44:22 UTC] PHP Fatal error:  Uncaught mysqli_sql_exception: Duplicate entry 'Test' for key 'company_name' in /home/anomakio/apparelgroup.anomak.co.in/assetmanagement/procurement_api.php:323
+Stack trace:
+#0 /home/anomakio/apparelgroup.anomak.co.in/assetmanagement/procurement_api.php(323): mysqli_stmt->execute()
+#1 {main}
+  thrown in /home/anomakio/apparelgroup.anomak.co.in/assetmanagement/procurement_api.php on line 323
+[11-Jun-2026 13:16:49 UTC] PHP Warning:  Trying to access array offset on value of type null in /home/anomakio/apparelgroup.anomak.co.in/assetmanagement/procurement_api.php on line 243
+[11-Jun-2026 13:16:49 UTC] PHP Warning:  Trying to access array offset on value of type null in /home/anomakio/apparelgroup.anomak.co.in/assetmanagement/procurement_api.php on line 243
+[18-Jun-2026 18:20:31 UTC] PHP Warning:  Undefined array key "origin_store" in /home/anomakio/apparelgroup.anomak.co.in/assetmanagement/procurement_api.php on line 94
+[18-Jun-2026 20:37:11 UTC] PHP Warning:  Trying to access array offset on value of type null in /home/anomakio/apparelgroup.anomak.co.in/assetmanagement/procurement_api.php on line 280
+[18-Jun-2026 20:37:11 UTC] PHP Warning:  Trying to access array offset on value of type null in /home/anomakio/apparelgroup.anomak.co.in/assetmanagement/procurement_api.php on line 280

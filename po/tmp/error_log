@@ -1,0 +1,349 @@
+[20-May-2026 08:12:52 Asia/Riyadh] PHP Fatal error:  Uncaught mysqli_sql_exception: Duplicate entry 'admin' for key 'username' in /home/anomakio/apparelgroup.anomak.co.in/po/register_user.php:13
+Stack trace:
+#0 /home/anomakio/apparelgroup.anomak.co.in/po/register_user.php(13): mysqli_stmt->execute()
+#1 {main}
+  thrown in /home/anomakio/apparelgroup.anomak.co.in/po/register_user.php on line 13
+[20-May-2026 08:12:58 Asia/Riyadh] PHP Fatal error:  Uncaught mysqli_sql_exception: Duplicate entry 'admin' for key 'username' in /home/anomakio/apparelgroup.anomak.co.in/po/register_user.php:13
+Stack trace:
+#0 /home/anomakio/apparelgroup.anomak.co.in/po/register_user.php(13): mysqli_stmt->execute()
+#1 {main}
+  thrown in /home/anomakio/apparelgroup.anomak.co.in/po/register_user.php on line 13
+[20-May-2026 08:13:01 Asia/Riyadh] PHP Fatal error:  Uncaught mysqli_sql_exception: Duplicate entry 'admin' for key 'username' in /home/anomakio/apparelgroup.anomak.co.in/po/register_user.php:13
+Stack trace:
+#0 /home/anomakio/apparelgroup.anomak.co.in/po/register_user.php(13): mysqli_stmt->execute()
+#1 {main}
+  thrown in /home/anomakio/apparelgroup.anomak.co.in/po/register_user.php on line 13
+[20-May-2026 05:13:50 UTC] PHP Warning:  Undefined variable $conn in /home/anomakio/apparelgroup.anomak.co.in/po/register_user.php on line 12
+[20-May-2026 05:13:50 UTC] PHP Fatal error:  Uncaught Error: Call to a member function prepare() on null in /home/anomakio/apparelgroup.anomak.co.in/po/register_user.php:12
+Stack trace:
+#0 {main}
+  thrown in /home/anomakio/apparelgroup.anomak.co.in/po/register_user.php on line 12
+[20-May-2026 08:15:15 Asia/Riyadh] PHP Fatal error:  Uncaught mysqli_sql_exception: Duplicate entry 'admin' for key 'username' in /home/anomakio/apparelgroup.anomak.co.in/po/register_user.php:19
+Stack trace:
+#0 /home/anomakio/apparelgroup.anomak.co.in/po/register_user.php(19): mysqli_stmt->execute()
+#1 {main}
+  thrown in /home/anomakio/apparelgroup.anomak.co.in/po/register_user.php on line 19
+[20-May-2026 08:15:18 Asia/Riyadh] PHP Fatal error:  Uncaught mysqli_sql_exception: Duplicate entry 'admin' for key 'username' in /home/anomakio/apparelgroup.anomak.co.in/po/register_user.php:19
+Stack trace:
+#0 /home/anomakio/apparelgroup.anomak.co.in/po/register_user.php(19): mysqli_stmt->execute()
+#1 {main}
+  thrown in /home/anomakio/apparelgroup.anomak.co.in/po/register_user.php on line 19
+[20-May-2026 05:15:56 UTC] PHP Warning:  require_once(mydb.php): Failed to open stream: No such file or directory in /home/anomakio/apparelgroup.anomak.co.in/po/test.php on line 3
+[20-May-2026 05:15:56 UTC] PHP Fatal error:  Uncaught Error: Failed opening required 'mydb.php' (include_path='.:/opt/cpanel/ea-php82/root/usr/share/pear') in /home/anomakio/apparelgroup.anomak.co.in/po/test.php:3
+Stack trace:
+#0 {main}
+  thrown in /home/anomakio/apparelgroup.anomak.co.in/po/test.php on line 3
+[20-May-2026 05:15:59 UTC] PHP Warning:  require_once(mydb.php): Failed to open stream: No such file or directory in /home/anomakio/apparelgroup.anomak.co.in/po/test.php on line 3
+[20-May-2026 05:15:59 UTC] PHP Fatal error:  Uncaught Error: Failed opening required 'mydb.php' (include_path='.:/opt/cpanel/ea-php82/root/usr/share/pear') in /home/anomakio/apparelgroup.anomak.co.in/po/test.php:3
+Stack trace:
+#0 {main}
+  thrown in /home/anomakio/apparelgroup.anomak.co.in/po/test.php on line 3
+[20-May-2026 05:16:40 UTC] PHP Warning:  require_once(mydb.php): Failed to open stream: No such file or directory in /home/anomakio/apparelgroup.anomak.co.in/po/test.php on line 3
+[20-May-2026 05:16:40 UTC] PHP Fatal error:  Uncaught Error: Failed opening required 'mydb.php' (include_path='.:/opt/cpanel/ea-php82/root/usr/share/pear') in /home/anomakio/apparelgroup.anomak.co.in/po/test.php:3
+Stack trace:
+#0 {main}
+  thrown in /home/anomakio/apparelgroup.anomak.co.in/po/test.php on line 3
+[20-May-2026 05:16:41 UTC] PHP Warning:  require_once(mydb.php): Failed to open stream: No such file or directory in /home/anomakio/apparelgroup.anomak.co.in/po/test.php on line 3
+[20-May-2026 05:16:41 UTC] PHP Fatal error:  Uncaught Error: Failed opening required 'mydb.php' (include_path='.:/opt/cpanel/ea-php82/root/usr/share/pear') in /home/anomakio/apparelgroup.anomak.co.in/po/test.php:3
+Stack trace:
+#0 {main}
+  thrown in /home/anomakio/apparelgroup.anomak.co.in/po/test.php on line 3
+[20-May-2026 05:16:42 UTC] PHP Warning:  require_once(mydb.php): Failed to open stream: No such file or directory in /home/anomakio/apparelgroup.anomak.co.in/po/test.php on line 3
+[20-May-2026 05:16:42 UTC] PHP Fatal error:  Uncaught Error: Failed opening required 'mydb.php' (include_path='.:/opt/cpanel/ea-php82/root/usr/share/pear') in /home/anomakio/apparelgroup.anomak.co.in/po/test.php:3
+Stack trace:
+#0 {main}
+  thrown in /home/anomakio/apparelgroup.anomak.co.in/po/test.php on line 3
+[20-May-2026 05:16:42 UTC] PHP Warning:  require_once(mydb.php): Failed to open stream: No such file or directory in /home/anomakio/apparelgroup.anomak.co.in/po/test.php on line 3
+[20-May-2026 05:16:42 UTC] PHP Fatal error:  Uncaught Error: Failed opening required 'mydb.php' (include_path='.:/opt/cpanel/ea-php82/root/usr/share/pear') in /home/anomakio/apparelgroup.anomak.co.in/po/test.php:3
+Stack trace:
+#0 {main}
+  thrown in /home/anomakio/apparelgroup.anomak.co.in/po/test.php on line 3
+[20-May-2026 05:16:42 UTC] PHP Warning:  require_once(mydb.php): Failed to open stream: No such file or directory in /home/anomakio/apparelgroup.anomak.co.in/po/test.php on line 3
+[20-May-2026 05:16:42 UTC] PHP Fatal error:  Uncaught Error: Failed opening required 'mydb.php' (include_path='.:/opt/cpanel/ea-php82/root/usr/share/pear') in /home/anomakio/apparelgroup.anomak.co.in/po/test.php:3
+Stack trace:
+#0 {main}
+  thrown in /home/anomakio/apparelgroup.anomak.co.in/po/test.php on line 3
+[20-May-2026 05:16:42 UTC] PHP Warning:  require_once(mydb.php): Failed to open stream: No such file or directory in /home/anomakio/apparelgroup.anomak.co.in/po/test.php on line 3
+[20-May-2026 05:16:42 UTC] PHP Fatal error:  Uncaught Error: Failed opening required 'mydb.php' (include_path='.:/opt/cpanel/ea-php82/root/usr/share/pear') in /home/anomakio/apparelgroup.anomak.co.in/po/test.php:3
+Stack trace:
+#0 {main}
+  thrown in /home/anomakio/apparelgroup.anomak.co.in/po/test.php on line 3
+[20-May-2026 05:16:42 UTC] PHP Warning:  require_once(mydb.php): Failed to open stream: No such file or directory in /home/anomakio/apparelgroup.anomak.co.in/po/test.php on line 3
+[20-May-2026 05:16:42 UTC] PHP Fatal error:  Uncaught Error: Failed opening required 'mydb.php' (include_path='.:/opt/cpanel/ea-php82/root/usr/share/pear') in /home/anomakio/apparelgroup.anomak.co.in/po/test.php:3
+Stack trace:
+#0 {main}
+  thrown in /home/anomakio/apparelgroup.anomak.co.in/po/test.php on line 3
+[20-May-2026 05:16:43 UTC] PHP Warning:  require_once(mydb.php): Failed to open stream: No such file or directory in /home/anomakio/apparelgroup.anomak.co.in/po/test.php on line 3
+[20-May-2026 05:16:43 UTC] PHP Fatal error:  Uncaught Error: Failed opening required 'mydb.php' (include_path='.:/opt/cpanel/ea-php82/root/usr/share/pear') in /home/anomakio/apparelgroup.anomak.co.in/po/test.php:3
+Stack trace:
+#0 {main}
+  thrown in /home/anomakio/apparelgroup.anomak.co.in/po/test.php on line 3
+[20-May-2026 05:16:43 UTC] PHP Warning:  require_once(mydb.php): Failed to open stream: No such file or directory in /home/anomakio/apparelgroup.anomak.co.in/po/test.php on line 3
+[20-May-2026 05:16:43 UTC] PHP Fatal error:  Uncaught Error: Failed opening required 'mydb.php' (include_path='.:/opt/cpanel/ea-php82/root/usr/share/pear') in /home/anomakio/apparelgroup.anomak.co.in/po/test.php:3
+Stack trace:
+#0 {main}
+  thrown in /home/anomakio/apparelgroup.anomak.co.in/po/test.php on line 3
+[20-May-2026 05:16:43 UTC] PHP Warning:  require_once(mydb.php): Failed to open stream: No such file or directory in /home/anomakio/apparelgroup.anomak.co.in/po/test.php on line 3
+[20-May-2026 05:16:43 UTC] PHP Fatal error:  Uncaught Error: Failed opening required 'mydb.php' (include_path='.:/opt/cpanel/ea-php82/root/usr/share/pear') in /home/anomakio/apparelgroup.anomak.co.in/po/test.php:3
+Stack trace:
+#0 {main}
+  thrown in /home/anomakio/apparelgroup.anomak.co.in/po/test.php on line 3
+[20-May-2026 05:16:43 UTC] PHP Warning:  require_once(mydb.php): Failed to open stream: No such file or directory in /home/anomakio/apparelgroup.anomak.co.in/po/test.php on line 3
+[20-May-2026 05:16:43 UTC] PHP Fatal error:  Uncaught Error: Failed opening required 'mydb.php' (include_path='.:/opt/cpanel/ea-php82/root/usr/share/pear') in /home/anomakio/apparelgroup.anomak.co.in/po/test.php:3
+Stack trace:
+#0 {main}
+  thrown in /home/anomakio/apparelgroup.anomak.co.in/po/test.php on line 3
+[20-May-2026 05:16:43 UTC] PHP Warning:  require_once(mydb.php): Failed to open stream: No such file or directory in /home/anomakio/apparelgroup.anomak.co.in/po/test.php on line 3
+[20-May-2026 05:16:43 UTC] PHP Fatal error:  Uncaught Error: Failed opening required 'mydb.php' (include_path='.:/opt/cpanel/ea-php82/root/usr/share/pear') in /home/anomakio/apparelgroup.anomak.co.in/po/test.php:3
+Stack trace:
+#0 {main}
+  thrown in /home/anomakio/apparelgroup.anomak.co.in/po/test.php on line 3
+[20-May-2026 05:16:43 UTC] PHP Warning:  require_once(mydb.php): Failed to open stream: No such file or directory in /home/anomakio/apparelgroup.anomak.co.in/po/test.php on line 3
+[20-May-2026 05:16:43 UTC] PHP Fatal error:  Uncaught Error: Failed opening required 'mydb.php' (include_path='.:/opt/cpanel/ea-php82/root/usr/share/pear') in /home/anomakio/apparelgroup.anomak.co.in/po/test.php:3
+Stack trace:
+#0 {main}
+  thrown in /home/anomakio/apparelgroup.anomak.co.in/po/test.php on line 3
+[20-May-2026 05:16:50 UTC] PHP Warning:  require_once(mydb.php): Failed to open stream: No such file or directory in /home/anomakio/apparelgroup.anomak.co.in/po/test.php on line 3
+[20-May-2026 05:16:50 UTC] PHP Fatal error:  Uncaught Error: Failed opening required 'mydb.php' (include_path='.:/opt/cpanel/ea-php82/root/usr/share/pear') in /home/anomakio/apparelgroup.anomak.co.in/po/test.php:3
+Stack trace:
+#0 {main}
+  thrown in /home/anomakio/apparelgroup.anomak.co.in/po/test.php on line 3
+[20-May-2026 05:16:50 UTC] PHP Warning:  require_once(mydb.php): Failed to open stream: No such file or directory in /home/anomakio/apparelgroup.anomak.co.in/po/test.php on line 3
+[20-May-2026 05:16:50 UTC] PHP Fatal error:  Uncaught Error: Failed opening required 'mydb.php' (include_path='.:/opt/cpanel/ea-php82/root/usr/share/pear') in /home/anomakio/apparelgroup.anomak.co.in/po/test.php:3
+Stack trace:
+#0 {main}
+  thrown in /home/anomakio/apparelgroup.anomak.co.in/po/test.php on line 3
+[20-May-2026 05:16:50 UTC] PHP Warning:  require_once(mydb.php): Failed to open stream: No such file or directory in /home/anomakio/apparelgroup.anomak.co.in/po/test.php on line 3
+[20-May-2026 05:16:50 UTC] PHP Fatal error:  Uncaught Error: Failed opening required 'mydb.php' (include_path='.:/opt/cpanel/ea-php82/root/usr/share/pear') in /home/anomakio/apparelgroup.anomak.co.in/po/test.php:3
+Stack trace:
+#0 {main}
+  thrown in /home/anomakio/apparelgroup.anomak.co.in/po/test.php on line 3
+[20-May-2026 05:16:51 UTC] PHP Warning:  require_once(mydb.php): Failed to open stream: No such file or directory in /home/anomakio/apparelgroup.anomak.co.in/po/test.php on line 3
+[20-May-2026 05:16:51 UTC] PHP Fatal error:  Uncaught Error: Failed opening required 'mydb.php' (include_path='.:/opt/cpanel/ea-php82/root/usr/share/pear') in /home/anomakio/apparelgroup.anomak.co.in/po/test.php:3
+Stack trace:
+#0 {main}
+  thrown in /home/anomakio/apparelgroup.anomak.co.in/po/test.php on line 3
+[20-May-2026 05:16:51 UTC] PHP Warning:  require_once(mydb.php): Failed to open stream: No such file or directory in /home/anomakio/apparelgroup.anomak.co.in/po/test.php on line 3
+[20-May-2026 05:16:51 UTC] PHP Fatal error:  Uncaught Error: Failed opening required 'mydb.php' (include_path='.:/opt/cpanel/ea-php82/root/usr/share/pear') in /home/anomakio/apparelgroup.anomak.co.in/po/test.php:3
+Stack trace:
+#0 {main}
+  thrown in /home/anomakio/apparelgroup.anomak.co.in/po/test.php on line 3
+[20-May-2026 05:16:51 UTC] PHP Warning:  require_once(mydb.php): Failed to open stream: No such file or directory in /home/anomakio/apparelgroup.anomak.co.in/po/test.php on line 3
+[20-May-2026 05:16:51 UTC] PHP Fatal error:  Uncaught Error: Failed opening required 'mydb.php' (include_path='.:/opt/cpanel/ea-php82/root/usr/share/pear') in /home/anomakio/apparelgroup.anomak.co.in/po/test.php:3
+Stack trace:
+#0 {main}
+  thrown in /home/anomakio/apparelgroup.anomak.co.in/po/test.php on line 3
+[20-May-2026 05:16:51 UTC] PHP Warning:  require_once(mydb.php): Failed to open stream: No such file or directory in /home/anomakio/apparelgroup.anomak.co.in/po/test.php on line 3
+[20-May-2026 05:16:51 UTC] PHP Fatal error:  Uncaught Error: Failed opening required 'mydb.php' (include_path='.:/opt/cpanel/ea-php82/root/usr/share/pear') in /home/anomakio/apparelgroup.anomak.co.in/po/test.php:3
+Stack trace:
+#0 {main}
+  thrown in /home/anomakio/apparelgroup.anomak.co.in/po/test.php on line 3
+[20-May-2026 05:16:51 UTC] PHP Warning:  require_once(mydb.php): Failed to open stream: No such file or directory in /home/anomakio/apparelgroup.anomak.co.in/po/test.php on line 3
+[20-May-2026 05:16:51 UTC] PHP Fatal error:  Uncaught Error: Failed opening required 'mydb.php' (include_path='.:/opt/cpanel/ea-php82/root/usr/share/pear') in /home/anomakio/apparelgroup.anomak.co.in/po/test.php:3
+Stack trace:
+#0 {main}
+  thrown in /home/anomakio/apparelgroup.anomak.co.in/po/test.php on line 3
+[20-May-2026 05:16:52 UTC] PHP Warning:  require_once(mydb.php): Failed to open stream: No such file or directory in /home/anomakio/apparelgroup.anomak.co.in/po/test.php on line 3
+[20-May-2026 05:16:52 UTC] PHP Fatal error:  Uncaught Error: Failed opening required 'mydb.php' (include_path='.:/opt/cpanel/ea-php82/root/usr/share/pear') in /home/anomakio/apparelgroup.anomak.co.in/po/test.php:3
+Stack trace:
+#0 {main}
+  thrown in /home/anomakio/apparelgroup.anomak.co.in/po/test.php on line 3
+[20-May-2026 05:16:53 UTC] PHP Warning:  require_once(mydb.php): Failed to open stream: No such file or directory in /home/anomakio/apparelgroup.anomak.co.in/po/test.php on line 3
+[20-May-2026 05:16:53 UTC] PHP Fatal error:  Uncaught Error: Failed opening required 'mydb.php' (include_path='.:/opt/cpanel/ea-php82/root/usr/share/pear') in /home/anomakio/apparelgroup.anomak.co.in/po/test.php:3
+Stack trace:
+#0 {main}
+  thrown in /home/anomakio/apparelgroup.anomak.co.in/po/test.php on line 3
+[20-May-2026 05:16:53 UTC] PHP Warning:  require_once(mydb.php): Failed to open stream: No such file or directory in /home/anomakio/apparelgroup.anomak.co.in/po/test.php on line 3
+[20-May-2026 05:16:53 UTC] PHP Fatal error:  Uncaught Error: Failed opening required 'mydb.php' (include_path='.:/opt/cpanel/ea-php82/root/usr/share/pear') in /home/anomakio/apparelgroup.anomak.co.in/po/test.php:3
+Stack trace:
+#0 {main}
+  thrown in /home/anomakio/apparelgroup.anomak.co.in/po/test.php on line 3
+[20-May-2026 05:16:53 UTC] PHP Warning:  require_once(mydb.php): Failed to open stream: No such file or directory in /home/anomakio/apparelgroup.anomak.co.in/po/test.php on line 3
+[20-May-2026 05:16:53 UTC] PHP Fatal error:  Uncaught Error: Failed opening required 'mydb.php' (include_path='.:/opt/cpanel/ea-php82/root/usr/share/pear') in /home/anomakio/apparelgroup.anomak.co.in/po/test.php:3
+Stack trace:
+#0 {main}
+  thrown in /home/anomakio/apparelgroup.anomak.co.in/po/test.php on line 3
+[20-May-2026 05:16:53 UTC] PHP Warning:  require_once(mydb.php): Failed to open stream: No such file or directory in /home/anomakio/apparelgroup.anomak.co.in/po/test.php on line 3
+[20-May-2026 05:16:53 UTC] PHP Fatal error:  Uncaught Error: Failed opening required 'mydb.php' (include_path='.:/opt/cpanel/ea-php82/root/usr/share/pear') in /home/anomakio/apparelgroup.anomak.co.in/po/test.php:3
+Stack trace:
+#0 {main}
+  thrown in /home/anomakio/apparelgroup.anomak.co.in/po/test.php on line 3
+[20-May-2026 05:16:54 UTC] PHP Warning:  require_once(mydb.php): Failed to open stream: No such file or directory in /home/anomakio/apparelgroup.anomak.co.in/po/test.php on line 3
+[20-May-2026 05:16:54 UTC] PHP Fatal error:  Uncaught Error: Failed opening required 'mydb.php' (include_path='.:/opt/cpanel/ea-php82/root/usr/share/pear') in /home/anomakio/apparelgroup.anomak.co.in/po/test.php:3
+Stack trace:
+#0 {main}
+  thrown in /home/anomakio/apparelgroup.anomak.co.in/po/test.php on line 3
+[20-May-2026 05:16:55 UTC] PHP Warning:  require_once(mydb.php): Failed to open stream: No such file or directory in /home/anomakio/apparelgroup.anomak.co.in/po/test.php on line 3
+[20-May-2026 05:16:55 UTC] PHP Fatal error:  Uncaught Error: Failed opening required 'mydb.php' (include_path='.:/opt/cpanel/ea-php82/root/usr/share/pear') in /home/anomakio/apparelgroup.anomak.co.in/po/test.php:3
+Stack trace:
+#0 {main}
+  thrown in /home/anomakio/apparelgroup.anomak.co.in/po/test.php on line 3
+[20-May-2026 05:16:55 UTC] PHP Warning:  require_once(mydb.php): Failed to open stream: No such file or directory in /home/anomakio/apparelgroup.anomak.co.in/po/test.php on line 3
+[20-May-2026 05:16:55 UTC] PHP Fatal error:  Uncaught Error: Failed opening required 'mydb.php' (include_path='.:/opt/cpanel/ea-php82/root/usr/share/pear') in /home/anomakio/apparelgroup.anomak.co.in/po/test.php:3
+Stack trace:
+#0 {main}
+  thrown in /home/anomakio/apparelgroup.anomak.co.in/po/test.php on line 3
+[20-May-2026 05:16:55 UTC] PHP Warning:  require_once(mydb.php): Failed to open stream: No such file or directory in /home/anomakio/apparelgroup.anomak.co.in/po/test.php on line 3
+[20-May-2026 05:16:55 UTC] PHP Fatal error:  Uncaught Error: Failed opening required 'mydb.php' (include_path='.:/opt/cpanel/ea-php82/root/usr/share/pear') in /home/anomakio/apparelgroup.anomak.co.in/po/test.php:3
+Stack trace:
+#0 {main}
+  thrown in /home/anomakio/apparelgroup.anomak.co.in/po/test.php on line 3
+[20-May-2026 05:16:55 UTC] PHP Warning:  require_once(mydb.php): Failed to open stream: No such file or directory in /home/anomakio/apparelgroup.anomak.co.in/po/test.php on line 3
+[20-May-2026 05:16:55 UTC] PHP Fatal error:  Uncaught Error: Failed opening required 'mydb.php' (include_path='.:/opt/cpanel/ea-php82/root/usr/share/pear') in /home/anomakio/apparelgroup.anomak.co.in/po/test.php:3
+Stack trace:
+#0 {main}
+  thrown in /home/anomakio/apparelgroup.anomak.co.in/po/test.php on line 3
+[20-May-2026 05:16:55 UTC] PHP Warning:  require_once(mydb.php): Failed to open stream: No such file or directory in /home/anomakio/apparelgroup.anomak.co.in/po/test.php on line 3
+[20-May-2026 05:16:55 UTC] PHP Fatal error:  Uncaught Error: Failed opening required 'mydb.php' (include_path='.:/opt/cpanel/ea-php82/root/usr/share/pear') in /home/anomakio/apparelgroup.anomak.co.in/po/test.php:3
+Stack trace:
+#0 {main}
+  thrown in /home/anomakio/apparelgroup.anomak.co.in/po/test.php on line 3
+[20-May-2026 05:16:56 UTC] PHP Warning:  require_once(mydb.php): Failed to open stream: No such file or directory in /home/anomakio/apparelgroup.anomak.co.in/po/test.php on line 3
+[20-May-2026 05:16:56 UTC] PHP Fatal error:  Uncaught Error: Failed opening required 'mydb.php' (include_path='.:/opt/cpanel/ea-php82/root/usr/share/pear') in /home/anomakio/apparelgroup.anomak.co.in/po/test.php:3
+Stack trace:
+#0 {main}
+  thrown in /home/anomakio/apparelgroup.anomak.co.in/po/test.php on line 3
+[20-May-2026 05:16:56 UTC] PHP Warning:  require_once(mydb.php): Failed to open stream: No such file or directory in /home/anomakio/apparelgroup.anomak.co.in/po/test.php on line 3
+[20-May-2026 05:16:56 UTC] PHP Fatal error:  Uncaught Error: Failed opening required 'mydb.php' (include_path='.:/opt/cpanel/ea-php82/root/usr/share/pear') in /home/anomakio/apparelgroup.anomak.co.in/po/test.php:3
+Stack trace:
+#0 {main}
+  thrown in /home/anomakio/apparelgroup.anomak.co.in/po/test.php on line 3
+[20-May-2026 05:19:30 UTC] PHP Fatal error:  Uncaught mysqli_sql_exception: Duplicate entry 'admin' for key 'username' in /home/anomakio/apparelgroup.anomak.co.in/po/register_user.php:19
+Stack trace:
+#0 /home/anomakio/apparelgroup.anomak.co.in/po/register_user.php(19): mysqli_stmt->execute()
+#1 {main}
+  thrown in /home/anomakio/apparelgroup.anomak.co.in/po/register_user.php on line 19
+[20-May-2026 05:19:48 UTC] PHP Fatal error:  Uncaught mysqli_sql_exception: Duplicate entry 'admin' for key 'username' in /home/anomakio/apparelgroup.anomak.co.in/po/register_user.php:19
+Stack trace:
+#0 /home/anomakio/apparelgroup.anomak.co.in/po/register_user.php(19): mysqli_stmt->execute()
+#1 {main}
+  thrown in /home/anomakio/apparelgroup.anomak.co.in/po/register_user.php on line 19
+[20-May-2026 05:19:56 UTC] PHP Fatal error:  Uncaught mysqli_sql_exception: Duplicate entry 'admin' for key 'username' in /home/anomakio/apparelgroup.anomak.co.in/po/register_user.php:19
+Stack trace:
+#0 /home/anomakio/apparelgroup.anomak.co.in/po/register_user.php(19): mysqli_stmt->execute()
+#1 {main}
+  thrown in /home/anomakio/apparelgroup.anomak.co.in/po/register_user.php on line 19
+[20-May-2026 05:20:25 UTC] PHP Fatal error:  Uncaught mysqli_sql_exception: Duplicate entry 'admin' for key 'username' in /home/anomakio/apparelgroup.anomak.co.in/po/register_user.php:19
+Stack trace:
+#0 /home/anomakio/apparelgroup.anomak.co.in/po/register_user.php(19): mysqli_stmt->execute()
+#1 {main}
+  thrown in /home/anomakio/apparelgroup.anomak.co.in/po/register_user.php on line 19
+[20-May-2026 05:21:11 UTC] PHP Fatal error:  Uncaught mysqli_sql_exception: Duplicate entry 'admin' for key 'username' in /home/anomakio/apparelgroup.anomak.co.in/po/register_user.php:22
+Stack trace:
+#0 /home/anomakio/apparelgroup.anomak.co.in/po/register_user.php(22): mysqli_stmt->execute()
+#1 {main}
+  thrown in /home/anomakio/apparelgroup.anomak.co.in/po/register_user.php on line 22
+[20-May-2026 05:27:55 UTC] PHP Fatal error:  Uncaught mysqli_sql_exception: Table 'anomakio_collection.vendor' doesn't exist in /home/anomakio/apparelgroup.anomak.co.in/po/procurement_api.php:131
+Stack trace:
+#0 /home/anomakio/apparelgroup.anomak.co.in/po/procurement_api.php(131): mysqli->query('SELECT * FROM v...')
+#1 {main}
+  thrown in /home/anomakio/apparelgroup.anomak.co.in/po/procurement_api.php on line 131
+[20-May-2026 05:30:11 UTC] PHP Fatal error:  Uncaught mysqli_sql_exception: Table 'anomakio_collection.vendor' doesn't exist in /home/anomakio/apparelgroup.anomak.co.in/po/procurement_api.php:90
+Stack trace:
+#0 /home/anomakio/apparelgroup.anomak.co.in/po/procurement_api.php(90): mysqli->prepare('INSERT INTO ven...')
+#1 {main}
+  thrown in /home/anomakio/apparelgroup.anomak.co.in/po/procurement_api.php on line 90
+[20-May-2026 05:30:11 UTC] PHP Fatal error:  Uncaught mysqli_sql_exception: Table 'anomakio_collection.vendor' doesn't exist in /home/anomakio/apparelgroup.anomak.co.in/po/procurement_api.php:131
+Stack trace:
+#0 /home/anomakio/apparelgroup.anomak.co.in/po/procurement_api.php(131): mysqli->query('SELECT * FROM v...')
+#1 {main}
+  thrown in /home/anomakio/apparelgroup.anomak.co.in/po/procurement_api.php on line 131
+[20-May-2026 05:30:18 UTC] PHP Fatal error:  Uncaught mysqli_sql_exception: Table 'anomakio_collection.vendor' doesn't exist in /home/anomakio/apparelgroup.anomak.co.in/po/procurement_api.php:131
+Stack trace:
+#0 /home/anomakio/apparelgroup.anomak.co.in/po/procurement_api.php(131): mysqli->query('SELECT * FROM v...')
+#1 {main}
+  thrown in /home/anomakio/apparelgroup.anomak.co.in/po/procurement_api.php on line 131
+[20-May-2026 06:15:04 UTC] PHP Warning:  Undefined array key "subtotal" in /home/anomakio/apparelgroup.anomak.co.in/po/procurement_api.php on line 34
+[20-May-2026 06:15:32 UTC] PHP Warning:  Undefined array key "subtotal" in /home/anomakio/apparelgroup.anomak.co.in/po/procurement_api.php on line 34
+[20-May-2026 06:15:36 UTC] PHP Warning:  Undefined array key "subtotal" in /home/anomakio/apparelgroup.anomak.co.in/po/procurement_api.php on line 34
+[20-May-2026 06:15:43 UTC] PHP Warning:  Undefined array key "subtotal" in /home/anomakio/apparelgroup.anomak.co.in/po/procurement_api.php on line 34
+[24-May-2026 07:15:31 UTC] PHP Fatal error:  Uncaught mysqli_sql_exception: Duplicate entry '123456789' for key 'po_number' in /home/anomakio/apparelgroup.anomak.co.in/po/procurement_api.php:64
+Stack trace:
+#0 /home/anomakio/apparelgroup.anomak.co.in/po/procurement_api.php(64): mysqli_stmt->execute()
+#1 {main}
+  thrown in /home/anomakio/apparelgroup.anomak.co.in/po/procurement_api.php on line 64
+[24-May-2026 07:15:45 UTC] PHP Fatal error:  Uncaught mysqli_sql_exception: Duplicate entry '123456789' for key 'po_number' in /home/anomakio/apparelgroup.anomak.co.in/po/procurement_api.php:64
+Stack trace:
+#0 /home/anomakio/apparelgroup.anomak.co.in/po/procurement_api.php(64): mysqli_stmt->execute()
+#1 {main}
+  thrown in /home/anomakio/apparelgroup.anomak.co.in/po/procurement_api.php on line 64
+[24-May-2026 07:15:50 UTC] PHP Fatal error:  Uncaught mysqli_sql_exception: Duplicate entry '123456789' for key 'po_number' in /home/anomakio/apparelgroup.anomak.co.in/po/procurement_api.php:64
+Stack trace:
+#0 /home/anomakio/apparelgroup.anomak.co.in/po/procurement_api.php(64): mysqli_stmt->execute()
+#1 {main}
+  thrown in /home/anomakio/apparelgroup.anomak.co.in/po/procurement_api.php on line 64
+[24-May-2026 07:15:56 UTC] PHP Fatal error:  Uncaught mysqli_sql_exception: Duplicate entry '123456789' for key 'po_number' in /home/anomakio/apparelgroup.anomak.co.in/po/procurement_api.php:64
+Stack trace:
+#0 /home/anomakio/apparelgroup.anomak.co.in/po/procurement_api.php(64): mysqli_stmt->execute()
+#1 {main}
+  thrown in /home/anomakio/apparelgroup.anomak.co.in/po/procurement_api.php on line 64
+[24-May-2026 10:11:03 UTC] PHP Fatal error:  Uncaught mysqli_sql_exception: Duplicate entry 'Test' for key 'company_name' in /home/anomakio/apparelgroup.anomak.co.in/po/procurement_api.php:110
+Stack trace:
+#0 /home/anomakio/apparelgroup.anomak.co.in/po/procurement_api.php(110): mysqli_stmt->execute()
+#1 {main}
+  thrown in /home/anomakio/apparelgroup.anomak.co.in/po/procurement_api.php on line 110
+[24-May-2026 10:11:12 UTC] PHP Fatal error:  Uncaught mysqli_sql_exception: Duplicate entry 'Test' for key 'company_name' in /home/anomakio/apparelgroup.anomak.co.in/po/procurement_api.php:110
+Stack trace:
+#0 /home/anomakio/apparelgroup.anomak.co.in/po/procurement_api.php(110): mysqli_stmt->execute()
+#1 {main}
+  thrown in /home/anomakio/apparelgroup.anomak.co.in/po/procurement_api.php on line 110
+[24-May-2026 10:11:18 UTC] PHP Fatal error:  Uncaught mysqli_sql_exception: Duplicate entry 'Test' for key 'company_name' in /home/anomakio/apparelgroup.anomak.co.in/po/procurement_api.php:110
+Stack trace:
+#0 /home/anomakio/apparelgroup.anomak.co.in/po/procurement_api.php(110): mysqli_stmt->execute()
+#1 {main}
+  thrown in /home/anomakio/apparelgroup.anomak.co.in/po/procurement_api.php on line 110
+[24-May-2026 10:11:19 UTC] PHP Fatal error:  Uncaught mysqli_sql_exception: Duplicate entry 'Test' for key 'company_name' in /home/anomakio/apparelgroup.anomak.co.in/po/procurement_api.php:110
+Stack trace:
+#0 /home/anomakio/apparelgroup.anomak.co.in/po/procurement_api.php(110): mysqli_stmt->execute()
+#1 {main}
+  thrown in /home/anomakio/apparelgroup.anomak.co.in/po/procurement_api.php on line 110
+[24-May-2026 10:11:20 UTC] PHP Fatal error:  Uncaught mysqli_sql_exception: Duplicate entry 'Test' for key 'company_name' in /home/anomakio/apparelgroup.anomak.co.in/po/procurement_api.php:110
+Stack trace:
+#0 /home/anomakio/apparelgroup.anomak.co.in/po/procurement_api.php(110): mysqli_stmt->execute()
+#1 {main}
+  thrown in /home/anomakio/apparelgroup.anomak.co.in/po/procurement_api.php on line 110
+[24-May-2026 10:11:20 UTC] PHP Fatal error:  Uncaught mysqli_sql_exception: Duplicate entry 'Test' for key 'company_name' in /home/anomakio/apparelgroup.anomak.co.in/po/procurement_api.php:110
+Stack trace:
+#0 /home/anomakio/apparelgroup.anomak.co.in/po/procurement_api.php(110): mysqli_stmt->execute()
+#1 {main}
+  thrown in /home/anomakio/apparelgroup.anomak.co.in/po/procurement_api.php on line 110
+[24-May-2026 10:11:20 UTC] PHP Fatal error:  Uncaught mysqli_sql_exception: Duplicate entry 'Test' for key 'company_name' in /home/anomakio/apparelgroup.anomak.co.in/po/procurement_api.php:110
+Stack trace:
+#0 /home/anomakio/apparelgroup.anomak.co.in/po/procurement_api.php(110): mysqli_stmt->execute()
+#1 {main}
+  thrown in /home/anomakio/apparelgroup.anomak.co.in/po/procurement_api.php on line 110
+[24-May-2026 10:11:22 UTC] PHP Fatal error:  Uncaught mysqli_sql_exception: Duplicate entry 'Test' for key 'company_name' in /home/anomakio/apparelgroup.anomak.co.in/po/procurement_api.php:110
+Stack trace:
+#0 /home/anomakio/apparelgroup.anomak.co.in/po/procurement_api.php(110): mysqli_stmt->execute()
+#1 {main}
+  thrown in /home/anomakio/apparelgroup.anomak.co.in/po/procurement_api.php on line 110
+[24-May-2026 10:11:22 UTC] PHP Fatal error:  Uncaught mysqli_sql_exception: Duplicate entry 'Test' for key 'company_name' in /home/anomakio/apparelgroup.anomak.co.in/po/procurement_api.php:110
+Stack trace:
+#0 /home/anomakio/apparelgroup.anomak.co.in/po/procurement_api.php(110): mysqli_stmt->execute()
+#1 {main}
+  thrown in /home/anomakio/apparelgroup.anomak.co.in/po/procurement_api.php on line 110
+[24-May-2026 10:11:22 UTC] PHP Fatal error:  Uncaught mysqli_sql_exception: Duplicate entry 'Test' for key 'company_name' in /home/anomakio/apparelgroup.anomak.co.in/po/procurement_api.php:110
+Stack trace:
+#0 /home/anomakio/apparelgroup.anomak.co.in/po/procurement_api.php(110): mysqli_stmt->execute()
+#1 {main}
+  thrown in /home/anomakio/apparelgroup.anomak.co.in/po/procurement_api.php on line 110
+[24-May-2026 10:11:24 UTC] PHP Fatal error:  Uncaught mysqli_sql_exception: Duplicate entry 'Test' for key 'company_name' in /home/anomakio/apparelgroup.anomak.co.in/po/procurement_api.php:110
+Stack trace:
+#0 /home/anomakio/apparelgroup.anomak.co.in/po/procurement_api.php(110): mysqli_stmt->execute()
+#1 {main}
+  thrown in /home/anomakio/apparelgroup.anomak.co.in/po/procurement_api.php on line 110
+[24-May-2026 10:11:24 UTC] PHP Fatal error:  Uncaught mysqli_sql_exception: Duplicate entry 'Test' for key 'company_name' in /home/anomakio/apparelgroup.anomak.co.in/po/procurement_api.php:110
+Stack trace:
+#0 /home/anomakio/apparelgroup.anomak.co.in/po/procurement_api.php(110): mysqli_stmt->execute()
+#1 {main}
+  thrown in /home/anomakio/apparelgroup.anomak.co.in/po/procurement_api.php on line 110
+[24-May-2026 10:11:24 UTC] PHP Fatal error:  Uncaught mysqli_sql_exception: Duplicate entry 'Test' for key 'company_name' in /home/anomakio/apparelgroup.anomak.co.in/po/procurement_api.php:110
+Stack trace:
+#0 /home/anomakio/apparelgroup.anomak.co.in/po/procurement_api.php(110): mysqli_stmt->execute()
+#1 {main}
+  thrown in /home/anomakio/apparelgroup.anomak.co.in/po/procurement_api.php on line 110
+[24-May-2026 10:11:46 UTC] PHP Fatal error:  Uncaught mysqli_sql_exception: Duplicate entry '12' for key 'username' in /home/anomakio/apparelgroup.anomak.co.in/po/procurement_api.php:129
+Stack trace:
+#0 /home/anomakio/apparelgroup.anomak.co.in/po/procurement_api.php(129): mysqli_stmt->execute()
+#1 {main}
+  thrown in /home/anomakio/apparelgroup.anomak.co.in/po/procurement_api.php on line 129

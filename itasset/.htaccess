@@ -1,0 +1,9 @@
+RewriteEngine On
+RewriteBase /apparel-erp/
+
+# Redirect to login if not logged in
+RewriteCond %{REQUEST_URI} !^/apparel-erp/login\.php$
+RewriteCond %{REQUEST_URI} !^/apparel-erp/api/
+RewriteCond %{REQUEST_URI} !^/apparel-erp/assets/
+RewriteCond %{REQUEST_URI} !^/apparel-erp/includes/
+RewriteRule ^(.*)$ index.php [L,QSA]

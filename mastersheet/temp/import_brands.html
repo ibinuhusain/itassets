@@ -1,0 +1,218 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Internal Tool | Bulk Brand Migration</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- SheetJS for Excel/CSV Parsing -->
+    <script src="https://cdn.jsdelivr.net/npm/xlsx@0.18.5/dist/xlsx.full.min.js"></script>
+    <style>
+        :root {
+            --primary-blue: #092e4e;
+            --accent-blue: #005b96;
+        }
+        body { background-color: #f4f6f9; font-family: 'Segoe UI', system-ui, sans-serif; padding: 60px 20px; }
+        .import-card { 
+            max-width: 700px; 
+            margin: auto; 
+            border: none; 
+            border-radius: 12px; 
+            box-shadow: 0 10px 25px rgba(0,0,0,0.1); 
+            background: #fff;
+        }
+        .card-header { 
+            background-color: var(--primary-blue); 
+            color: white; 
+            border-radius: 12px 12px 0 0 !important;
+            padding: 20px;
+        }
+        .log-window { 
+            height: 300px; 
+            overflow-y: auto; 
+            background: #1e293b; 
+            color: #38bdf8; 
+            padding: 15px; 
+            font-family: 'Cascadia Code', 'Courier New', monospace; 
+            font-size: 0.85rem; 
+            border-radius: 8px;
+            border: 1px solid #334155;
+        }
+        .log-entry { border-bottom: 1px solid #334155; padding: 2px 0; }
+        .log-success { color: #4ade80; }
+        .log-warn { color: #fbbf24; }
+        .log-error { color: #f87171; }
+        .stats-badge { font-size: 0.8rem; font-weight: 700; padding: 5px 12px; border-radius: 20px; }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <div class="card import-card">
+        <div class="card-header d-flex justify-content-between align-items-center">
+            <div>
+                <h4 class="mb-0">🚀 Brand Migration Tool</h4>
+                <small class="opacity-75">Secure Bulk Import with Duplicate Filtering</small>
+            </div>
+            <span class="badge bg-danger">DELETE AFTER USE</span>
+        </div>
+        
+        <div class="card-body p-4">
+            <div class="alert alert-info border-0 shadow-sm mb-4">
+                <strong>Formatting Instructions:</strong> Select a <code>.csv</code> or <code>.xlsx</code> file. Ensure your file has headers and follows this structure: <br>
+                • <strong>Column A:</strong> Barcode (Brand Code)<br>
+                • <strong>Column B:</strong> Brand Name<br><br>
+                <span class="badge bg-primary text-white">Note:</span> App Usernames will be set to the Barcode, and passwords will automatically generate as <code>App@barcode</code>.
+            </div>
+
+            <div class="row g-3 mb-4">
+                <div class="col-sm-9">
+                    <input type="file" id="fileInput" class="form-control" accept=".csv, .xlsx">
+                </div>
+                <div class="col-sm-3">
+                    <button class="btn btn-primary w-100 fw-bold" id="startBtn" onclick="startMigration()">Run Import</button>
+                </div>
+            </div>
+
+            <div id="statsSection" class="d-none mb-3 d-flex gap-2 justify-content-center">
+                <span class="stats-badge bg-primary text-white" id="statTotal">Total Rows: 0</span>
+                <span class="stats-badge bg-success text-white" id="statAdded">Added: 0</span>
+                <span class="stats-badge bg-warning text-dark" id="statDupes">Duplicates: 0</span>
+            </div>
+
+            <div id="logSection" class="d-none">
+                <div class="d-flex justify-content-between align-items-center mb-2">
+                    <h6 class="mb-0 fw-bold">Processing Log:</h6>
+                    <small class="text-muted" id="progressPercent">0%</small>
+                </div>
+                <div id="processLog" class="log-window"></div>
+            </div>
+        </div>
+
+        <div class="card-footer bg-light py-3 text-center">
+            <a href="index.html" class="text-decoration-none text-secondary small fw-bold">← Return to Main Dashboard</a>
+        </div>
+    </div>
+</div>
+
+<script>
+    const logBox = document.getElementById('processLog');
+    const startBtn = document.getElementById('startBtn');
+    
+    function addLog(msg, type = '') {
+        const div = document.createElement('div');
+        div.className = `log-entry ${type}`;
+        div.innerHTML = `<span class="text-secondary">[${new Date().toLocaleTimeString()}]</span> > ${msg}`;
+        logBox.appendChild(div);
+        logBox.scrollTop = logBox.scrollHeight;
+    }
+
+    async function startMigration() {
+        const fileInput = document.getElementById('fileInput');
+        const file = fileInput.files[0];
+        
+        if (!file) return alert("Please select a file first.");
+
+        // Reset UI
+        startBtn.disabled = true;
+        logBox.innerHTML = '';
+        document.getElementById('logSection').classList.remove('d-none');
+        document.getElementById('statsSection').classList.remove('d-none');
+        addLog("Reading file data...", "");
+
+        const reader = new FileReader();
+        reader.onload = async function(e) {
+            try {
+                const data = new Uint8Array(e.target.result);
+                const workbook = XLSX.read(data, {type: 'array'});
+                const sheet = workbook.Sheets[workbook.SheetNames[0]];
+                const jsonData = XLSX.utils.sheet_to_json(sheet, {header: 1});
+
+                // 1. Extract and Clean Data (Assuming row 0 is headers)
+                let extractedData = [];
+                for(let i = 1; i < jsonData.length; i++) {
+                    const row = jsonData[i];
+                    // Ensure both Column A and Column B have data
+                    if (row && row[0] && row[1]) {
+                        extractedData.push({
+                            code: row[0].toString().trim(),
+                            name: row[1].toString().trim()
+                        });
+                    }
+                }
+
+                // 2. DUPLICATE FILTERING (Based on Brand Code)
+                const uniqueItems = [];
+                const seenCodes = new Set();
+                
+                extractedData.forEach(item => {
+                    const upperCode = item.code.toUpperCase();
+                    if(!seenCodes.has(upperCode)) {
+                        seenCodes.add(upperCode);
+                        // Capitalize first letter of brand name for consistency
+                        item.name = item.name.charAt(0).toUpperCase() + item.name.slice(1);
+                        uniqueItems.push(item);
+                    }
+                });
+
+                const rawRowCount = extractedData.length;
+                const dupeCount = rawRowCount - uniqueItems.length;
+                
+                document.getElementById('statTotal').innerText = `Total Rows: ${rawRowCount}`;
+                document.getElementById('statDupes').innerText = `File Duplicates: ${dupeCount}`;
+                
+                addLog(`File analysis complete. Found ${uniqueItems.length} unique brands to process.`);
+                if(dupeCount > 0) addLog(`Filtered out ${dupeCount} redundant entries from your file.`, 'log-warn');
+
+                let successCount = 0;
+
+                // 3. Sequential API Processing
+                for (let i = 0; i < uniqueItems.length; i++) {
+                    const currentItem = uniqueItems[i];
+                    const percent = Math.round(((i + 1) / uniqueItems.length) * 100);
+                    document.getElementById('progressPercent').innerText = `${percent}%`;
+
+                    try {
+                        const response = await fetch('api/mapping.php', {
+                            method: 'POST',
+                            headers: { 'Content-Type': 'application/json' },
+                            body: JSON.stringify({ 
+                                action: 'add_brand', 
+                                brand_code: currentItem.code, 
+                                brand_name: currentItem.name 
+                            })
+                        });
+                        
+                        const result = await response.json();
+
+                        if (result.success) {
+                            successCount++;
+                            addLog(`Successfully added: ${currentItem.name} (${currentItem.code})`, 'log-success');
+                        } else if (result.message.toLowerCase().includes('exist')) {
+                            addLog(`Skipped: ${currentItem.name} (Already in Database)`, 'log-warn');
+                        } else {
+                            addLog(`Error: ${currentItem.name} - ${result.message}`, 'log-error');
+                        }
+                    } catch (err) {
+                        addLog(`Network Error on ${currentItem.name}`, 'log-error');
+                    }
+
+                    document.getElementById('statAdded').innerText = `DB Added: ${successCount}`;
+                }
+
+                addLog("MIGRATION FINISHED. Please verify your data in the dashboard and DELETE THIS FILE.", "fw-bold text-white");
+                alert("Import Process Complete!");
+
+            } catch (err) {
+                addLog(`FATAL ERROR: ${err.message}`, 'log-error');
+                console.error(err);
+            } finally {
+                startBtn.disabled = false;
+            }
+        };
+        reader.readAsArrayBuffer(file);
+    }
+</script>
+
+</body>
+</html>

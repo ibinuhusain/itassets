@@ -1,0 +1,27 @@
+[08-Apr-2026 11:53:01 UTC] PHP Warning:  require_once(../../includes/config.php): Failed to open stream: No such file or directory in /home/anomakio/apparelgroup.anomak.co.in/agent/api/save_digital_visit.php on line 7
+[08-Apr-2026 11:53:01 UTC] PHP Fatal error:  Uncaught Error: Failed opening required '../../includes/config.php' (include_path='.:/opt/cpanel/ea-php82/root/usr/share/pear') in /home/anomakio/apparelgroup.anomak.co.in/agent/api/save_digital_visit.php:7
+Stack trace:
+#0 {main}
+  thrown in /home/anomakio/apparelgroup.anomak.co.in/agent/api/save_digital_visit.php on line 7
+[08-Apr-2026 11:53:41 UTC] PHP Warning:  require_once(../../includes/config.php): Failed to open stream: No such file or directory in /home/anomakio/apparelgroup.anomak.co.in/agent/api/save_digital_visit.php on line 7
+[08-Apr-2026 11:53:41 UTC] PHP Fatal error:  Uncaught Error: Failed opening required '../../includes/config.php' (include_path='.:/opt/cpanel/ea-php82/root/usr/share/pear') in /home/anomakio/apparelgroup.anomak.co.in/agent/api/save_digital_visit.php:7
+Stack trace:
+#0 {main}
+  thrown in /home/anomakio/apparelgroup.anomak.co.in/agent/api/save_digital_visit.php on line 7
+[08-Apr-2026 11:54:01 UTC] PHP Warning:  require_once(../../includes/config.php): Failed to open stream: No such file or directory in /home/anomakio/apparelgroup.anomak.co.in/agent/api/save_digital_visit.php on line 7
+[08-Apr-2026 11:54:01 UTC] PHP Fatal error:  Uncaught Error: Failed opening required '../../includes/config.php' (include_path='.:/opt/cpanel/ea-php82/root/usr/share/pear') in /home/anomakio/apparelgroup.anomak.co.in/agent/api/save_digital_visit.php:7
+Stack trace:
+#0 {main}
+  thrown in /home/anomakio/apparelgroup.anomak.co.in/agent/api/save_digital_visit.php on line 7
+[08-Apr-2026 14:55:49 Asia/Riyadh] PHP Fatal error:  Uncaught Error: Call to undefined function getConnection() in /home/anomakio/apparelgroup.anomak.co.in/agent/api/save_digital_visit.php:10
+Stack trace:
+#0 {main}
+  thrown in /home/anomakio/apparelgroup.anomak.co.in/agent/api/save_digital_visit.php on line 10
+[24-May-2026 11:36:16 Asia/Riyadh] PHP Fatal error:  Uncaught mysqli_sql_exception: Too many connections in /home/anomakio/apparelgroup.anomak.co.in/agent/api/db.php:11
+Stack trace:
+#0 /home/anomakio/apparelgroup.anomak.co.in/agent/api/db.php(11): mysqli->__construct('localhost', 'anomakio_collec...', Object(SensitiveParameterValue), 'anomakio_collec...')
+#1 /home/anomakio/apparelgroup.anomak.co.in/agent/api/get_agent_balance.php(4): require_once('/home/anomakio/...')
+#2 {main}
+  thrown in /home/anomakio/apparelgroup.anomak.co.in/agent/api/db.php on line 11
+[24-May-2026 22:11:56 Asia/Riyadh] PHP Warning:  Undefined array key 1 in /home/anomakio/apparelgroup.anomak.co.in/agent/api/save_digital_visit.php on line 53
+[24-May-2026 22:11:56 Asia/Riyadh] PHP Deprecated:  base64_decode(): Passing null to parameter #1 ($string) of type string is deprecated in /home/anomakio/apparelgroup.anomak.co.in/agent/api/save_digital_visit.php on line 53

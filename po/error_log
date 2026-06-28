@@ -1,0 +1,13 @@
+[02-Jun-2026 10:25:29 UTC] PHP Fatal error:  Uncaught mysqli_sql_exception: Duplicate entry 'DSP-4024' for key 'dispatch_id' in /home/anomakio/apparelgroup.anomak.co.in/po/procurement_api.php:132
+Stack trace:
+#0 /home/anomakio/apparelgroup.anomak.co.in/po/procurement_api.php(132): mysqli_stmt->execute()
+#1 {main}
+  thrown in /home/anomakio/apparelgroup.anomak.co.in/po/procurement_api.php on line 132
+[02-Jun-2026 10:25:33 UTC] PHP Fatal error:  Uncaught mysqli_sql_exception: Duplicate entry 'DSP-7507' for key 'dispatch_id' in /home/anomakio/apparelgroup.anomak.co.in/po/procurement_api.php:132
+Stack trace:
+#0 /home/anomakio/apparelgroup.anomak.co.in/po/procurement_api.php(132): mysqli_stmt->execute()
+#1 {main}
+  thrown in /home/anomakio/apparelgroup.anomak.co.in/po/procurement_api.php on line 132
+[04-Jun-2026 16:46:18 UTC] PHP Parse error:  syntax error, unexpected token "`" in /home/anomakio/apparelgroup.anomak.co.in/po/import_routes.php on line 18
+[04-Jun-2026 16:46:21 UTC] PHP Parse error:  syntax error, unexpected token "`" in /home/anomakio/apparelgroup.anomak.co.in/po/import_routes.php on line 18
+[04-Jun-2026 16:46:27 UTC] PHP Parse error:  syntax error, unexpected token "`" in /home/anomakio/apparelgroup.anomak.co.in/po/import_routes.php on line 18

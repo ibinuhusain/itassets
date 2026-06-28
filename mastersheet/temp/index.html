@@ -1,0 +1,1161 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Retail Master Dashboard</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/xlsx@0.18.5/dist/xlsx.full.min.js"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0" rel="stylesheet">
+    
+    <style>
+        /* Enterprise Dark Theme Integration Tokens */
+        :root {
+            --bg-card: #13151a;
+            --border-color: rgba(255, 255, 255, 0.08);
+            --text-muted: #8a8f98;
+            --accent-blue: #3b82f6;
+            --accent-danger: #ef4444;
+            --bg-input: #1c1f26;
+            --success: #10b981;
+            --warning: #f59e0b;
+        }
+
+        body { 
+            background-color: #0b0c10; 
+            display: flex; 
+            height: 100vh; 
+            overflow: hidden; 
+            font-family: 'Segoe UI', Inter, sans-serif; 
+            color: #f3f4f6; 
+            margin: 0;
+        }
+        
+        /* Sidebar Navigation */
+        .sidebar { 
+            width: 280px; 
+            height: 100vh;
+            background-color: rgba(23, 25, 49, 0.95); 
+            color: #fff; 
+            display: flex; 
+            flex-direction: column; 
+            z-index: 100;
+            border-right: 1px solid var(--border-color);
+        }
+        .sidebar .nav-link { 
+            color: var(--text-muted); 
+            padding: 14px 24px; 
+            cursor: pointer; 
+            transition: all 0.2s; 
+            font-size: 0.95rem; 
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            text-decoration: none;
+        }
+        .sidebar .nav-link:hover { 
+            background-color: rgba(255, 255, 255, 0.05); 
+            color: #fff; 
+        }
+        .sidebar .nav-link.active {
+            background-color: rgba(99, 102, 241, 0.1);
+            color: var(--accent-blue);
+            font-weight: 600;
+        }
+        
+        /* Layout Scoping Container */
+        .main-content { 
+            flex-grow: 1; 
+            height: 100vh;
+            display: flex;
+            flex-direction: column;
+            overflow: hidden; 
+            width: calc(100% - 280px);
+        }
+        
+        .top-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 0 24px;
+            min-height: 70px;
+            background: var(--bg-card);
+            border-bottom: 1px solid var(--border-color);
+        }
+
+        .content {
+            flex: 1;
+            padding: 24px;
+            background: #0f0f1a;
+            overflow-y: auto;
+            width: 100%;
+            box-sizing: border-box;
+        }
+
+        #pageTitle { 
+            font-weight: 600; 
+            color: #ffffff; 
+            font-size: 1.5rem; 
+            letter-spacing: -0.5px; 
+        }
+        
+        /* Full Widescreen Dynamic Column Grids */
+        .mapping-workspace-grid {
+            display: grid;
+            grid-template-columns: 380px 1fr;
+            gap: 24px;
+            align-items: start;
+            width: 100%;
+        }
+
+        @media (max-width: 1200px) {
+            .mapping-workspace-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        .panel-card { 
+            background: var(--bg-card);
+            border: 1px solid var(--border-color); 
+            border-radius: 12px; 
+            padding: 24px; 
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.15);
+            margin-bottom: 24px;
+        }
+        
+        .panel-card h3 {
+            font-size: 14px;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            color: #fff;
+            margin-top: 0;
+            margin-bottom: 20px;
+            font-weight: 600;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        /* High-Density Bound Sticky Scroll Tables */
+        .table-scroll-container {
+            background: #16181f;
+            border: 1px solid var(--border-color);
+            border-radius: 8px;
+            overflow-x: auto;
+            max-height: 500px;
+            overflow-y: auto;
+        }
+
+        .table { margin-bottom: 0; width: 100%; border-collapse: collapse; }
+        .table thead th { 
+            position: sticky;
+            top: 0;
+            z-index: 10;
+            border-bottom: 1px solid var(--border-color) !important; 
+            background: #1c1f26 !important; 
+            color: var(--text-muted) !important; 
+            font-weight: 500; 
+            font-size: 0.75rem; 
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            padding: 14px 16px; 
+        }
+        .table tbody tr {
+            background-color: rgba(28, 31, 38, 0.4) !important;
+        }
+        .table tbody td { 
+            vertical-align: middle; 
+            border-bottom: 1px solid var(--border-color) !important; 
+            color: #e2e8f0 !important; 
+            background: transparent !important;
+            font-size: 0.85rem; 
+            padding: 14px 16px; 
+        }
+        .table tbody tr:hover td { background-color: rgba(255, 255, 255, 0.04) !important; }
+
+        /* Form Matrix Styling */
+        .form-control, .form-select { 
+            background-color: var(--bg-input) !important;
+            border: 1px solid var(--border-color) !important; 
+            color: #fff !important;
+            border-radius: 8px; 
+            padding: 10px 14px; 
+            font-size: 0.9rem; 
+            box-shadow: none; 
+        }
+        .form-control:focus, .form-select:focus { 
+            background-color: var(--bg-input) !important;
+            border-color: var(--accent-blue) !important; 
+            box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.15) !important;
+            outline: none;
+        }
+        .form-label { font-weight: 500; color: var(--text-muted); font-size: 0.8rem; text-transform: uppercase; margin-bottom: 6px; }
+
+        /* Subnav Header Matrix Controls */
+        .table-header-bar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 20px;
+            gap: 16px;
+            flex-wrap: wrap;
+        }
+        .table-header-bar h2 { margin: 0; font-size: 16px; color: #fff; font-weight: 600; }
+
+        .search-wrapper {
+            position: relative;
+            width: 100%;
+            max-width: 320px;
+        }
+        .search-wrapper .material-symbols-outlined {
+            position: absolute;
+            left: 12px;
+            top: 50%;
+            transform: translateY(-50%);
+            color: var(--text-muted);
+            font-size: 20px;
+        }
+        .search-input {
+            width: 100%;
+            background: var(--bg-input);
+            border: 1px solid var(--border-color);
+            color: #fff;
+            padding: 10px 12px 10px 40px;
+            border-radius: 8px;
+            font-size: 14px;
+            box-sizing: border-box;
+        }
+
+        /* Combined Layout Dynamic Navigation Subtabs */
+        .mapping-tabs {
+            display: flex;
+            gap: 8px;
+            border-bottom: 1px solid var(--border-color);
+            margin-bottom: 20px;
+            padding-bottom: 8px;
+        }
+        .map-tab-btn {
+            background: transparent;
+            border: none;
+            color: var(--text-muted);
+            padding: 8px 16px;
+            font-size: 13px;
+            font-weight: 600;
+            border-radius: 6px;
+            cursor: pointer;
+            transition: all 0.2s;
+            display: flex;
+            align-items: center;
+            gap: 6px;
+        }
+        .map-tab-btn:hover { background: rgba(255, 255, 255, 0.03); color: #fff; }
+        .map-tab-btn.active { background: rgba(59, 130, 246, 0.1); color: var(--accent-blue); }
+
+        /* Dual Listbox Layout Configuration */
+        .dual-listbox-container {
+            display: grid;
+            grid-template-columns: 1fr 130px 1fr;
+            gap: 16px;
+            align-items: center;
+            width: 100%;
+        }
+        @media (max-width: 768px) {
+            .dual-listbox-container { grid-template-columns: 1fr; }
+            .control-action-arrows { flex-direction: row !important; }
+        }
+        .dual-listbox select { height: 320px; overflow-y: auto; background: var(--bg-input); border: 1px solid var(--border-color); border-radius: 8px; color: #fff; width: 100%; padding: 6px; }
+        .dual-listbox option { padding: 10px 14px; border-radius: 6px; margin-bottom: 2px; color: #d1d5db; font-size: 0.85rem; }
+        .dual-listbox option:hover { background-color: rgba(255, 255, 255, 0.02); }
+        .dual-listbox option:checked { background-color: var(--accent-blue) !important; color: #fff !important; }
+
+        /* System Action Utilities */
+        .btn { 
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 6px;
+            padding: 10px 16px;
+            border-radius: 8px;
+            font-weight: 500;
+            font-size: 13px;
+            cursor: pointer;
+            border: none;
+            transition: all 0.2s;
+        }
+        .btn-primary { background-color: var(--accent-blue); color: white; }
+        .btn-primary:hover { background-color: #2563eb; }
+        
+        .btn-action-delete { background: rgba(239, 68, 68, 0.1); color: var(--accent-danger); border: 1px solid rgba(239, 68, 68, 0.2); padding: 4px 12px; font-size: 0.8rem; border-radius: 6px; transition: all 0.2s; }
+        .btn-action-delete:hover { background: var(--accent-danger); color: white; }
+        
+        .btn-action-warning { background: rgba(245, 158, 11, 0.1); color: var(--warning); border: 1px solid rgba(245, 158, 11, 0.2); padding: 4px 12px; font-size: 0.8rem; border-radius: 6px; transition: all 0.2s; }
+        .btn-action-warning:hover { background: var(--warning); color: #000; }
+
+        .btn-action-success { background: rgba(16, 185, 129, 0.1); color: var(--success); border: 1px solid rgba(16, 185, 129, 0.2); padding: 4px 12px; font-size: 0.8rem; border-radius: 6px; }
+        .btn-action-success:hover { background: var(--success); color: white; }
+
+        .badge-role { background-color: rgba(99, 102, 241, 0.15); color: #a5b4fc; padding: 4px 10px; border-radius: 6px; font-weight: 600; font-size: 0.75rem; }
+        .badge-status { background-color: rgba(16, 185, 129, 0.15); color: #10b981; padding: 4px 10px; border-radius: 6px; font-weight: 600; font-size: 0.75rem; }
+        .badge-cyan { background-color: rgba(6, 182, 212, 0.15); color: #22d3ee; padding: 4px 10px; border-radius: 6px; font-weight: 600; font-size: 0.75rem; }
+
+        .text-pinkish { color: #f43f5e; font-family: monospace; font-size: 0.85rem; font-weight: 500; }
+        .upload-confirm-box { background-color: rgba(59, 130, 246, 0.02); border: 2px dashed var(--border-color); border-radius: 8px; padding: 24px; text-align: center; }
+        
+        .table-scroll-container::-webkit-scrollbar, .dual-listbox select::-webkit-scrollbar { width: 6px; height: 6px; }
+        .table-scroll-container::-webkit-scrollbar-track, .dual-listbox select::-webkit-scrollbar-track { background: transparent; }
+        .table-scroll-container::-webkit-scrollbar-thumb, .dual-listbox select::-webkit-scrollbar-thumb { background: rgba(255, 255, 255, 0.12); border-radius: 4px; }
+    </style>
+</head>
+<body>
+
+    <script>
+        const token = localStorage.getItem('authToken');
+        const currentRole = localStorage.getItem('userRole');
+        const currentUserName = localStorage.getItem('userName');
+        if (!token || !currentRole) window.location.href = 'login.html';
+    </script>
+
+    <div class="sidebar" id="sidebar">
+        <div class="p-4 mb-2 border-bottom border-secondary text-center">
+            <h4 class="mb-0 text-white fw-bold tracking-wide">Price Label App</h4>
+            <div class="mt-2 text-info small fw-bold" id="displayUserName"></div>
+            <div class="text-light small" id="displayUserRole"></div>
+        </div>
+        <ul class="nav flex-column mb-auto mt-2" id="navMenu"></ul>
+        <div class="p-4 border-top border-secondary">
+            <button class="btn btn-outline-light w-100 btn-sm fw-bold" style="border-radius: 6px;" onclick="logout()">Logout Securely</button>
+        </div>
+    </div>
+
+    <div class="main-content">
+        <div class="top-header">
+            <div class="d-flex align-items-center gap-3">
+                <h3 id="pageTitle" class="mb-0">Dashboard</h3>
+            </div>
+            <div>
+                <button id="globalPrintBtn" class="btn btn-primary d-none bg-white text-dark border" onclick="window.print()">🖨️ Print System Report</button>
+            </div>
+        </div>
+        
+        <div class="content" id="appContainer"></div>
+    </div>
+
+    <script>
+        document.getElementById('displayUserName').innerText = `@${currentUserName}`;
+        document.getElementById('displayUserRole').innerText = `Role: ${currentRole.toUpperCase()}`;
+        if(currentRole === 'admin') document.getElementById('globalPrintBtn').classList.remove('d-none');
+
+        const menus = {
+            admin: [
+                { id: 'admin-logs', title: 'Upload Logs & Brands', icon: '📁' },
+                { id: 'admin-upload', title: 'Master Data Upload', icon: '📤' },
+                { id: 'admin-unified-mapping', title: 'Global Assignments Hub', icon: '🔗' },
+                { id: 'admin-users', title: 'User Management', icon: '👤' },
+                { id: 'admin-settings', title: 'System Settings', icon: '⚙️' }
+            ],
+            merchant: [
+                { id: 'merch-upload', title: 'Master Data Upload', icon: '📤' }
+            ]
+        };
+
+        let allUsers = [], currentUsersPage = 1, usersSearchTerm = '';
+        let allBrands = [], currentBrandsPage = 1, brandsSearchTerm = '';
+        const itemsPerPage = 10;
+        
+        let rawMerchants = [], rawMappings = [];
+        let rawAppUsers = [], rawAppUserBrands = []; 
+        
+        let pendingCSVData = null;
+        let pendingFileName = null;
+        let parsedTotalRows = 0;
+        let parsedTotalBrands = 0;
+
+        function showTempAlert(elementId, message, isSuccess) {
+            const alertBox = document.getElementById(elementId);
+            if(!alertBox) return;
+            alertBox.className = `alert alert-${isSuccess ? 'success' : 'danger'} mb-3 py-2`;
+            alertBox.style.fontSize = "13px";
+            alertBox.innerText = message;
+            alertBox.classList.remove('d-none');
+            if(isSuccess) setTimeout(() => alertBox.classList.add('d-none'), 3500);
+        }
+
+        function renderMenu() {
+            const nav = document.getElementById('navMenu');
+            if(!menus[currentRole]) return logout(); 
+            menus[currentRole].forEach((item, index) => {
+                const li = document.createElement('li');
+                li.style.listStyle = "none";
+                li.innerHTML = `<a class="nav-link ${index === 0 ? 'active' : ''}" onclick="navigate('${item.id}', this)"><span class="me-2">${item.icon}</span> ${item.title}</a>`;
+                nav.appendChild(li);
+            });
+            navigate(menus[currentRole][0].id, nav.querySelector('.nav-link')); 
+        }
+
+        function navigate(viewId, element) {
+            document.querySelectorAll('.nav-link').forEach(el => el.classList.remove('active'));
+            if(element) element.classList.add('active');
+            
+            const container = document.getElementById('appContainer');
+            const title = document.getElementById('pageTitle');
+
+            // --- VIEW: UPLOAD LOGS & BRANDS ---
+            if (viewId === 'admin-logs') {
+                title.innerText = "Merchant Upload Logs & Brands";
+                container.innerHTML = `
+                    <div class="mapping-workspace-grid">
+                        <div class="panel-card">
+                            <h3><span class="material-symbols-outlined" style="color:var(--accent-blue)">add_circle</span> Create Brand</h3>
+                            <div class="form-group">
+                                <label class="form-label">Single Brand Entry Name</label>
+                                <input type="text" id="newBrandName" class="form-control mb-3" placeholder="e.g. Skechers">
+                                <button class="btn btn-primary w-100" onclick="addBrand()">Save Brand Identifier</button>
+                            </div>
+                            <small class="d-block mt-3" style="font-size:12px; font-weight:500; color:var(--warning); line-height:1.4;">App User security signatures will auto-resolve access structures down via authorization routines.</small>
+                        </div>
+                        
+                        <div class="panel-card">
+                            <div class="table-header-bar">
+                                <h2>Global Brands Directory</h2>
+                                <div class="search-wrapper">
+                                    <span class="material-symbols-outlined">search</span>
+                                    <input type="text" id="adminBrandSearch" class="search-input" placeholder="Filter global directory..." onkeyup="handleBrandSearch(this.value)">
+                                </div>
+                            </div>
+                            <div class="table-scroll-container">
+                                <table class="table">
+                                    <thead><tr><th style="width: 80px;">ID</th><th>Brand Profile Name</th></tr></thead>
+                                    <tbody id="brandTableBody"><tr><td colspan="2" class="text-center py-4">Loading system definitions...</td></tr></tbody>
+                                </table>
+                            </div>
+                            <div class="d-flex justify-content-between align-items-center mt-3">
+                                <small id="brandPageInfo" class="text-muted font-monospace" style="font-size:12px;"></small>
+                                <div class="d-flex gap-1">
+                                    <button class="btn btn-outline-secondary bg-white btn-sm" style="padding:2px 8px;" onclick="changeBrandPage(-1)">&lt;</button>
+                                    <button class="btn btn-outline-secondary bg-white btn-sm" style="padding:2px 8px;" onclick="changeBrandPage(1)">&gt;</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="panel-card mt-2">
+                        <div class="table-header-bar">
+                            <h2>System Upload History Log Suite</h2>
+                            <button class="btn btn-primary btn-sm" onclick="window.location.href='api/logs.php?action=export_all'">⬇️ Export Combined Master Data</button>
+                        </div>
+                        <div class="table-scroll-container">
+                            <table class="table">
+                                <thead><tr><th>Timestamp</th><th>Merchant Owner</th><th>Items Processed</th><th>System File Name</th><th>Action Link</th></tr></thead>
+                                <tbody id="logsTableBody"><tr><td colspan="5" class="text-center py-4">Loading transaction buffers...</td></tr></tbody>
+                            </table>
+                        </div>
+                    </div>`;
+                fetchLogsAndBrands();
+            }
+            // --- VIEW: MASTER DATA UPLOAD ---
+            else if (viewId === 'admin-upload') {
+                title.innerText = "Admin Master Data Upload";
+                container.innerHTML = `
+                    <div class="panel-card" style="max-width: 900px; margin: 0 auto;">
+                        <h3><span class="material-symbols-outlined" style="color:var(--accent-blue)">upload_file</span> Data Injection Port</h3>
+                        <div id="uploadAlert" class="alert d-none"></div>
+                        
+                        <form id="uploadForm" onsubmit="processFileLocally(event)">
+                            <div class="row g-3">
+                                <div class="col-md-6">
+                                    <label class="form-label">Target Destination Merchant Profile</label>
+                                    <select id="adminUploadMerchant" class="form-select" required>
+                                        <option value="" disabled selected>Loading merchant entries...</option>
+                                    </select>
+                                </div>
+                                <div class="col-md-6">
+                                    <label class="form-label">Select Master Spreadsheet Source (.csv, .xlsx)</label>
+                                    <input type="file" id="masterCsvFile" class="form-control" accept=".csv, application/vnd.openxmlformats-officedocument.spreadsheetml.sheet, application/vnd.ms-excel" required>
+                                </div>
+                                <div class="col-12 text-end mt-3">
+                                    <button type="submit" id="readBtn" class="btn btn-primary px-4">Analyze Target Sheet</button>
+                                </div>
+                            </div>
+                        </form>
+
+                        <div id="uploadConfirmBox" class="upload-confirm-box d-none flex-column align-items-center mt-4">
+                            <h4 class="text-white mb-2" style="font-size:16px;">Array Bounds Verification Complete</h4>
+                            <p id="uploadStatsText" class="text-muted mb-3" style="font-size:13px;"></p>
+                            <div class="d-flex gap-2">
+                                <button class="btn btn-success" id="confirmUploadBtn" onclick="executeUpload()">Commit to Database</button>
+                                <button class="btn btn-danger" onclick="cancelUpload()">Drop Buffer</button>
+                            </div>
+                        </div>
+                    </div>`;
+                fetchMerchantsForAdminUpload();
+            }
+            // --- VIEW: COMBINED ASSIGNMENTS HUB (MERCHANT & AGENT) ---
+            else if (viewId === 'admin-unified-mapping') {
+                title.innerText = "Global Assignments Hub";
+                container.innerHTML = `
+                    <div class="mapping-tabs">
+                        <button class="map-tab-btn active" id="tabMerchantBtn" onclick="switchMappingMode('merchant')"><span class="material-symbols-outlined" style="font-size:18px; vertical-align:middle;">storefront</span> Merchant Mapping Matrix</button>
+                        <button class="map-tab-btn" id="tabAgentBtn" onclick="switchMappingMode('agent')"><span class="material-symbols-outlined" style="font-size:18px; vertical-align:middle;">badge</span> Field Agent Clearance Scope</button>
+                    </div>
+
+                    <div class="mapping-workspace-grid">
+                        <div class="panel-card">
+                            <div id="merchantSelectContainer">
+                                <h3><span class="material-symbols-outlined" style="color:var(--accent-blue)">storefront</span> Target Merchant Account</h3>
+                                <div class="form-group mb-0">
+                                    <label class="form-label">Active Merchant Profiles</label>
+                                    <select id="mappingMerchantSelect" class="form-select" onchange="renderDualListBox()"><option>Loading secure mapping channels...</option></select>
+                                </div>
+                            </div>
+                            
+                            <div id="agentSelectContainer" class="d-none">
+                                <h3><span class="material-symbols-outlined" style="color:var(--accent-blue)">badge</span> Target Field Agent Account</h3>
+                                <div class="form-group mb-0">
+                                    <label class="form-label">Active Agent Profiles</label>
+                                    <select id="agentMappingUserSelect" class="form-select" onchange="renderAgentDualListBox()"><option>Loading terminal field links...</option></select>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="panel-card">
+                            <div id="merchantListBoxWrapper" class="dual-listbox-container dual-listbox">
+                                <div>
+                                    <div class="form-label">Global Unassigned Brand Catalog</div>
+                                    <select multiple id="availableBrandsBox" class="form-select"></select>
+                                </div>
+                                <div class="d-flex flex-column gap-2 justify-content-center align-items-center control-action-arrows">
+                                    <button class="btn btn-primary w-100 btn-sm" onclick="moveBrands('right')">Assign <span class="material-symbols-outlined" style="font-size:14px; vertical-align:middle;">chevron_right</span></button>
+                                    <button class="btn btn-danger w-100 btn-sm" onclick="moveBrands('left')"><span class="material-symbols-outlined" style="font-size:14px; vertical-align:middle;">chevron_left</span> Remove</button>
+                                </div>
+                                <div>
+                                    <div class="form-label">Active Assigned Brand Scopes</div>
+                                    <select multiple id="assignedBrandsBox" class="form-select"></select>
+                                </div>
+                            </div>
+
+                            <div id="agentListBoxWrapper" class="dual-listbox-container dual-listbox d-none">
+                                <div>
+                                    <div class="form-label">Global Catalog Library</div>
+                                    <select multiple id="availableAgentBrandsBox" class="form-select"></select>
+                                </div>
+                                <div class="d-flex flex-column gap-2 justify-content-center align-items-center control-action-arrows">
+                                    <button class="btn btn-primary w-100 btn-sm" onclick="moveAgentBrands('right')">Authorize <span class="material-symbols-outlined" style="font-size:14px; vertical-align:middle;">chevron_right</span></button>
+                                    <button class="btn btn-danger w-100 btn-sm" onclick="moveAgentBrands('left')"><span class="material-symbols-outlined" style="font-size:14px; vertical-align:middle;">chevron_left</span> Revoke</button>
+                                </div>
+                                <div>
+                                    <div class="form-label">Live Device Active Scope Clearances</div>
+                                    <select multiple id="assignedAgentBrandsBox" class="form-select"></select>
+                                </div>
+                            </div>
+                        </div>
+                    </div>`;
+                fetchMappings();
+            }
+            // --- VIEW: USER MANAGEMENT ---
+            else if (viewId === 'admin-users') {
+                title.innerText = "User Management Console";
+                container.innerHTML = `
+                    <div class="mapping-workspace-grid">
+                        <div class="panel-card">
+                            <h3><span class="material-symbols-outlined" style="color:var(--accent-blue)">person_add</span> Provision Profile</h3>
+                            <div id="userAlert" class="alert d-none"></div>
+                            <form id="createUserForm" onsubmit="createUser(event)">
+                                <div class="form-group mb-3"><label class="form-label">Username Handle</label><input type="text" id="newUsername" class="form-control" placeholder="e.g. agent55" required></div>
+                                <div class="form-group mb-3"><label class="form-label">Security Password</label><input type="password" id="newPassword" class="form-control" placeholder="••••••••" required></div>
+                                <div class="form-group mb-4">
+                                    <label class="form-label">System Security Group Role</label>
+                                    <select id="newRole" class="form-select" required>
+                                        <option value="" disabled selected>Select Role Matrix...</option>
+                                        <option value="admin">System Administrator</option>
+                                        <option value="merchant">Merchant Group Owner</option>
+                                        <option value="app_user">Field Auditor (Agent)</option>
+                                    </select>
+                                </div>
+                                <button type="submit" id="createUserBtn" class="btn btn-primary w-100">Create Access Credentials</button>
+                            </form>
+                        </div>
+                        
+                        <div class="panel-card">
+                            <div class="table-header-bar">
+                                <h2>Active Security Access Logs</h2>
+                                <div class="search-wrapper">
+                                    <span class="material-symbols-outlined">search</span>
+                                    <input type="text" class="search-input" placeholder="Search profiles..." onkeyup="handleUserSearch(this.value)">
+                                </div>
+                            </div>
+                            <div class="table-scroll-container">
+                                <table class="table">
+                                    <thead><tr><th style="width:60px;">ID</th><th>User Reference Handle</th><th>Security Group</th><th>State Status</th><th style="text-align:right;">Security Controls</th></tr></thead>
+                                    <tbody id="userTableBody"><tr><td colspan="5" class="text-center py-4">Loading core identities...</td></tr></tbody>
+                                </table>
+                            </div>
+                            <div class="d-flex justify-content-between align-items-center mt-3">
+                                <small id="userPageInfo" class="text-muted font-monospace" style="font-size:12px;"></small>
+                                <div class="d-flex gap-2">
+                                    <button class="btn btn-outline-secondary bg-white btn-sm" style="padding:2px 10px;" onclick="changeUserPage(-1)">&lt; Prev</button>
+                                    <button class="btn btn-outline-secondary bg-white btn-sm" style="padding:2px 10px;" onclick="changeUserPage(1)">Next &gt;</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>`;
+                fetchUsers();
+            }
+            // --- VIEW: SYSTEM SETTINGS ---
+            else if (viewId === 'admin-settings') {
+                title.innerText = "System Global Settings Configuration";
+                container.innerHTML = `
+                    <div class="panel-card" style="max-width: 500px;">
+                        <h3><span class="material-symbols-outlined" style="color:var(--accent-blue)">shield</span> Global Lifecycles</h3>
+                        <div id="settingsAlert" class="alert d-none"></div>
+                        <div class="form-group mb-4">
+                            <label class="form-label">Master Records Frame Persistence Duration (Days)</label>
+                            <input type="number" id="gracePeriodInput" class="form-control" min="1">
+                        </div>
+                        <button class="btn btn-primary w-100" onclick="saveSettings(this)">Write Configuration State</button>
+                    </div>`;
+                fetchSettings();
+            }
+            // --- VIEW: MERCHANT WORKSPACE ONLY OVERLAY ---
+            else if (viewId === 'merch-upload') {
+                title.innerText = "Master Sheet Workspace Control";
+                container.innerHTML = `
+                    <div class="panel-card">
+                        <h3><span class="material-symbols-outlined" style="color:var(--success)">verified</span> Account Clearances Matrix</h3>
+                        <div id="merchantBrandsList" class="d-flex flex-wrap gap-2"><span class="text-muted small">Mapping authorization structures...</span></div>
+                    </div>
+                    
+                    <div class="panel-card">
+                        <h3><span class="material-symbols-outlined" style="color:var(--accent-blue)">cloud_upload</span> Stage Updated Log Asset</h3>
+                        <div id="uploadAlert" class="alert d-none"></div>
+                        <form id="uploadForm" onsubmit="processFileLocally(event)">
+                            <div class="d-flex gap-3 align-items-center flex-wrap">
+                                <input type="file" id="masterCsvFile" class="form-control" style="max-width:400px;" accept=".csv, application/vnd.openxmlformats-officedocument.spreadsheetml.sheet, application/vnd.ms-excel" required>
+                                <button type="submit" id="readBtn" class="btn btn-primary">Process Matrix Parse</button>
+                            </div>
+                        </form>
+
+                        <div id="uploadConfirmBox" class="upload-confirm-box d-none flex-column align-items-center mt-3">
+                            <h4 class="text-white mb-2" style="font-size:15px;">Local Parsing Complete</h4>
+                            <p id="uploadStatsText" class="text-muted mb-3" style="font-size:13px;"></p>
+                            <div class="d-flex gap-2">
+                                <button class="btn btn-success btn-sm" id="confirmUploadBtn" onclick="executeUpload()">Overwrite Engine Stack</button>
+                                <button class="btn btn-outline-secondary btn-sm bg-white text-dark" onclick="cancelUpload()">Abort</button>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="panel-card">
+                        <div class="table-header-bar">
+                            <div class="d-flex align-items-center gap-2">
+                                <span class="fw-bold" style="font-size:15px;">Active Master Grid Workspace</span>
+                                <span class="badge bg-dark text-white border" id="activeDataStats">Records: 0</span>
+                            </div>
+                            <div class="d-flex gap-2">
+                                <input type="text" id="searchBox" class="form-control form-control-sm" placeholder="Search item barcode..." onchange="searchItems()">
+                                <button class="btn btn-success btn-sm text-nowrap" onclick="downloadActiveSheet()">⬇️ Download CSV</button>
+                            </div>
+                        </div>
+                        <div class="table-scroll-container">
+                            <table class="table">
+                                <thead><tr><th>Item Barcode ID</th><th>Description Field Specification</th><th>Location Space</th><th>Pricing Level Mapping (Was/Now)</th><th>Expiration Metric</th></tr></thead>
+                                <tbody id="itemsTableBody"><tr><td colspan="5" class="text-center py-4">Waiting on stack execution loop...</td></tr></tbody>
+                            </table>
+                        </div>
+                        <div class="d-flex justify-content-between align-items-center mt-3">
+                            <small id="paginationInfo" class="text-muted font-monospace" style="font-size:12px;">Frame index: 1</small>
+                            <div class="d-flex gap-2">
+                                <button class="btn btn-outline-secondary bg-white btn-sm" id="prevPageBtn" onclick="changeItemPage(-1)">Prev</button>
+                                <button class="btn btn-outline-secondary bg-white btn-sm" id="nextPageBtn" onclick="changeItemPage(1)">Next</button>
+                            </div>
+                        </div>
+                    </div>`;
+                fetchMerchantAssignments(); 
+                fetchMasterItems(1);
+            }
+        }
+
+        // --- SUBTAB ROUTER SWITCH ENGINE ---
+        function switchMappingMode(mode) {
+            document.querySelectorAll('.map-tab-btn').forEach(btn => btn.classList.remove('active'));
+            
+            const tabMerchantBtn = document.getElementById('tabMerchantBtn');
+            const tabAgentBtn = document.getElementById('tabAgentBtn');
+            const merchantSelectContainer = document.getElementById('merchantSelectContainer');
+            const agentSelectContainer = document.getElementById('agentSelectContainer');
+            const merchantListBoxWrapper = document.getElementById('merchantListBoxWrapper');
+            const agentListBoxWrapper = document.getElementById('agentListBoxWrapper');
+
+            if (mode === 'merchant') {
+                tabMerchantBtn.classList.add('active');
+                merchantSelectContainer.classList.remove('d-none');
+                merchantListBoxWrapper.classList.remove('d-none');
+                agentSelectContainer.classList.add('d-none');
+                agentListBoxWrapper.classList.add('d-none');
+                if (document.getElementById('mappingMerchantSelect').value) renderDualListBox();
+            } else {
+                tabAgentBtn.classList.add('active');
+                agentSelectContainer.classList.remove('d-none');
+                agentListBoxWrapper.classList.remove('d-none');
+                merchantSelectContainer.classList.add('d-none');
+                merchantListBoxWrapper.classList.add('d-none');
+                if (document.getElementById('agentMappingUserSelect').value) renderAgentDualListBox();
+            }
+        }
+
+        // --- PIPELINE CONTROLLERS LOGIC ---
+        async function fetchLogsAndBrands() {
+            try {
+                const bRes = await fetch('api/mapping.php');
+                const bData = await bRes.json();
+                if(bData.success) {
+                    allBrands = bData.brands;
+                    if(document.getElementById('brandTableBody')) renderBrands();
+                }
+
+                const response = await fetch('api/logs.php');
+                const result = await response.json();
+                const tbody = document.getElementById('logsTableBody');
+                if(!tbody) return;
+                
+                let logsHtml = '';
+                if (result.success && result.data.length > 0) {
+                    result.data.forEach(log => {
+                        logsHtml += `<tr>
+                            <td class="text-muted">${log.uploaded_at}</td>
+                            <td><strong class="text-white">${log.merchant_name || 'Unknown'}</strong></td>
+                            <td><span class="badge-cyan">${log.total_items} items</span></td>
+                            <td><span class="text-pinkish">${log.filename}</span></td>
+                            <td><button class="btn-action-success btn-sm" onclick="downloadMerchantData('${log.merchant_name}')">Download CSV</button></td>
+                        </tr>`;
+                    });
+                } else logsHtml = '<tr><td colspan="5" class="text-center py-4 text-muted">No uploads recorded in logs.</td></tr>';
+                tbody.innerHTML = logsHtml;
+            } catch (e) { if(document.getElementById('logsTableBody')) document.getElementById('logsTableBody').innerHTML = '<tr><td colspan="5" class="text-danger text-center">Error reading data.</td></tr>'; }
+        }
+
+        function handleBrandSearch(term) { brandsSearchTerm = term.toLowerCase(); currentBrandsPage = 1; renderBrands(); }
+        function changeBrandPage(dir) { currentBrandsPage += dir; renderBrands(); }
+
+        function renderBrands() {
+            const filtered = allBrands.filter(b => b.name.toLowerCase().includes(brandsSearchTerm));
+            const totalPages = Math.ceil(filtered.length / itemsPerPage) || 1;
+            if(currentBrandsPage < 1) currentBrandsPage = 1;
+            if(currentBrandsPage > totalPages) currentBrandsPage = totalPages;
+
+            const start = (currentBrandsPage - 1) * itemsPerPage;
+            const pageData = filtered.slice(start, start + itemsPerPage);
+
+            let html = '';
+            if(pageData.length === 0) html = '<tr><td colspan="2" class="text-center text-muted py-4">No matching brands.</td></tr>';
+            else pageData.forEach(b => { html += `<tr><td class="text-muted">${b.id}</td><td><strong class="text-white">${b.name}</strong></td></tr>`; });
+            
+            document.getElementById('brandTableBody').innerHTML = html;
+            document.getElementById('brandPageInfo').innerText = `Page ${currentBrandsPage} of ${totalPages} (Total: ${filtered.length})`;
+        }
+
+        async function fetchUsers() {
+            try {
+                const response = await fetch('api/users.php');
+                const result = await response.json();
+                if (result.success) { allUsers = result.data; renderUsers(); }
+            } catch (e) {}
+        }
+
+        function handleUserSearch(term) { usersSearchTerm = term.toLowerCase(); currentUsersPage = 1; renderUsers(); }
+        function changeUserPage(dir) { currentUsersPage += dir; renderUsers(); }
+
+        function renderUsers() {
+            const filtered = allUsers.filter(u => u.username.toLowerCase().includes(usersSearchTerm) || u.role.toLowerCase().includes(usersSearchTerm));
+            const totalPages = Math.ceil(filtered.length / itemsPerPage) || 1;
+            if(currentUsersPage < 1) currentUsersPage = 1;
+            if(currentUsersPage > totalPages) currentUsersPage = totalPages;
+
+            const start = (currentUsersPage - 1) * itemsPerPage;
+            const pageData = filtered.slice(start, start + itemsPerPage);
+
+            let html = '';
+            if(pageData.length === 0) {
+                html = '<tr><td colspan="5" class="text-center py-4 text-muted">No users found matching search fields.</td></tr>';
+            } else {
+                pageData.forEach(user => {
+                    const isMe = user.username === currentUserName;
+                    const displayRole = user.role.split('_').map(w => w.charAt(0).toUpperCase() + w.slice(1)).join(' ');
+                    
+                    html += `<tr>
+                        <td class="text-muted">${user.id}</td>
+                        <td><strong class="text-white">${user.username}</strong></td>
+                        <td><span class="badge-role">${displayRole}</span></td>
+                        <td><span class="badge-status">${user.status}</span></td>
+                        <td>
+                            <div class="d-flex gap-2 justify-content-end">
+                                <button class="btn-action-warning" onclick="resetUserPassword(${user.id}, '${user.username}')">Reset Key</button>
+                                <button class="btn-action-delete ${isMe ? 'disabled' : ''}" onclick="deleteUser(${user.id}, '${user.username}')">Evict</button>
+                            </div>
+                        </td>
+                    </tr>`;
+                });
+            }
+            document.getElementById('userTableBody').innerHTML = html;
+            document.getElementById('userPageInfo').innerText = `Page ${currentUsersPage} of ${totalPages} (Total Profiles: ${filtered.length})`;
+        }
+
+        async function createUser(event) {
+            event.preventDefault();
+            const payload = { username: document.getElementById('newUsername').value, password: document.getElementById('newPassword').value, role: document.getElementById('newRole').value };
+            try {
+                const response = await fetch('api/users.php', { method: 'POST', body: JSON.stringify(payload) });
+                const result = await response.json();
+                showTempAlert('userAlert', result.message, result.success);
+                if (result.success) { document.getElementById('createUserForm').reset(); fetchUsers(); }
+            } catch (e) { showTempAlert('userAlert', "System network dropped", false); }
+        }
+
+        async function deleteUser(userId, username) {
+            if(!confirm(`Are you certain you want to destroy permission token logs for user account line: '${username}'?`)) return;
+            try {
+                const response = await fetch('api/users.php', { method: 'POST', body: JSON.stringify({ action: 'delete_user', user_id: userId }) });
+                const result = await response.json();
+                if(result.success) fetchUsers();
+            } catch (e) {}
+        }
+
+        async function resetUserPassword(userId, username) {
+            const newPassword = prompt(`Assign absolute reset credential password sequence for user account [ ${username} ] :`);
+            if (!newPassword) return;
+            try {
+                const response = await fetch('api/users.php', { method: 'POST', body: JSON.stringify({ action: 'reset_password', user_id: userId, new_password: newPassword }) });
+                alert((await response.json()).message);
+            } catch (e) {}
+        }
+
+        async function fetchMappings() {
+            try {
+                const response = await fetch('api/mapping.php?t=' + Date.now());
+                const result = await response.json();
+                if(result.success) {
+                    rawMerchants = result.merchants || [];
+                    allBrands = result.brands || [];
+                    rawMappings = result.mappings || [];
+                    rawAppUsers = result.app_users || [];
+                    rawAppUserBrands = result.app_user_brands || [];
+
+                    // RESOLUTION: Dynamic mapping inside dropdown blocks showing profile names beside usernames
+                    const merchSelect = document.getElementById('mappingMerchantSelect');
+                    if(merchSelect) {
+                        merchSelect.innerHTML = '<option value="" disabled selected>Choose target profile links...</option>' + 
+                            rawMerchants.map(m => {
+                                const resolvedName = m.name ? `${m.name} (@${m.username})` : `@${m.username}`;
+                                return `<option value="${m.id}">${resolvedName}</option>`;
+                            }).join('');
+                    }
+
+                    const agentSelect = document.getElementById('agentMappingUserSelect');
+                    if(agentSelect) {
+                        agentSelect.innerHTML = '<option value="" disabled selected>Choose target agent links...</option>' + 
+                            rawAppUsers.map(u => {
+                                const resolvedName = u.name ? `${u.name} (@${u.username})` : `@${u.username}`;
+                                return `<option value="${u.id}">${resolvedName}</option>`;
+                            }).join('');
+                    }
+                }
+            } catch (e) {}
+        }
+
+        function renderDualListBox() {
+            const selectedMerchantId = document.getElementById('mappingMerchantSelect').value;
+            if(!selectedMerchantId) return;
+
+            const merchantName = getMerchantNameById(selectedMerchantId);
+            const merchantMappings = rawMappings.filter(m => m.merchant === merchantName);
+            const assignedBrandNames = merchantMappings.map(m => m.brand);
+
+            const availableBox = document.getElementById('availableBrandsBox');
+            const assignedBox = document.getElementById('assignedBrandsBox');
+            let availHtml = '', assignHtml = '';
+
+            allBrands.forEach(brand => {
+                if(assignedBrandNames.includes(brand.name)) {
+                    const mappingEntry = merchantMappings.find(m => m.brand === brand.name);
+                    assignHtml += `<option value="${mappingEntry.id}">${brand.name}</option>`;
+                } else {
+                    availHtml += `<option value="${brand.id}">${brand.name}</option>`;
+                }
+            });
+            availableBox.innerHTML = availHtml;
+            assignedBox.innerHTML = assignHtml;
+        }
+
+        function getMerchantNameById(id) {
+            const m = rawMerchants.find(m => m.id == id);
+            return m ? m.username : ''; 
+        }
+
+        async function moveBrands(direction) {
+            const merchantId = document.getElementById('mappingMerchantSelect').value;
+            if(!merchantId) return alert("Select baseline target directory asset.");
+
+            if(direction === 'right') {
+                const availableBox = document.getElementById('availableBrandsBox');
+                const selectedOptions = Array.from(availableBox.selectedOptions);
+                if(selectedOptions.length === 0) return alert("Select lines to apply.");
+                let successCount = 0;
+                for (let opt of selectedOptions) {
+                    try {
+                        const res = await fetch('api/mapping.php', { method: 'POST', body: JSON.stringify({ action: 'map_brand', merchant_id: merchantId, brand_id: opt.value }) });
+                        if((await res.json()).success) successCount++;
+                    } catch(e) {}
+                }
+                if(successCount > 0) { await fetchMappings(); setTimeout(renderDualListBox, 100); }
+            } else if (direction === 'left') {
+                const assignedBox = document.getElementById('assignedBrandsBox');
+                const selectedOptions = Array.from(assignedBox.selectedOptions);
+                if(selectedOptions.length === 0) return alert("Select lines to discard.");
+                let successCount = 0;
+                for (let opt of selectedOptions) {
+                    try {
+                        const res = await fetch('api/mapping.php', { method: 'POST', body: JSON.stringify({ action: 'remove_mapping', mapping_id: opt.value }) });
+                        if((await res.json()).success) successCount++;
+                    } catch(e) {}
+                }
+                if(successCount > 0) { await fetchMappings(); setTimeout(renderDualListBox, 100); }
+            }
+        }
+
+        function renderAgentDualListBox() {
+            const selectedUserId = document.getElementById('agentMappingUserSelect').value;
+            if(!selectedUserId) return;
+            
+            const agentMappings = rawAppUserBrands.filter(m => m.user_id == selectedUserId);
+            const assignedBrandIds = agentMappings.map(m => m.brand_id);
+
+            const availableBox = document.getElementById('availableAgentBrandsBox');
+            const assignedBox = document.getElementById('assignedAgentBrandsBox');
+            let availHtml = '', assignHtml = '';
+
+            allBrands.forEach(brand => {
+                if(assignedBrandIds.includes(brand.id)) {
+                    const mappingEntry = agentMappings.find(m => m.brand_id == brand.id);
+                    assignHtml += `<option value="${mappingEntry.mapping_id}">${brand.name}</option>`;
+                } else {
+                    availHtml += `<option value="${brand.id}">${brand.name}</option>`;
+                }
+            });
+            availableBox.innerHTML = availHtml;
+            assignedBox.innerHTML = assignHtml;
+        }
+
+        async function moveAgentBrands(direction) {
+            const userId = document.getElementById('agentMappingUserSelect').value;
+            if(!userId) return alert("Select agent context tracker entry.");
+
+            if(direction === 'right') {
+                const availableBox = document.getElementById('availableAgentBrandsBox');
+                const selectedOptions = Array.from(availableBox.selectedOptions);
+                if(selectedOptions.length === 0) return alert("Select profiles to link.");
+                let successCount = 0;
+                for (let opt of selectedOptions) {
+                    try {
+                        const res = await fetch('api/mapping.php', { method: 'POST', body: JSON.stringify({ action: 'assign_app_user_brand', user_id: userId, brand_id: opt.value }) });
+                        if((await res.json()).success) successCount++;
+                    } catch(e) {}
+                }
+                if(successCount > 0) { await fetchMappings(); setTimeout(renderAgentDualListBox, 100); }
+            } else if (direction === 'left') {
+                const assignedBox = document.getElementById('assignedAgentBrandsBox');
+                const selectedOptions = Array.from(assignedBox.selectedOptions);
+                if(selectedOptions.length === 0) return alert("Select lines to drop.");
+                let successCount = 0;
+                for (let opt of selectedOptions) {
+                    try {
+                        const res = await fetch('api/mapping.php', { method: 'POST', body: JSON.stringify({ action: 'remove_app_user_brand', mapping_id: opt.value }) });
+                        if((await res.json()).success) successCount++;
+                    } catch(e) {}
+                }
+                if(successCount > 0) { await fetchMappings(); setTimeout(renderAgentDualListBox, 100); }
+            }
+        }
+
+        async function fetchSettings() {
+            try {
+                const response = await fetch('api/settings.php');
+                const result = await response.json();
+                if (result.success) document.getElementById('gracePeriodInput').value = result.grace_period;
+            } catch (e) {}
+        }
+
+        async function saveSettings(btn) {
+            btn.disabled = true;
+            const originalText = btn.innerText;
+            btn.innerText = "Writing system values...";
+            try {
+                const response = await fetch('api/settings.php', { 
+                    method: 'POST', 
+                    body: JSON.stringify({ grace_period: document.getElementById('gracePeriodInput').value }) 
+                });
+                const result = await response.json();
+                showTempAlert('settingsAlert', result.message, result.success);
+            } catch (e) { showTempAlert('settingsAlert', "API state block fault.", false); }
+            btn.disabled = false; btn.innerText = originalText;
+        }
+
+        async function fetchMerchantsForAdminUpload() {
+            try {
+                const response = await fetch('api/mapping.php');
+                const result = await response.json();
+                if(result.success && result.merchants) {
+                    const select = document.getElementById('adminUploadMerchant');
+                    if(select) {
+                        select.innerHTML = '<option value="" disabled selected>Select merchant endpoint...</option>' + 
+                            result.merchants.map(m => `<option value="${m.username}">${m.name ? m.name + ' (@' + m.username + ')' : m.username}</option>`).join('');
+                    }
+                }
+            } catch (e) {}
+        }
+
+        let currentItemPage = 1; let totalItemPages = 1; let currentSearchQuery = '';
+        function searchItems() { currentSearchQuery = document.getElementById('searchBox').value; fetchMasterItems(1); }
+        function downloadActiveSheet() { window.location.href = `api/merchant_items.php?username=${currentUserName}&action=export`; }
+        function downloadMerchantData(merchantUsername) {
+            if(!merchantUsername || merchantUsername === 'Unknown') return alert("Target matrix unresolvable.");
+            window.location.href = `api/merchant_items.php?username=${merchantUsername}&action=export`;
+        }
+
+        async function fetchMasterItems(page) {
+            currentItemPage = page;
+            try {
+                const response = await fetch(`api/merchant_items.php?username=${currentUserName}&page=${page}&search=${encodeURIComponent(currentSearchQuery)}`);
+                const result = await response.json();
+                const tbody = document.getElementById('itemsTableBody');
+                let itemsHtml = '';
+                if (result.success) {
+                    totalItemPages = result.total_pages;
+                    document.getElementById('activeDataStats').innerText = `Records: ${result.total_items}`;
+                    if(result.data.length === 0) {
+                        itemsHtml = '<tr><td colspan="5" class="text-center py-4" style="color:var(--warning); font-weight:500;">No active brand catalogs assigned to this account asset line.</td></tr>';
+                    } else {
+                        result.data.forEach(item => {
+                            itemsHtml += `<tr>
+                                <td class="font-monospace text-muted">${item.barcode}</td>
+                                <td><strong class="text-white">${item.item_description}</strong></td>
+                                <td><span class="badge-role">${item.location_code}</span></td>
+                                <td>
+                                    <span class="text-decoration-line-through text-muted small me-2">${item.was_price}</span> 
+                                    <strong class="text-success">${item.now_price}</strong>
+                                </td>
+                                <td class="text-muted">${item.expires_at}</td>
+                            </tr>`;
+                        });
+                    }
+                    tbody.innerHTML = itemsHtml;
+                    document.getElementById('paginationInfo').innerText = `Showing matrix line segment ${page} of ${totalItemPages || 1} (Total Rows: ${result.total_items})`;
+                    document.getElementById('prevPageBtn').disabled = page <= 1;
+                    document.getElementById('nextPageBtn').disabled = page >= totalItemPages;
+                }
+            } catch (e) {}
+        }
+
+        function changeItemPage(direction) {
+            let newPage = currentItemPage + direction;
+            if (newPage >= 1 && newPage <= totalItemPages) fetchMasterItems(newPage);
+        }
+
+        function processFileLocally(event) {
+            event.preventDefault();
+            const fileInput = document.getElementById('masterCsvFile');
+            const file = fileInput.files[0];
+            const readBtn = document.getElementById('readBtn');
+            let targetMerchant = currentUserName;
+            if (currentRole === 'admin') {
+                const merchantSelect = document.getElementById('adminUploadMerchant');
+                if (!merchantSelect.value) return alert("Select execution targeting bounds parameter.");
+                targetMerchant = merchantSelect.value;
+            }
+            if (!file) return;
+            readBtn.disabled = true; readBtn.innerText = "Analyzing file arrays...";
+            const reader = new FileReader();
+            reader.onload = function(e) {
+                try {
+                    const data = new Uint8Array(e.target.result);
+                    const workbook = XLSX.read(data, {type: 'array'});
+                    const firstSheet = workbook.SheetNames[0];
+                    const sheet = workbook.Sheets[firstSheet];
+                    pendingCSVData = XLSX.utils.sheet_to_csv(sheet);
+                    const today = new Date().toISOString().split('T')[0]; 
+                    if (currentRole === 'admin') { pendingFileName = `${currentUserName}_for_${targetMerchant}_${today}.csv`; } 
+                    else { pendingFileName = `${currentUserName}_${today}.csv`; }
+                    const jsonData = XLSX.utils.sheet_to_json(sheet); parsedTotalRows = jsonData.length; parsedTotalBrands = 0;
+                    if(parsedTotalRows > 0) {
+                        const keys = Object.keys(jsonData[0]);
+                        const brandKey = keys.find(k => k.toLowerCase().includes('brand'));
+                        if(brandKey) { parsedTotalBrands = new Set(jsonData.map(row => row[brandKey]).filter(b => b)).size; }
+                    }
+                    document.getElementById('uploadForm').classList.add('d-none');
+                    const confirmBox = document.getElementById('uploadConfirmBox');
+                    confirmBox.classList.remove('d-none'); confirmBox.classList.add('d-flex');
+                    let brandText = parsedTotalBrands > 0 ? ` including <strong>${parsedTotalBrands} unique verified brands</strong>` : '';
+                    let adminContextText = currentRole === 'admin' ? `<br><span class="text-info mt-2 d-block">Operator authority line context: <b>@${currentUserName}</b> assigning targeting scope execution to <b>@${targetMerchant}</b></span>` : '';
+                    document.getElementById('uploadStatsText').innerHTML = `Staging sequence array successfully resolved: parsed <strong>${parsedTotalRows} unique asset records</strong>${brandText}.${adminContextText}`;
+                } catch (err) { alert("Failure executing file analysis matrices."); } finally { readBtn.disabled = false; readBtn.innerText = "Process Matrix Parse"; }
+            };
+            reader.readAsArrayBuffer(file);
+        }
+
+        function cancelUpload() {
+            pendingCSVData = null; pendingFileName = null;
+            document.getElementById('masterCsvFile').value = '';
+            document.getElementById('uploadConfirmBox').classList.add('d-none');
+            document.getElementById('uploadConfirmBox').classList.remove('d-flex');
+            document.getElementById('uploadForm').classList.remove('d-none');
+            if (currentRole === 'admin') document.getElementById('adminUploadMerchant').value = '';
+        }
+
+        async function executeUpload() {
+            if(!pendingCSVData) return cancelUpload();
+            const confirmBox = document.getElementById('uploadConfirmBox');
+            const confBtn = document.getElementById('confirmUploadBtn');
+            confBtn.disabled = true; confBtn.innerText = "Syncing logs...";
+            let targetMerchant = currentUserName;
+            if (currentRole === 'admin') targetMerchant = document.getElementById('adminUploadMerchant').value;
+            try {
+                const csvBlob = new Blob([pendingCSVData], { type: 'text/csv' });
+                const formData = new FormData();
+                formData.append('masterFile', csvBlob, pendingFileName);
+                formData.append('merchant_username', targetMerchant); 
+                formData.append('uploaded_by', currentUserName); 
+                const response = await fetch('api/merchant_items.php', { method: 'POST', body: formData });
+                const result = await response.json();
+                confirmBox.classList.add('d-none'); confirmBox.classList.remove('d-flex');
+                document.getElementById('uploadForm').classList.remove('d-none');
+                showTempAlert('uploadAlert', result.message || (result.success ? 'Records committed' : 'Drop fault'), result.success);
+                if (result.success) {
+                    document.getElementById('masterCsvFile').value = '';
+                    if (currentRole === 'merchant') { currentSearchQuery = ''; fetchMasterItems(1); } 
+                    else { document.getElementById('adminUploadMerchant').value = ''; }
+                }
+            } catch (err) { showTempAlert('uploadAlert', `Error: ${err.message}`, false); } finally { confBtn.disabled = false; confBtn.innerText = "Overwrite Engine Stack"; pendingCSVData = null; }
+        }
+
+        async function fetchMerchantAssignments() {
+            try {
+                const response = await fetch(`api/mapping.php?t=${Date.now()}`);
+                const result = await response.json();
+                if (result.success && result.mappings) {
+                    const myBrands = result.mappings.filter(m => m.merchant === currentUserName);
+                    const brandList = document.getElementById('merchantBrandsList');
+                    if (brandList) {
+                        if (myBrands.length > 0) { brandList.innerHTML = myBrands.map(b => `<span class="badge-cyan me-2 px-3 py-2 fs-6 shadow-sm">${b.brand}</span>`).join(''); } 
+                        else { brandList.innerHTML = '<span style="color:var(--warning); font-size:13px; font-weight:500;">No active brand catalogs assigned to this account asset line.</span>'; }
+                    }
+                }
+            } catch (e) { console.error(e); }
+        }
+
+        function logout() { 
+            localStorage.clear(); 
+            window.location.href = '../logout.php'; 
+        }
+
+        window.onload = renderMenu;
+    </script>
+</body>
+</html>

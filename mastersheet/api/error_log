@@ -1,0 +1,121 @@
+[04-Apr-2026 13:43:04 UTC] PHP Fatal error:  Uncaught mysqli_sql_exception: Access denied for user 'db_user'@'localhost' (using password: YES) in /home/anomakio/apparelgroup.anomak.co.in/mastersheet/api/get_master_sheet.php:6
+Stack trace:
+#0 /home/anomakio/apparelgroup.anomak.co.in/mastersheet/api/get_master_sheet.php(6): mysqli->__construct('localhost', 'db_user', Object(SensitiveParameterValue), 'db_name')
+#1 {main}
+  thrown in /home/anomakio/apparelgroup.anomak.co.in/mastersheet/api/get_master_sheet.php on line 6
+[04-Apr-2026 16:56:09 UTC] PHP Fatal error:  Uncaught mysqli_sql_exception: Access denied for user 'db_user'@'localhost' (using password: YES) in /home/anomakio/apparelgroup.anomak.co.in/mastersheet/api/get_master_sheet.php:6
+Stack trace:
+#0 /home/anomakio/apparelgroup.anomak.co.in/mastersheet/api/get_master_sheet.php(6): mysqli->__construct('localhost', 'db_user', Object(SensitiveParameterValue), 'db_name')
+#1 {main}
+  thrown in /home/anomakio/apparelgroup.anomak.co.in/mastersheet/api/get_master_sheet.php on line 6
+[04-Apr-2026 17:26:19 UTC] PHP Fatal error:  Uncaught mysqli_sql_exception: Access denied for user 'db_user'@'localhost' (using password: YES) in /home/anomakio/apparelgroup.anomak.co.in/mastersheet/api/get_master_sheet.php:6
+Stack trace:
+#0 /home/anomakio/apparelgroup.anomak.co.in/mastersheet/api/get_master_sheet.php(6): mysqli->__construct('localhost', 'db_user', Object(SensitiveParameterValue), 'db_name')
+#1 {main}
+  thrown in /home/anomakio/apparelgroup.anomak.co.in/mastersheet/api/get_master_sheet.php on line 6
+[04-Apr-2026 17:41:30 UTC] PHP Fatal error:  Uncaught mysqli_sql_exception: Access denied for user 'db_user'@'localhost' (using password: YES) in /home/anomakio/apparelgroup.anomak.co.in/mastersheet/api/get_master_sheet.php:6
+Stack trace:
+#0 /home/anomakio/apparelgroup.anomak.co.in/mastersheet/api/get_master_sheet.php(6): mysqli->__construct('localhost', 'db_user', Object(SensitiveParameterValue), 'db_name')
+#1 {main}
+  thrown in /home/anomakio/apparelgroup.anomak.co.in/mastersheet/api/get_master_sheet.php on line 6
+[04-Apr-2026 17:55:47 UTC] PHP Fatal error:  Uncaught mysqli_sql_exception: Access denied for user 'db_user'@'localhost' (using password: YES) in /home/anomakio/apparelgroup.anomak.co.in/mastersheet/api/get_master_sheet.php:6
+Stack trace:
+#0 /home/anomakio/apparelgroup.anomak.co.in/mastersheet/api/get_master_sheet.php(6): mysqli->__construct('localhost', 'db_user', Object(SensitiveParameterValue), 'db_name')
+#1 {main}
+  thrown in /home/anomakio/apparelgroup.anomak.co.in/mastersheet/api/get_master_sheet.php on line 6
+[04-Apr-2026 18:29:41 UTC] PHP Fatal error:  Uncaught mysqli_sql_exception: Access denied for user 'db_user'@'localhost' (using password: YES) in /home/anomakio/apparelgroup.anomak.co.in/mastersheet/api/get_master_sheet.php:6
+Stack trace:
+#0 /home/anomakio/apparelgroup.anomak.co.in/mastersheet/api/get_master_sheet.php(6): mysqli->__construct('localhost', 'db_user', Object(SensitiveParameterValue), 'db_name')
+#1 {main}
+  thrown in /home/anomakio/apparelgroup.anomak.co.in/mastersheet/api/get_master_sheet.php on line 6
+[04-Apr-2026 18:35:48 UTC] PHP Fatal error:  Uncaught mysqli_sql_exception: Access denied for user 'db_user'@'localhost' (using password: YES) in /home/anomakio/apparelgroup.anomak.co.in/mastersheet/api/get_master_sheet.php:6
+Stack trace:
+#0 /home/anomakio/apparelgroup.anomak.co.in/mastersheet/api/get_master_sheet.php(6): mysqli->__construct('localhost', 'db_user', Object(SensitiveParameterValue), 'db_name')
+#1 {main}
+  thrown in /home/anomakio/apparelgroup.anomak.co.in/mastersheet/api/get_master_sheet.php on line 6
+[04-Apr-2026 18:42:51 UTC] PHP Fatal error:  Uncaught mysqli_sql_exception: You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near 'desc, 
+            was_price as was, 
+            unit_price as now, 
+    ...' at line 4 in /home/anomakio/apparelgroup.anomak.co.in/mastersheet/api/get_master_sheet.php:36
+Stack trace:
+#0 /home/anomakio/apparelgroup.anomak.co.in/mastersheet/api/get_master_sheet.php(36): mysqli->prepare('SELECT \r\n      ...')
+#1 {main}
+  thrown in /home/anomakio/apparelgroup.anomak.co.in/mastersheet/api/get_master_sheet.php on line 36
+[04-Apr-2026 18:45:42 UTC] PHP Fatal error:  Uncaught mysqli_sql_exception: You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near 'desc, 
+            was_price as was, 
+            unit_price as now, 
+    ...' at line 4 in /home/anomakio/apparelgroup.anomak.co.in/mastersheet/api/get_master_sheet.php:36
+Stack trace:
+#0 /home/anomakio/apparelgroup.anomak.co.in/mastersheet/api/get_master_sheet.php(36): mysqli->prepare('SELECT \r\n      ...')
+#1 {main}
+  thrown in /home/anomakio/apparelgroup.anomak.co.in/mastersheet/api/get_master_sheet.php on line 36
+[04-Apr-2026 18:47:44 UTC] PHP Fatal error:  Uncaught mysqli_sql_exception: You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near 'desc, 
+            was_price as was, 
+            unit_price as now, 
+    ...' at line 4 in /home/anomakio/apparelgroup.anomak.co.in/mastersheet/api/get_master_sheet.php:36
+Stack trace:
+#0 /home/anomakio/apparelgroup.anomak.co.in/mastersheet/api/get_master_sheet.php(36): mysqli->prepare('SELECT \r\n      ...')
+#1 {main}
+  thrown in /home/anomakio/apparelgroup.anomak.co.in/mastersheet/api/get_master_sheet.php on line 36
+[04-Apr-2026 18:47:54 UTC] PHP Fatal error:  Uncaught mysqli_sql_exception: You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near 'desc, 
+            was_price as was, 
+            unit_price as now, 
+    ...' at line 4 in /home/anomakio/apparelgroup.anomak.co.in/mastersheet/api/get_master_sheet.php:36
+Stack trace:
+#0 /home/anomakio/apparelgroup.anomak.co.in/mastersheet/api/get_master_sheet.php(36): mysqli->prepare('SELECT \r\n      ...')
+#1 {main}
+  thrown in /home/anomakio/apparelgroup.anomak.co.in/mastersheet/api/get_master_sheet.php on line 36
+[04-Apr-2026 18:47:54 UTC] PHP Fatal error:  Uncaught mysqli_sql_exception: You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near 'desc, 
+            was_price as was, 
+            unit_price as now, 
+    ...' at line 4 in /home/anomakio/apparelgroup.anomak.co.in/mastersheet/api/get_master_sheet.php:36
+Stack trace:
+#0 /home/anomakio/apparelgroup.anomak.co.in/mastersheet/api/get_master_sheet.php(36): mysqli->prepare('SELECT \r\n      ...')
+#1 {main}
+  thrown in /home/anomakio/apparelgroup.anomak.co.in/mastersheet/api/get_master_sheet.php on line 36
+[04-Apr-2026 18:47:55 UTC] PHP Fatal error:  Uncaught mysqli_sql_exception: You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near 'desc, 
+            was_price as was, 
+            unit_price as now, 
+    ...' at line 4 in /home/anomakio/apparelgroup.anomak.co.in/mastersheet/api/get_master_sheet.php:36
+Stack trace:
+#0 /home/anomakio/apparelgroup.anomak.co.in/mastersheet/api/get_master_sheet.php(36): mysqli->prepare('SELECT \r\n      ...')
+#1 {main}
+  thrown in /home/anomakio/apparelgroup.anomak.co.in/mastersheet/api/get_master_sheet.php on line 36
+[04-Apr-2026 18:47:56 UTC] PHP Fatal error:  Uncaught mysqli_sql_exception: You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near 'desc, 
+            was_price as was, 
+            unit_price as now, 
+    ...' at line 4 in /home/anomakio/apparelgroup.anomak.co.in/mastersheet/api/get_master_sheet.php:36
+Stack trace:
+#0 /home/anomakio/apparelgroup.anomak.co.in/mastersheet/api/get_master_sheet.php(36): mysqli->prepare('SELECT \r\n      ...')
+#1 {main}
+  thrown in /home/anomakio/apparelgroup.anomak.co.in/mastersheet/api/get_master_sheet.php on line 36
+[04-Apr-2026 18:51:18 UTC] PHP Parse error:  syntax error, unexpected token "<", expecting end of file in /home/anomakio/apparelgroup.anomak.co.in/mastersheet/api/get_master_sheet.php on line 22
+[04-Apr-2026 18:51:39 UTC] PHP Parse error:  syntax error, unexpected token "<", expecting end of file in /home/anomakio/apparelgroup.anomak.co.in/mastersheet/api/get_master_sheet.php on line 22
+[05-Apr-2026 11:40:05 UTC] PHP Parse error:  Unclosed '{' on line 133 in /home/anomakio/apparelgroup.anomak.co.in/mastersheet/api/merchant_shops.php on line 134
+[05-Apr-2026 11:40:19 UTC] PHP Parse error:  Unclosed '{' on line 133 in /home/anomakio/apparelgroup.anomak.co.in/mastersheet/api/merchant_shops.php on line 134
+[05-Apr-2026 11:40:22 UTC] PHP Parse error:  Unclosed '{' on line 133 in /home/anomakio/apparelgroup.anomak.co.in/mastersheet/api/merchant_shops.php on line 134
+[23-Jun-2026 18:13:18 UTC] PHP Warning:  require_once(/home/anomakio/apparelgroup.anomak.co.in/mastersheet/api/../config.php): Failed to open stream: No such file or directory in /home/anomakio/apparelgroup.anomak.co.in/mastersheet/api/mapping.php on line 8
+[23-Jun-2026 18:13:18 UTC] PHP Fatal error:  Uncaught Error: Failed opening required '/home/anomakio/apparelgroup.anomak.co.in/mastersheet/api/../config.php' (include_path='.:/opt/cpanel/ea-php82/root/usr/share/pear') in /home/anomakio/apparelgroup.anomak.co.in/mastersheet/api/mapping.php:8
+Stack trace:
+#0 {main}
+  thrown in /home/anomakio/apparelgroup.anomak.co.in/mastersheet/api/mapping.php on line 8
+[23-Jun-2026 18:16:06 UTC] PHP Warning:  require_once(/home/anomakio/apparelgroup.anomak.co.in/mastersheet/api/../config.php): Failed to open stream: No such file or directory in /home/anomakio/apparelgroup.anomak.co.in/mastersheet/api/mapping.php on line 12
+[23-Jun-2026 18:16:06 UTC] PHP Fatal error:  Uncaught Error: Failed opening required '/home/anomakio/apparelgroup.anomak.co.in/mastersheet/api/../config.php' (include_path='.:/opt/cpanel/ea-php82/root/usr/share/pear') in /home/anomakio/apparelgroup.anomak.co.in/mastersheet/api/mapping.php:12
+Stack trace:
+#0 {main}
+  thrown in /home/anomakio/apparelgroup.anomak.co.in/mastersheet/api/mapping.php on line 12
+[23-Jun-2026 18:18:15 UTC] PHP Warning:  require_once(/home/anomakio/apparelgroup.anomak.co.in/mastersheet/api/../../../config.php): Failed to open stream: No such file or directory in /home/anomakio/apparelgroup.anomak.co.in/mastersheet/api/mapping.php on line 12
+[23-Jun-2026 18:18:15 UTC] PHP Fatal error:  Uncaught Error: Failed opening required '/home/anomakio/apparelgroup.anomak.co.in/mastersheet/api/../../../config.php' (include_path='.:/opt/cpanel/ea-php82/root/usr/share/pear') in /home/anomakio/apparelgroup.anomak.co.in/mastersheet/api/mapping.php:12
+Stack trace:
+#0 {main}
+  thrown in /home/anomakio/apparelgroup.anomak.co.in/mastersheet/api/mapping.php on line 12
+[23-Jun-2026 18:18:47 UTC] PHP Warning:  require_once(/home/anomakio/apparelgroup.anomak.co.in/mastersheet/api/../../../config.php): Failed to open stream: No such file or directory in /home/anomakio/apparelgroup.anomak.co.in/mastersheet/api/mapping.php on line 12
+[23-Jun-2026 18:18:47 UTC] PHP Fatal error:  Uncaught Error: Failed opening required '/home/anomakio/apparelgroup.anomak.co.in/mastersheet/api/../../../config.php' (include_path='.:/opt/cpanel/ea-php82/root/usr/share/pear') in /home/anomakio/apparelgroup.anomak.co.in/mastersheet/api/mapping.php:12
+Stack trace:
+#0 {main}
+  thrown in /home/anomakio/apparelgroup.anomak.co.in/mastersheet/api/mapping.php on line 12
+[23-Jun-2026 18:19:07 UTC] PHP Warning:  require_once(/home/anomakio/apparelgroup.anomak.co.in/mastersheet/api/../../../config.php): Failed to open stream: No such file or directory in /home/anomakio/apparelgroup.anomak.co.in/mastersheet/api/mapping.php on line 12
+[23-Jun-2026 18:19:07 UTC] PHP Fatal error:  Uncaught Error: Failed opening required '/home/anomakio/apparelgroup.anomak.co.in/mastersheet/api/../../../config.php' (include_path='.:/opt/cpanel/ea-php82/root/usr/share/pear') in /home/anomakio/apparelgroup.anomak.co.in/mastersheet/api/mapping.php:12
+Stack trace:
+#0 {main}
+  thrown in /home/anomakio/apparelgroup.anomak.co.in/mastersheet/api/mapping.php on line 12

@@ -1,2 +1,0 @@
-# itassets
-IT Procurement
